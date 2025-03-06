@@ -1,16 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://d331i2778xnbp"]
+[gd_scene load_steps=3 format=3 uid="uid://d331i2778xnbp"]
 
 [ext_resource type="Texture2D" uid="uid://b8b2gmgfuf7aj" path="res://maxresdefault.jpg" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://cyourtxv86tp5" path="res://MainMenu.cs" id="1_7vrkn"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_7vrkn")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_right = 1157.0
+offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_06t4h")
+expand_mode = 1
 stretch_mode = 5
+
+[node name="PressToStart" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 343.0
+offset_top = 265.0
+offset_right = 693.0
+offset_bottom = 394.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Press To Start
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

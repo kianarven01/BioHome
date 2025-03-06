@@ -15,6 +15,10 @@ run/main_scene="uid://d331i2778xnbp"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="BioHome"
+
 [rendering]
 
 renderer/rendering_method="mobile"
