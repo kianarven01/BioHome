@@ -1029,12 +1029,11 @@ animations = [{
 [node name="LivingRoom" type="Node2D"]
 script = ExtResource("1_efgsu")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.499997, -0.499995)
-scale = Vector2(1.04375, 1.04815)
-sprite_frames = SubResource("SpriteFrames_8aalt")
-frame = 80
-frame_progress = 0.600153
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.3, 2.3)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -1.5)
+scale = Vector2(4.00417, 4.03148)
+sprite_frames = SubResource("SpriteFrames_8aalt")
+frame_progress = 0.257118
+centered = false
