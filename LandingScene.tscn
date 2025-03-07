@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dajdvtilw0xxt"]
+
+[ext_resource type="Texture2D" uid="uid://crf7wdtggrf0d" path="res://sprites/background.jpg" id="1_84o4n"]
+[ext_resource type="Shader" path="res://LandingScene.gdshader" id="1_sdgrv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tncs4"]
+shader = ExtResource("1_sdgrv")
+
+[node name="LandingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_tncs4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.999366, 1.01108)
+texture = ExtResource("1_84o4n")

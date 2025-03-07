@@ -1,41 +1,114 @@
-[gd_scene load_steps=3 format=3 uid="uid://d331i2778xnbp"]
+[gd_scene load_steps=13 format=3 uid="uid://d331i2778xnbp"]
 
 [ext_resource type="Script" uid="uid://cyourtxv86tp5" path="res://MainMenu.cs" id="1_7vrkn"]
-[ext_resource type="Texture2D" uid="uid://okt14lqe6efk" path="res://1.png" id="2_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://dajdvtilw0xxt" path="res://LandingScene.tscn" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://q1lxf80swrev" path="res://sprites/Forest.png" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://dgcotr6h10md6" path="res://sprites/HouseSet.png" id="4_glbon"]
+[ext_resource type="Texture2D" uid="uid://dh6fc6ltjv7fh" path="res://sprites/Signage.png" id="4_nlkkf"]
+[ext_resource type="Script" uid="uid://dsts2isc54xcy" path="res://DropDown.cs" id="5_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://bgt52rfp6yisl" path="res://sprites/StartButton.png" id="5_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://chvy8miswo1xq" path="res://sprites/BioHomeLabel.png" id="5_qe12f"]
+[ext_resource type="Script" uid="uid://c41ehdpq2ae7d" path="res://StartButton.cs" id="7_8qtwp"]
+
+[sub_resource type="Animation" id="Animation_qe12f"]
+resource_name = "dropdown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-349.707, -600.603), Vector2(-349.707, -312.603)]
+}
+
+[sub_resource type="Animation" id="Animation_8qtwp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-349.707, -312.633)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dy7ct"]
+_data = {
+&"RESET": SubResource("Animation_8qtwp"),
+&"dropdown": SubResource("Animation_qe12f")
+}
 
 [node name="MainMenu" type="Node2D"]
+position = Vector2(1, -1)
 script = ExtResource("1_7vrkn")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="LandingScene" parent="." instance=ExtResource("2_fu7sn")]
+offset_left = 338.0
+offset_top = 222.0
+offset_right = 338.0
+offset_bottom = 222.0
+scale = Vector2(2.76742, 2.4169)
+pivot_offset = Vector2(-352.37, -219.918)
 
-[node name="Background" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 3.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_7vrkn")
-expand_mode = 1
-stretch_mode = 5
+[node name="Forest" type="TextureRect" parent="LandingScene"]
+layout_mode = 0
+offset_left = -347.539
+offset_top = -118.199
+offset_right = 351.461
+offset_bottom = 238.801
+scale = Vector2(0.99121, 0.98737)
+mouse_filter = 2
+texture = ExtResource("3_jix8l")
 
-[node name="PressToStart" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -215.0
-offset_top = 478.0
-offset_right = 135.0
-offset_bottom = 607.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 45
-text = "Press To Start
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+[node name="Signage" type="TextureRect" parent="LandingScene"]
+layout_mode = 0
+offset_left = -349.707
+offset_top = -312.633
+offset_right = 318.293
+offset_bottom = 60.3671
+mouse_filter = 2
+texture = ExtResource("4_nlkkf")
+script = ExtResource("5_dy7ct")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LandingScene/Signage"]
+libraries = {
+&"": SubResource("AnimationLibrary_dy7ct")
+}
+
+[node name="TextureRect" type="TextureRect" parent="LandingScene/Signage"]
+layout_mode = 0
+offset_left = 220.783
+offset_top = 211.012
+offset_right = 960.783
+offset_bottom = 369.012
+scale = Vector2(0.371988, 0.43934)
+texture = ExtResource("5_qe12f")
+
+[node name="Button" type="Button" parent="LandingScene/Signage"]
+layout_mode = 0
+offset_left = 278.599
+offset_top = 278.868
+offset_right = 559.599
+offset_bottom = 355.868
+scale = Vector2(0.50409, 0.576874)
+icon = ExtResource("5_nlkkf")
+flat = true
+script = ExtResource("7_8qtwp")
+
+[node name="House" type="TextureRect" parent="LandingScene"]
+layout_mode = 0
+offset_left = -347.539
+offset_top = -63.9972
+offset_right = 580.461
+offset_bottom = 205.003
+scale = Vector2(0.746887, 1.0775)
+mouse_filter = 2
+texture = ExtResource("4_glbon")
