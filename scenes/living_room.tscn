@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxdek8wdmp80v"]
+[gd_scene load_steps=18 format=3 uid="uid://bxdek8wdmp80v"]
 
 [ext_resource type="Script" uid="uid://clpm87q17muv" path="res://scripts/LivingRoom.cs" id="1_tcv1k"]
 [ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://sprites/livingroombg.png" id="2_sc017"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://21m0gu1w5lhf" path="res://scripts/TV_UI.cs" id="5_3y53x"]
 [ext_resource type="Texture2D" uid="uid://bff21bdc2ixl1" path="res://sprites/TV_UI.png" id="6_karft"]
 [ext_resource type="Texture2D" uid="uid://k7d4sfugja3k" path="res://sprites/tasks.png" id="7_7smae"]
+[ext_resource type="Texture2D" uid="uid://gq3gyrp5i2hh" path="res://sprites/closeButton.png" id="7_sc017"]
+[ext_resource type="Texture2D" uid="uid://csc6ym5ohg3vk" path="res://sprites/biomolecules.jpg" id="8_30exw"]
 [ext_resource type="Texture2D" uid="uid://n7dbxrtfun71" path="res://sprites/drawer.png" id="8_d4nal"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/exit.png" id="9_3a64r"]
 [ext_resource type="Texture2D" uid="uid://b1vkal2ir45cr" path="res://sprites/exitBg.png" id="10_uuwu5"]
@@ -75,17 +77,21 @@ scale = Vector2(0.804469, 0.869729)
 texture = ExtResource("6_karft")
 
 [node name="close_button" type="Button" parent="TV/TV_UI"]
-offset_left = 1629.0
-offset_top = 43.0
-offset_right = 1804.0
-offset_bottom = 210.0
+offset_left = 1637.0
+offset_top = 106.0
+offset_right = 1812.0
+offset_bottom = 273.0
+scale = Vector2(0.6, 0.603659)
+icon = ExtResource("7_sc017")
+flat = true
 
 [node name="video1" type="Button" parent="TV/TV_UI"]
 offset_left = 233.0
 offset_top = 153.0
-offset_right = 348.0
-offset_bottom = 236.0
-scale = Vector2(3.43262, 2.82612)
+offset_right = 961.0
+offset_bottom = 565.0
+scale = Vector2(0.541364, 0.577369)
+icon = ExtResource("8_30exw")
 
 [node name="Tasks" type="TextureRect" parent="."]
 offset_left = 1250.0

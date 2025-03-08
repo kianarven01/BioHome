@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b28s37fkilnm2"
-path="res://.godot/imported/yes.jpg-61abaf4bc23494b78316c7f9076aab92.ctex"
+uid="uid://csc6ym5ohg3vk"
+path="res://.godot/imported/biomolecules.jpg-d98b0332cf7ad14a8876d2d2fe0c53a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/yes.jpg"
-dest_files=["res://.godot/imported/yes.jpg-61abaf4bc23494b78316c7f9076aab92.ctex"]
+source_file="res://sprites/biomolecules.jpg"
+dest_files=["res://.godot/imported/biomolecules.jpg-d98b0332cf7ad14a8876d2d2fe0c53a3.ctex"]
 
 [params]
 
