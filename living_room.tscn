@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxdek8wdmp80v"]
+[gd_scene load_steps=8 format=3 uid="uid://bxdek8wdmp80v"]
 
 [ext_resource type="Script" uid="uid://clpm87q17muv" path="res://LivingRoom.cs" id="1_efgsu"]
 [ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://livingroombg.png" id="2_jeppt"]
 [ext_resource type="Texture2D" uid="uid://puhi0o72q61e" path="res://TV.png" id="3_w7u4w"]
 [ext_resource type="Texture2D" uid="uid://k7d4sfugja3k" path="res://tasks.png" id="4_qxcby"]
+[ext_resource type="Script" uid="uid://c33coap5oao6v" path="res://TV.cs" id="4_w7u4w"]
 [ext_resource type="Texture2D" uid="uid://n7dbxrtfun71" path="res://drawer.png" id="5_mjt0p"]
+[ext_resource type="Script" uid="uid://21m0gu1w5lhf" path="res://TV_UI.cs" id="5_qxcby"]
 
 [node name="LivingRoom" type="Node2D"]
 script = ExtResource("1_efgsu")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1926.0
-offset_bottom = 1081.0
+offset_bottom = 1122.0
 texture = ExtResource("2_jeppt")
 
 [node name="TV" type="TextureRect" parent="."]
@@ -20,6 +22,44 @@ offset_top = 375.0
 offset_right = 1255.0
 offset_bottom = 820.0
 texture = ExtResource("3_w7u4w")
+script = ExtResource("4_w7u4w")
+
+[node name="TV_UI" type="CanvasLayer" parent="TV"]
+script = ExtResource("5_qxcby")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="TV/TV_UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand = true
+metadata/_edit_use_anchors_ = true
+
+[node name="UIbg" type="ColorRect" parent="TV/TV_UI"]
+offset_left = 195.0
+offset_top = 117.0
+offset_right = 1736.0
+offset_bottom = 1039.0
+color = Color(1, 0.282353, 1, 1)
+
+[node name="close_button" type="Button" parent="TV/TV_UI"]
+offset_left = 1629.0
+offset_top = 43.0
+offset_right = 1804.0
+offset_bottom = 210.0
+
+[node name="video1" type="Button" parent="TV/TV_UI"]
+offset_left = 270.0
+offset_top = 268.0
+offset_right = 385.0
+offset_bottom = 351.0
 
 [node name="Tasks" type="TextureRect" parent="."]
 offset_left = 1250.0
