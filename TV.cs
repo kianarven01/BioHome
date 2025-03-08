@@ -13,6 +13,9 @@ public partial class TV : TextureRect
 
 	public override void _Input(InputEvent @event)
 	{
+		// Prevent TV from being clickable when UI is open
+		if (tvUI.Visible) return;
+
 		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
 		{
 			Vector2 clickPosition = mouseEvent.Position;
@@ -21,8 +24,9 @@ public partial class TV : TextureRect
 			if (GetGlobalRect().HasPoint(clickPosition))
 			{
 				GD.Print("TV tapped!");
-				tvUI.Visible = !tvUI.Visible; // Toggle UI visibility
+				tvUI.Visible = true; // Show UI
 			}
 		}
 	}
+
 }
