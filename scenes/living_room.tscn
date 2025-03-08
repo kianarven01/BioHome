@@ -1,0 +1,151 @@
+[gd_scene load_steps=16 format=3 uid="uid://bxdek8wdmp80v"]
+
+[ext_resource type="Script" uid="uid://clpm87q17muv" path="res://scripts/LivingRoom.cs" id="1_tcv1k"]
+[ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://sprites/livingroombg.png" id="2_sc017"]
+[ext_resource type="Texture2D" uid="uid://puhi0o72q61e" path="res://sprites/TV.png" id="3_30exw"]
+[ext_resource type="Script" uid="uid://c33coap5oao6v" path="res://scripts/TV.cs" id="4_uo0jg"]
+[ext_resource type="Script" uid="uid://21m0gu1w5lhf" path="res://scripts/TV_UI.cs" id="5_3y53x"]
+[ext_resource type="Texture2D" uid="uid://bff21bdc2ixl1" path="res://sprites/TV_UI.png" id="6_karft"]
+[ext_resource type="Texture2D" uid="uid://k7d4sfugja3k" path="res://sprites/tasks.png" id="7_7smae"]
+[ext_resource type="Texture2D" uid="uid://n7dbxrtfun71" path="res://sprites/drawer.png" id="8_d4nal"]
+[ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/exit.png" id="9_3a64r"]
+[ext_resource type="Texture2D" uid="uid://b1vkal2ir45cr" path="res://sprites/exitBg.png" id="10_uuwu5"]
+[ext_resource type="Texture2D" uid="uid://du4r5hhr53vbh" path="res://sprites/yes.png" id="11_5cgma"]
+[ext_resource type="Texture2D" uid="uid://dtguxqgbwbbjy" path="res://sprites/no.png" id="12_6ryxo"]
+
+[sub_resource type="SystemFont" id="SystemFont_jm2cs"]
+font_weight = 600
+subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_amcw0"]
+base_font = SubResource("SystemFont_jm2cs")
+
+[sub_resource type="LabelSettings" id="LabelSettings_sigte"]
+font = SubResource("FontVariation_amcw0")
+font_size = 19
+
+[node name="LivingRoom" type="Node2D"]
+script = ExtResource("1_tcv1k")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1926.0
+offset_bottom = 1122.0
+texture = ExtResource("2_sc017")
+
+[node name="TV" type="TextureRect" parent="."]
+offset_left = 730.0
+offset_top = 375.0
+offset_right = 1255.0
+offset_bottom = 820.0
+texture = ExtResource("3_30exw")
+script = ExtResource("4_uo0jg")
+
+[node name="TV_UI" type="CanvasLayer" parent="TV"]
+script = ExtResource("5_3y53x")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="TV/TV_UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand = true
+metadata/_edit_use_anchors_ = true
+
+[node name="UIbg" type="ColorRect" parent="TV/TV_UI"]
+offset_left = 195.0
+offset_top = 117.0
+offset_right = 1736.0
+offset_bottom = 1039.0
+color = Color(1, 0.282353, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -16.0
+offset_right = 1916.0
+offset_bottom = 1064.0
+scale = Vector2(0.804469, 0.869729)
+texture = ExtResource("6_karft")
+
+[node name="close_button" type="Button" parent="TV/TV_UI"]
+offset_left = 1629.0
+offset_top = 43.0
+offset_right = 1804.0
+offset_bottom = 210.0
+
+[node name="video1" type="Button" parent="TV/TV_UI"]
+offset_left = 233.0
+offset_top = 153.0
+offset_right = 348.0
+offset_bottom = 236.0
+scale = Vector2(3.43262, 2.82612)
+
+[node name="Tasks" type="TextureRect" parent="."]
+offset_left = 1250.0
+offset_top = 283.0
+offset_right = 1547.0
+offset_bottom = 580.0
+texture = ExtResource("7_7smae")
+
+[node name="Drawer" type="TextureRect" parent="."]
+offset_left = 326.0
+offset_top = 346.0
+offset_right = 698.0
+offset_bottom = 685.0
+texture = ExtResource("8_d4nal")
+
+[node name="exitButton" type="Button" parent="."]
+offset_left = 1790.0
+offset_top = 955.0
+offset_right = 2310.0
+offset_bottom = 1475.0
+scale = Vector2(0.191849, 0.188585)
+icon = ExtResource("9_3a64r")
+flat = true
+
+[node name="Exit" type="TextureRect" parent="."]
+offset_left = 551.0
+offset_top = 245.0
+offset_right = 966.0
+offset_bottom = 531.0
+scale = Vector2(2.06314, 2.16195)
+texture = ExtResource("10_uuwu5")
+
+[node name="Label" type="Label" parent="Exit"]
+layout_mode = 0
+offset_left = 44.5922
+offset_top = 51.8051
+offset_right = 396.592
+offset_bottom = 116.805
+scale = Vector2(0.928306, 1.60023)
+text = "Are you sure you want to quit
+the game?"
+label_settings = SubResource("LabelSettings_sigte")
+horizontal_alignment = 1
+
+[node name="yesButton" type="Button" parent="Exit"]
+layout_mode = 0
+offset_left = 92.0925
+offset_top = 176.692
+offset_right = 456.093
+offset_bottom = 309.692
+scale = Vector2(0.271486, 0.303203)
+icon = ExtResource("11_5cgma")
+flat = true
+
+[node name="noButton" type="Button" parent="Exit"]
+layout_mode = 0
+offset_left = 217.629
+offset_top = 176.692
+offset_right = 582.629
+offset_bottom = 311.692
+scale = Vector2(0.28351, 0.312588)
+icon = ExtResource("12_6ryxo")
+flat = true

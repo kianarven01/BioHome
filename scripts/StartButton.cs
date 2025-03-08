@@ -10,6 +10,6 @@ public partial class StartButton : Button
 
 	private void OnButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://living_room.tscn"); // Path to the next scene
+		GetTree().ChangeSceneToFile("res://scenes/living_room.tscn"); // Path to the next scene
 	}
 }

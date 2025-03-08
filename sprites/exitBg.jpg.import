@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://01n71qk3ibff"
-path="res://.godot/imported/livingroombg.png-25f5efca107b03dfbe885fa749149582.ctex"
+uid="uid://d2i5awlxfuw4t"
+path="res://.godot/imported/exitBg.jpg-c2a23fcfbe30f2cde6cef4c96b915a8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://livingroombg.png"
-dest_files=["res://.godot/imported/livingroombg.png-25f5efca107b03dfbe885fa749149582.ctex"]
+source_file="res://sprites/exitBg.jpg"
+dest_files=["res://.godot/imported/exitBg.jpg-c2a23fcfbe30f2cde6cef4c96b915a8c.ctex"]
 
 [params]
 

@@ -1,0 +1,54 @@
+using Godot;
+
+public partial class LivingRoom : Node2D
+{
+	/*private AnimatedSprite2D animatedSprite;
+
+	public override void _Ready()
+	{
+		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		animatedSprite.Play("default"); // Play animation on scene load
+	}*/
+	
+	private TextureRect exitSign; 
+	private Button exitButton;
+	private Button noButton;
+	private Button yesButton;
+	private TextureRect tv;
+
+	public override void _Ready()
+	{
+		exitSign = GetNode<TextureRect>("Exit"); 
+		exitSign.Visible = false; // Hide UI initially
+		
+		exitButton = GetNode<Button>("exitButton");
+		exitButton.Pressed += OnExitButtonPressed;
+		
+		noButton = GetNode<Button>("Exit/noButton");
+		noButton.Pressed += OnNoButtonPressed;
+		
+		yesButton = GetNode<Button>("Exit/yesButton");
+		yesButton.Pressed += OnYesButtonPressed;
+		
+		tv = GetNode<TextureRect>("TV");
+		
+	}
+
+	private void OnExitButtonPressed()
+	{
+		GD.Print("Exit button pressed!");
+		exitSign.Visible = true; // Show exit sign UI
+		tv.SetProcessInput(false);
+	}
+	
+	private void OnNoButtonPressed()
+	{
+		exitSign.Visible = false;
+		tv.SetProcessInput(true);
+	}
+	
+	private void OnYesButtonPressed()
+	{
+		GetTree().Quit();
+	}
+}
