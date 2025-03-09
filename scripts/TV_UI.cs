@@ -3,40 +3,51 @@ using Godot;
 public partial class TV_UI : CanvasLayer
 {
 	private VideoStreamPlayer _videoPlayer;
-	private Control _uiBg; // Reference to UIbg
+	private TextureRect _uiBg; // Reference to UIbg
 
 	public override void _Ready()
 	{
-		
-		_videoPlayer = GetNode<VideoStreamPlayer>("VideoStreamPlayer");
-		_uiBg = GetNode<Control>("UIbg"); // Assuming UIbg is a Control or ColorRect
+		_uiBg = GetNodeOrNull<TextureRect>("UIbg");
+		_videoPlayer = _uiBg.GetNodeOrNull<VideoStreamPlayer>("VideoStreamPlayer");
 
-		// Adjust VideoStreamPlayer size to match UIbg
+		// Set Video Player properties
 		_videoPlayer.Size = _uiBg.Size;
-		_videoPlayer.Position = _uiBg.Position;
+		_videoPlayer.Position = Vector2.Zero; // Align with UIbg
 		_videoPlayer.Expand = true;
-		_videoPlayer.ZIndex = 10; // Ensure it's above other UI elements
+		_videoPlayer.ZIndex = 10;
 
+		// Connect buttons (inside UIbg)
+		Button closeButton = _uiBg.GetNodeOrNull<Button>("close_button");
+		Button video1Button = _uiBg.GetNodeOrNull<Button>("video1");
 
-		// Connect buttons
-		GetNode<Button>("close_button").ZIndex = 100;
-		GetNode<Button>("video1").Pressed += PlayVideo;
-		GetNode<Button>("close_button").Pressed += CloseUI;
+		closeButton.ZIndex = 100;
+		closeButton.Pressed += CloseUI;
+		video1Button.Pressed += PlayVideo;
+
 	}
 
 	private void PlayVideo()
 	{
-		_videoPlayer.Stream = GD.Load<VideoStream>("res://videos/video1.ogv"); // Replace with correct format
-		_videoPlayer.Play();
-		_videoPlayer.Visible = true; // Ensure it is visible
-		GD.Print($"Video Size: {_videoPlayer.Size}, UIbg Size: {_uiBg.Size}");
+		if (_videoPlayer.IsPlaying()) return; // Prevent re-triggering if already playing
 
+		_videoPlayer.Stream = GD.Load<VideoStream>("res://videos/video1.ogv");
+		_videoPlayer.Play();
+		_videoPlayer.Visible = true;
+
+		GetNode<Button>("UIbg/video1").Disabled = true; // Disable the button while playing
 	}
 
 	private void CloseUI()
 	{
-		_videoPlayer.Stop();
-		_videoPlayer.Visible = false;
-		Visible = false;
+		if (_videoPlayer.IsPlaying())
+		{
+			_videoPlayer.Stop();
+			_videoPlayer.Visible = false;
+			GetNode<Button>("UIbg/video1").Disabled = false; // Re-enable the button
+		}
+		else
+		{
+			Visible = false; // Hide the entire UI
+		}
 	}
 }
