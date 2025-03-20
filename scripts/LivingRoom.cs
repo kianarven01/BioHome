@@ -15,6 +15,7 @@ public partial class LivingRoom : Node2D
 	private Button noButton;
 	private Button yesButton;
 	private TextureRect tv;
+	private TextureRect tasks;
 
 	public override void _Ready()
 	{
@@ -31,6 +32,7 @@ public partial class LivingRoom : Node2D
 		yesButton.Pressed += OnYesButtonPressed;
 		
 		tv = GetNode<TextureRect>("TV");
+		tasks = GetNode<TextureRect>("Tasks");
 		
 	}
 
@@ -38,13 +40,16 @@ public partial class LivingRoom : Node2D
 	{
 		GD.Print("Exit button pressed!");
 		exitSign.Visible = true; // Show exit sign UI
+		exitSign.Position = new Vector2(545, 271);
 		tv.SetProcessInput(false);
+		tasks.SetProcessInput(false);
 	}
 	
 	private void OnNoButtonPressed()
 	{
 		exitSign.Visible = false;
 		tv.SetProcessInput(true);
+		tasks.SetProcessInput(true);
 	}
 	
 	private void OnYesButtonPressed()

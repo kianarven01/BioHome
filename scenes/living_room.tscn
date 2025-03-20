@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxdek8wdmp80v"]
+[gd_scene load_steps=25 format=3 uid="uid://bxdek8wdmp80v"]
 
 [ext_resource type="Script" uid="uid://clpm87q17muv" path="res://scripts/LivingRoom.cs" id="1_tcv1k"]
 [ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://sprites/livingroombg.png" id="2_sc017"]
@@ -13,7 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/exit.png" id="9_3a64r"]
 [ext_resource type="Texture2D" uid="uid://b1vkal2ir45cr" path="res://sprites/exitBg.png" id="10_uuwu5"]
 [ext_resource type="Texture2D" uid="uid://du4r5hhr53vbh" path="res://sprites/yes.png" id="11_5cgma"]
+[ext_resource type="Texture2D" uid="uid://bg5624a8kbdxn" path="res://sprites/tasksFilled.png" id="12_3a64r"]
 [ext_resource type="Texture2D" uid="uid://dtguxqgbwbbjy" path="res://sprites/no.png" id="12_6ryxo"]
+[ext_resource type="Script" uid="uid://dfe37p1vpg38d" path="res://scripts/TaskView.cs" id="16_5cgma"]
+[ext_resource type="Texture2D" uid="uid://hejm6xgsgnvp" path="res://sprites/task1.png" id="16_uuwu5"]
+[ext_resource type="Texture2D" uid="uid://jnfg0cxgph7v" path="res://sprites/mini_button.png" id="17_5cgma"]
+[ext_resource type="Texture2D" uid="uid://dxdo5pvv36r5n" path="res://sprites/task2.png" id="18_6ryxo"]
+[ext_resource type="Texture2D" uid="uid://d0scl083fs4q2" path="res://sprites/task3.png" id="19_xdb3q"]
+[ext_resource type="Texture2D" uid="uid://do3akyg1uxns2" path="res://sprites/task4.png" id="20_81vpo"]
 
 [sub_resource type="SystemFont" id="SystemFont_jm2cs"]
 font_weight = 600
@@ -34,6 +41,13 @@ offset_right = 1926.0
 offset_bottom = 1122.0
 texture = ExtResource("2_sc017")
 
+[node name="Drawer" type="TextureRect" parent="."]
+offset_left = 326.0
+offset_top = 346.0
+offset_right = 698.0
+offset_bottom = 685.0
+texture = ExtResource("8_d4nal")
+
 [node name="TV" type="TextureRect" parent="."]
 offset_left = 730.0
 offset_top = 375.0
@@ -51,10 +65,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -765.0
-offset_top = -449.0
-offset_right = 1155.0
-offset_bottom = 631.0
+offset_left = -735.0
+offset_top = 683.0
+offset_right = 1185.0
+offset_bottom = 1763.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.800872, 0.869729)
@@ -78,6 +92,7 @@ expand = true
 metadata/_edit_use_anchors_ = true
 
 [node name="close_button" type="Button" parent="TV/TV_UI/UIbg"]
+layout_mode = 0
 offset_left = 1847.99
 offset_top = -40.2424
 offset_right = 1988.99
@@ -87,6 +102,7 @@ icon = ExtResource("7_sc017")
 flat = true
 
 [node name="video1" type="Button" parent="TV/TV_UI/UIbg"]
+layout_mode = 0
 offset_left = 54.9401
 offset_top = 60.9386
 offset_right = 782.94
@@ -99,14 +115,91 @@ offset_left = 1250.0
 offset_top = 283.0
 offset_right = 1547.0
 offset_bottom = 580.0
+texture = ExtResource("12_3a64r")
+script = ExtResource("16_5cgma")
+
+[node name="TaskView" type="TextureRect" parent="."]
+layout_direction = 1
+offset_left = 2237.0
+offset_top = -305.0
+offset_right = 3526.0
+offset_bottom = 1051.0
 texture = ExtResource("7_7smae")
 
-[node name="Drawer" type="TextureRect" parent="."]
-offset_left = 326.0
-offset_top = 346.0
-offset_right = 698.0
-offset_bottom = 685.0
-texture = ExtResource("8_d4nal")
+[node name="Function" type="TextureRect" parent="TaskView"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 539.0
+offset_right = 511.0
+offset_bottom = 824.0
+scale = Vector2(1.357, 1.357)
+texture = ExtResource("16_uuwu5")
+
+[node name="Button" type="Button" parent="TaskView/Function"]
+layout_mode = 0
+offset_left = 88.4303
+offset_top = 224.76
+offset_right = 176.43
+offset_bottom = 266.76
+icon = ExtResource("17_5cgma")
+flat = true
+
+[node name="Codon" type="TextureRect" parent="TaskView"]
+offset_left = 706.0
+offset_top = 533.0
+offset_right = 1014.0
+offset_bottom = 818.0
+scale = Vector2(1.357, 1.357)
+texture = ExtResource("18_6ryxo")
+
+[node name="Button" type="Button" parent="TaskView/Codon"]
+offset_left = 91.378
+offset_top = 224.761
+offset_right = 179.378
+offset_bottom = 266.761
+icon = ExtResource("17_5cgma")
+flat = true
+
+[node name="Aminos" type="TextureRect" parent="TaskView"]
+offset_left = 208.0
+offset_top = 895.0
+offset_right = 516.0
+offset_bottom = 1180.0
+scale = Vector2(1.357, 1.357)
+texture = ExtResource("19_xdb3q")
+
+[node name="Button" type="Button" parent="TaskView/Aminos"]
+offset_left = 87.6935
+offset_top = 225.497
+offset_right = 175.693
+offset_bottom = 267.497
+icon = ExtResource("17_5cgma")
+flat = true
+
+[node name="Carbo" type="TextureRect" parent="TaskView"]
+offset_left = 709.0
+offset_top = 895.0
+offset_right = 1017.0
+offset_bottom = 1180.0
+scale = Vector2(1.357, 1.357)
+texture = ExtResource("20_81vpo")
+
+[node name="Button" type="Button" parent="TaskView/Carbo"]
+offset_left = 89.1673
+offset_top = 224.761
+offset_right = 177.167
+offset_bottom = 266.761
+icon = ExtResource("17_5cgma")
+flat = true
+
+[node name="close_button" type="Button" parent="TaskView"]
+offset_left = 1141.0
+offset_top = 505.0
+offset_right = 1282.0
+offset_bottom = 672.0
+scale = Vector2(0.6, 0.603659)
+icon = ExtResource("7_sc017")
+flat = true
 
 [node name="exitButton" type="Button" parent="."]
 offset_left = 1790.0
@@ -118,10 +211,10 @@ icon = ExtResource("9_3a64r")
 flat = true
 
 [node name="Exit" type="TextureRect" parent="."]
-offset_left = 551.0
-offset_top = 245.0
-offset_right = 966.0
-offset_bottom = 531.0
+offset_left = 2546.0
+offset_top = 1269.0
+offset_right = 2961.0
+offset_bottom = 1555.0
 scale = Vector2(2.06314, 2.16195)
 texture = ExtResource("10_uuwu5")
 

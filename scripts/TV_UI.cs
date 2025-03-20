@@ -4,12 +4,16 @@ public partial class TV_UI : CanvasLayer
 {
 	private VideoStreamPlayer _videoPlayer;
 	private TextureRect _uiBg; // Reference to UIbg
+	private TextureRect tasks;
+	private Button ExitButton;
 
 	public override void _Ready()
 	{
 		_uiBg = GetNodeOrNull<TextureRect>("UIbg");
 		_videoPlayer = _uiBg.GetNodeOrNull<VideoStreamPlayer>("VideoStreamPlayer");
-
+		tasks = GetNode<TextureRect>("../../Tasks");
+		ExitButton = GetNode<Button>("../../exitButton");
+		
 		// Set Video Player properties
 		_videoPlayer.Size = _uiBg.Size;
 		_videoPlayer.Position = Vector2.Zero; // Align with UIbg
@@ -48,6 +52,8 @@ public partial class TV_UI : CanvasLayer
 		else
 		{
 			Visible = false; // Hide the entire UI
+			tasks.SetProcessInput(true);
+			ExitButton.MouseFilter = Control.MouseFilterEnum.Stop;
 		}
 	}
 }
