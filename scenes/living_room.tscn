@@ -145,6 +145,7 @@ icon = ExtResource("17_5cgma")
 flat = true
 
 [node name="Codon" type="TextureRect" parent="TaskView"]
+layout_mode = 0
 offset_left = 706.0
 offset_top = 533.0
 offset_right = 1014.0
@@ -153,6 +154,7 @@ scale = Vector2(1.357, 1.357)
 texture = ExtResource("18_6ryxo")
 
 [node name="Button" type="Button" parent="TaskView/Codon"]
+layout_mode = 0
 offset_left = 91.378
 offset_top = 224.761
 offset_right = 179.378
@@ -161,6 +163,7 @@ icon = ExtResource("17_5cgma")
 flat = true
 
 [node name="Aminos" type="TextureRect" parent="TaskView"]
+layout_mode = 0
 offset_left = 208.0
 offset_top = 895.0
 offset_right = 516.0
@@ -169,6 +172,7 @@ scale = Vector2(1.357, 1.357)
 texture = ExtResource("19_xdb3q")
 
 [node name="Button" type="Button" parent="TaskView/Aminos"]
+layout_mode = 0
 offset_left = 87.6935
 offset_top = 225.497
 offset_right = 175.693
@@ -177,6 +181,7 @@ icon = ExtResource("17_5cgma")
 flat = true
 
 [node name="Carbo" type="TextureRect" parent="TaskView"]
+layout_mode = 0
 offset_left = 709.0
 offset_top = 895.0
 offset_right = 1017.0
@@ -185,6 +190,7 @@ scale = Vector2(1.357, 1.357)
 texture = ExtResource("20_81vpo")
 
 [node name="Button" type="Button" parent="TaskView/Carbo"]
+layout_mode = 0
 offset_left = 89.1673
 offset_top = 224.761
 offset_right = 177.167
@@ -193,6 +199,7 @@ icon = ExtResource("17_5cgma")
 flat = true
 
 [node name="close_button" type="Button" parent="TaskView"]
+layout_mode = 0
 offset_left = 1141.0
 offset_top = 505.0
 offset_right = 1282.0
