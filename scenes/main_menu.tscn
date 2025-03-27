@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cyourtxv86tp5" path="res://scripts/MainMenu.cs" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://dajdvtilw0xxt" path="res://scenes/LandingScene.tscn" id="2_fu7sn"]
-[ext_resource type="Texture2D" uid="uid://q1lxf80swrev" path="res://sprites/Forest.png" id="3_jix8l"]
-[ext_resource type="Texture2D" uid="uid://dgcotr6h10md6" path="res://sprites/HouseSet.png" id="4_glbon"]
-[ext_resource type="Texture2D" uid="uid://dh6fc6ltjv7fh" path="res://sprites/Signage.png" id="4_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://q1lxf80swrev" path="res://sprites/Extras/Forest.png" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://dgcotr6h10md6" path="res://sprites/Extras/HouseSet.png" id="4_glbon"]
+[ext_resource type="Texture2D" uid="uid://dh6fc6ltjv7fh" path="res://sprites/Extras/Signage.png" id="4_nlkkf"]
 [ext_resource type="Script" uid="uid://dsts2isc54xcy" path="res://scripts/DropDown.cs" id="5_dy7ct"]
-[ext_resource type="Texture2D" uid="uid://bgt52rfp6yisl" path="res://sprites/StartButton.png" id="5_nlkkf"]
-[ext_resource type="Texture2D" uid="uid://chvy8miswo1xq" path="res://sprites/BioHomeLabel.png" id="5_qe12f"]
+[ext_resource type="Texture2D" uid="uid://bgt52rfp6yisl" path="res://sprites/Extras/StartButton.png" id="5_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://chvy8miswo1xq" path="res://sprites/Extras/BioHomeLabel.png" id="5_qe12f"]
 [ext_resource type="Script" uid="uid://c41ehdpq2ae7d" path="res://scripts/StartButton.cs" id="7_8qtwp"]
 
 [sub_resource type="Animation" id="Animation_8qtwp"]
