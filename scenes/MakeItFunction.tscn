@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bhygpmh37lqcp"]
+[gd_scene load_steps=74 format=3 uid="uid://bhygpmh37lqcp"]
 
 [ext_resource type="Script" uid="uid://dh43f0ycnx8p7" path="res://scenes/MakeItFunction.cs" id="1_1k2yw"]
 [ext_resource type="Texture2D" uid="uid://btkgiuq7p6ojj" path="res://sprites/Functions/background/intro.png" id="1_x8g7j"]
@@ -64,6 +64,42 @@
 [ext_resource type="Theme" uid="uid://d0kpa0kg0ggob" path="res://Themes/MakeItFunction/choicesTheme/10C.tres" id="60_qm1wf"]
 [ext_resource type="Theme" uid="uid://bn4ar318eg0lu" path="res://Themes/MakeItFunction/choicesTheme/10D.tres" id="61_p16v8"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="64_jti6f"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_xoj54"]
+resource_name = "firstGroup"
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_jti6f"]
+resource_name = "secondGroup"
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_wsuep"]
+resource_name = "thirdGroup"
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_1h2tm"]
+resource_name = "forthGroup"
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_cxsot"]
+resource_name = "fifthGroup"
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_q8kkv"]
+resource_name = "seventhGroup"
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_lm7fn"]
+resource_name = "eigthGroup"
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_c5k74"]
+resource_name = "ninthGroup"
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_oe7ye"]
+resource_name = "tenthGroup"
+allow_unpress = true
 
 [node name="MakeItFunction" type="Node2D"]
 script = ExtResource("1_1k2yw")
@@ -197,6 +233,7 @@ texture = ExtResource("12_oxix7")
 expand_mode = 5
 
 [node name="Exit" type="Button" parent="First_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -210,6 +247,8 @@ offset_top = 569.0
 offset_right = 723.0
 offset_bottom = 645.0
 theme = ExtResource("13_ls5c0")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_xoj54")
 
 [node name="Button2" type="Button" parent="First_Item"]
 layout_mode = 0
@@ -218,6 +257,8 @@ offset_top = 674.0
 offset_right = 723.0
 offset_bottom = 750.0
 theme = ExtResource("14_n177a")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_xoj54")
 
 [node name="Button3" type="Button" parent="First_Item"]
 layout_mode = 0
@@ -226,6 +267,8 @@ offset_top = 774.0
 offset_right = 722.0
 offset_bottom = 850.0
 theme = ExtResource("15_sduna")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_xoj54")
 
 [node name="Button4" type="Button" parent="First_Item"]
 layout_mode = 0
@@ -234,6 +277,8 @@ offset_top = 875.0
 offset_right = 721.0
 offset_bottom = 951.0
 theme = ExtResource("16_vgf2m")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_xoj54")
 
 [node name="Second_Item" type="TextureRect" parent="."]
 offset_left = 947.0
@@ -250,6 +295,8 @@ offset_top = 557.0
 offset_right = 729.0
 offset_bottom = 633.0
 theme = ExtResource("18_1aobj")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jti6f")
 
 [node name="Button2" type="Button" parent="Second_Item"]
 layout_mode = 0
@@ -258,6 +305,8 @@ offset_top = 662.0
 offset_right = 729.0
 offset_bottom = 738.0
 theme = ExtResource("19_5d2sx")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jti6f")
 
 [node name="Button3" type="Button" parent="Second_Item"]
 layout_mode = 0
@@ -266,6 +315,8 @@ offset_top = 762.0
 offset_right = 728.0
 offset_bottom = 838.0
 theme = ExtResource("20_5apch")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jti6f")
 
 [node name="Button4" type="Button" parent="Second_Item"]
 layout_mode = 0
@@ -274,8 +325,11 @@ offset_top = 863.0
 offset_right = 727.0
 offset_bottom = 939.0
 theme = ExtResource("21_ls5c0")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jti6f")
 
 [node name="Exit" type="Button" parent="Second_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -298,6 +352,8 @@ offset_top = 557.0
 offset_right = 729.0
 offset_bottom = 633.0
 theme = ExtResource("23_d3yak")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wsuep")
 
 [node name="Button2" type="Button" parent="Third_Item"]
 layout_mode = 0
@@ -306,6 +362,8 @@ offset_top = 662.0
 offset_right = 729.0
 offset_bottom = 738.0
 theme = ExtResource("24_vwj8f")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wsuep")
 
 [node name="Button3" type="Button" parent="Third_Item"]
 layout_mode = 0
@@ -314,6 +372,8 @@ offset_top = 762.0
 offset_right = 728.0
 offset_bottom = 838.0
 theme = ExtResource("25_4b1v2")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wsuep")
 
 [node name="Button4" type="Button" parent="Third_Item"]
 layout_mode = 0
@@ -322,8 +382,11 @@ offset_top = 863.0
 offset_right = 727.0
 offset_bottom = 939.0
 theme = ExtResource("26_q1gm0")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wsuep")
 
 [node name="Exit" type="Button" parent="Third_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -345,6 +408,8 @@ offset_top = 557.0
 offset_right = 729.0
 offset_bottom = 633.0
 theme = ExtResource("28_qkyp5")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_1h2tm")
 
 [node name="Button2" type="Button" parent="Forth_Item"]
 layout_mode = 0
@@ -353,6 +418,8 @@ offset_top = 662.0
 offset_right = 729.0
 offset_bottom = 738.0
 theme = ExtResource("29_t8wsm")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_1h2tm")
 
 [node name="Button3" type="Button" parent="Forth_Item"]
 layout_mode = 0
@@ -361,6 +428,8 @@ offset_top = 762.0
 offset_right = 728.0
 offset_bottom = 838.0
 theme = ExtResource("30_q426i")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_1h2tm")
 
 [node name="Button4" type="Button" parent="Forth_Item"]
 layout_mode = 0
@@ -369,8 +438,11 @@ offset_top = 863.0
 offset_right = 727.0
 offset_bottom = 939.0
 theme = ExtResource("31_v0n6d")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_1h2tm")
 
 [node name="Exit" type="Button" parent="Forth_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -391,15 +463,9 @@ offset_left = 103.0
 offset_top = 558.0
 offset_right = 729.0
 offset_bottom = 634.0
-theme = ExtResource("28_qkyp5")
-
-[node name="Button5" type="Button" parent="Fifth_Item"]
-layout_mode = 0
-offset_left = 103.0
-offset_top = 558.0
-offset_right = 729.0
-offset_bottom = 634.0
 theme = ExtResource("33_1tt3j")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cxsot")
 
 [node name="Button2" type="Button" parent="Fifth_Item"]
 layout_mode = 0
@@ -408,6 +474,8 @@ offset_top = 663.0
 offset_right = 729.0
 offset_bottom = 739.0
 theme = ExtResource("34_hg0m6")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cxsot")
 
 [node name="Button3" type="Button" parent="Fifth_Item"]
 layout_mode = 0
@@ -416,6 +484,8 @@ offset_top = 763.0
 offset_right = 728.0
 offset_bottom = 839.0
 theme = ExtResource("35_bs6ta")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cxsot")
 
 [node name="Button4" type="Button" parent="Fifth_Item"]
 layout_mode = 0
@@ -424,8 +494,11 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("36_l35go")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cxsot")
 
 [node name="Exit" type="Button" parent="Fifth_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -473,6 +546,7 @@ offset_bottom = 940.0
 theme = ExtResource("41_6qfbt")
 
 [node name="Exit" type="Button" parent="Sixth_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -494,6 +568,8 @@ offset_top = 558.0
 offset_right = 729.0
 offset_bottom = 634.0
 theme = ExtResource("43_qys4t")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q8kkv")
 
 [node name="Button2" type="Button" parent="Seventh_Item"]
 layout_mode = 0
@@ -502,6 +578,8 @@ offset_top = 663.0
 offset_right = 729.0
 offset_bottom = 739.0
 theme = ExtResource("44_1k2yw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q8kkv")
 
 [node name="Button3" type="Button" parent="Seventh_Item"]
 layout_mode = 0
@@ -510,6 +588,8 @@ offset_top = 763.0
 offset_right = 728.0
 offset_bottom = 839.0
 theme = ExtResource("45_w5tk1")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q8kkv")
 
 [node name="Button4" type="Button" parent="Seventh_Item"]
 layout_mode = 0
@@ -518,8 +598,11 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("46_xoj54")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q8kkv")
 
 [node name="Exit" type="Button" parent="Seventh_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -541,6 +624,8 @@ offset_top = 558.0
 offset_right = 729.0
 offset_bottom = 634.0
 theme = ExtResource("48_jti6f")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_lm7fn")
 
 [node name="Button2" type="Button" parent="Eigth_Item"]
 layout_mode = 0
@@ -549,6 +634,8 @@ offset_top = 663.0
 offset_right = 729.0
 offset_bottom = 739.0
 theme = ExtResource("49_wsuep")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_lm7fn")
 
 [node name="Button3" type="Button" parent="Eigth_Item"]
 layout_mode = 0
@@ -557,6 +644,8 @@ offset_top = 763.0
 offset_right = 728.0
 offset_bottom = 839.0
 theme = ExtResource("50_1h2tm")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_lm7fn")
 
 [node name="Button4" type="Button" parent="Eigth_Item"]
 layout_mode = 0
@@ -565,8 +654,11 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("51_cxsot")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_lm7fn")
 
 [node name="Exit" type="Button" parent="Eigth_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -588,6 +680,8 @@ offset_top = 558.0
 offset_right = 729.0
 offset_bottom = 634.0
 theme = ExtResource("53_q8kkv")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c5k74")
 
 [node name="Button2" type="Button" parent="Ninth_Item"]
 layout_mode = 0
@@ -596,6 +690,8 @@ offset_top = 663.0
 offset_right = 729.0
 offset_bottom = 739.0
 theme = ExtResource("54_lm7fn")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c5k74")
 
 [node name="Button3" type="Button" parent="Ninth_Item"]
 layout_mode = 0
@@ -604,6 +700,8 @@ offset_top = 763.0
 offset_right = 728.0
 offset_bottom = 839.0
 theme = ExtResource("55_c5k74")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c5k74")
 
 [node name="Button4" type="Button" parent="Ninth_Item"]
 layout_mode = 0
@@ -612,8 +710,11 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("56_oe7ye")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c5k74")
 
 [node name="Exit" type="Button" parent="Ninth_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0
@@ -635,6 +736,8 @@ offset_top = 558.0
 offset_right = 729.0
 offset_bottom = 634.0
 theme = ExtResource("58_luuui")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oe7ye")
 
 [node name="Button2" type="Button" parent="Tenth_Item"]
 layout_mode = 0
@@ -643,6 +746,8 @@ offset_top = 663.0
 offset_right = 729.0
 offset_bottom = 739.0
 theme = ExtResource("59_hb878")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oe7ye")
 
 [node name="Button3" type="Button" parent="Tenth_Item"]
 layout_mode = 0
@@ -651,6 +756,8 @@ offset_top = 763.0
 offset_right = 728.0
 offset_bottom = 839.0
 theme = ExtResource("60_qm1wf")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oe7ye")
 
 [node name="Button4" type="Button" parent="Tenth_Item"]
 layout_mode = 0
@@ -659,8 +766,11 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("61_p16v8")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oe7ye")
 
 [node name="Exit" type="Button" parent="Tenth_Item"]
+layout_mode = 0
 offset_left = 734.0
 offset_top = 11.0
 offset_right = 803.0

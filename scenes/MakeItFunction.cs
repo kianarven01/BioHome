@@ -60,8 +60,21 @@ public partial class MakeItFunction : Node2D
 		return itemNames[index - 1]; // Adjust for zero-based index
 	}
 	
+	private string GetButtonName(int index)
+	{
+		string[] buttonNames = {
+			"Button", "Button2", "Button3", "Button4"
+		};
+		return buttonNames[index - 1]; // Adjust for zero-based index
+	}
+	
 	private void hideSelf(int index)
 	{
 		items[index].Visible = false;
+	}
+	
+	private void OnSelection(int correctIndex)
+	{
+		
 	}
 }
