@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://21m0gu1w5lhf" path="res://scripts/TV_UI.cs" id="5_3y53x"]
 [ext_resource type="Texture2D" uid="uid://bff21bdc2ixl1" path="res://sprites/Extras/TV_UI.png" id="6_karft"]
 [ext_resource type="Texture2D" uid="uid://k7d4sfugja3k" path="res://sprites/Extras/tasks.png" id="7_7smae"]
-[ext_resource type="Texture2D" uid="uid://gq3gyrp5i2hh" path="res://sprites/Extras/closeButton.png" id="7_sc017"]
+[ext_resource type="Texture2D" uid="uid://gq3gyrp5i2hh" path="res://Themes/MakeItFunction/MainTheme/closeButton.png" id="7_sc017"]
 [ext_resource type="Texture2D" uid="uid://csc6ym5ohg3vk" path="res://sprites/Extras/biomolecules.jpg" id="8_30exw"]
 [ext_resource type="Texture2D" uid="uid://n7dbxrtfun71" path="res://sprites/Extras/drawer.png" id="8_d4nal"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="9_3a64r"]

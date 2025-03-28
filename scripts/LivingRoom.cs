@@ -16,6 +16,8 @@ public partial class LivingRoom : Node2D
 	private Button yesButton;
 	private TextureRect tv;
 	private TextureRect tasks;
+	private Button playMif;
+	private Button backButton;
 
 	public override void _Ready()
 	{
@@ -30,6 +32,9 @@ public partial class LivingRoom : Node2D
 		
 		yesButton = GetNode<Button>("Exit/yesButton");
 		yesButton.Pressed += OnYesButtonPressed;
+		
+		playMif = GetNode<Button>("TaskView/Function/Button");
+		playMif.Pressed += OnPlayMifPressed;
 		
 		tv = GetNode<TextureRect>("TV");
 		tasks = GetNode<TextureRect>("Tasks");
@@ -55,5 +60,10 @@ public partial class LivingRoom : Node2D
 	private void OnYesButtonPressed()
 	{
 		GetTree().Quit();
+	}
+	
+	private void OnPlayMifPressed()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/MakeItFunction.tscn");
 	}
 }

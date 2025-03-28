@@ -1,5 +1,6 @@
-[gd_scene load_steps=62 format=3 uid="uid://bhygpmh37lqcp"]
+[gd_scene load_steps=65 format=3 uid="uid://bhygpmh37lqcp"]
 
+[ext_resource type="Script" uid="uid://dh43f0ycnx8p7" path="res://scenes/MakeItFunction.cs" id="1_1k2yw"]
 [ext_resource type="Texture2D" uid="uid://btkgiuq7p6ojj" path="res://sprites/Functions/background/intro.png" id="1_x8g7j"]
 [ext_resource type="Texture2D" uid="uid://b6heyi2qibdlm" path="res://sprites/Functions/numbers/005-number-1.png" id="2_23bgc"]
 [ext_resource type="Texture2D" uid="uid://cnrao8f6mpwkm" path="res://sprites/Functions/numbers/010-two.png" id="3_b52nx"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dgv5raheplfcg" path="res://sprites/Functions/questions/2.png" id="12_oxix7"]
 [ext_resource type="Theme" uid="uid://b4g686uk5cr7r" path="res://Themes/MakeItFunction/choicesTheme/1A.tres" id="13_ls5c0"]
 [ext_resource type="Theme" uid="uid://bnyx8yfa3dkys" path="res://Themes/MakeItFunction/choicesTheme/1B.tres" id="14_n177a"]
+[ext_resource type="Theme" uid="uid://c7jvlwkf1enhw" path="res://Themes/MakeItFunction/MainTheme/exitButton.tres" id="14_xoj54"]
 [ext_resource type="Theme" uid="uid://b2ljohaahr8vs" path="res://Themes/MakeItFunction/choicesTheme/1C.tres" id="15_sduna"]
 [ext_resource type="Theme" uid="uid://bx85ipb8ir0j0" path="res://Themes/MakeItFunction/choicesTheme/1D.tres" id="16_vgf2m"]
 [ext_resource type="Texture2D" uid="uid://dws1ux1o2p1ur" path="res://sprites/Functions/questions/4.png" id="17_8msul"]
@@ -61,8 +63,10 @@
 [ext_resource type="Theme" uid="uid://olnwid6gg06u" path="res://Themes/MakeItFunction/choicesTheme/10B.tres" id="59_hb878"]
 [ext_resource type="Theme" uid="uid://d0kpa0kg0ggob" path="res://Themes/MakeItFunction/choicesTheme/10C.tres" id="60_qm1wf"]
 [ext_resource type="Theme" uid="uid://bn4ar318eg0lu" path="res://Themes/MakeItFunction/choicesTheme/10D.tres" id="61_p16v8"]
+[ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="64_jti6f"]
 
 [node name="MakeItFunction" type="Node2D"]
+script = ExtResource("1_1k2yw")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = 583.0
@@ -78,7 +82,6 @@ offset_left = 98.0
 offset_top = 389.0
 offset_right = 172.0
 offset_bottom = 461.0
-button_mask = 0
 text = "
 "
 icon = ExtResource("2_23bgc")
@@ -193,6 +196,13 @@ offset_bottom = 2264.0
 texture = ExtResource("12_oxix7")
 expand_mode = 5
 
+[node name="Exit" type="Button" parent="First_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
+
 [node name="Button" type="Button" parent="First_Item"]
 layout_mode = 0
 offset_left = 97.0
@@ -265,6 +275,13 @@ offset_right = 727.0
 offset_bottom = 939.0
 theme = ExtResource("21_ls5c0")
 
+[node name="Exit" type="Button" parent="Second_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
+
 [node name="Third_Item" type="TextureRect" parent="."]
 offset_left = 1780.0
 offset_top = 1187.0
@@ -306,6 +323,13 @@ offset_right = 727.0
 offset_bottom = 939.0
 theme = ExtResource("26_q1gm0")
 
+[node name="Exit" type="Button" parent="Third_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
+
 [node name="Forth_Item" type="TextureRect" parent="."]
 offset_left = 2669.0
 offset_top = 1193.0
@@ -345,6 +369,13 @@ offset_top = 863.0
 offset_right = 727.0
 offset_bottom = 939.0
 theme = ExtResource("31_v0n6d")
+
+[node name="Exit" type="Button" parent="Forth_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
 
 [node name="Fifth_Item" type="TextureRect" parent="."]
 offset_left = 1976.0
@@ -394,6 +425,13 @@ offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("36_l35go")
 
+[node name="Exit" type="Button" parent="Fifth_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
+
 [node name="Sixth_Item" type="TextureRect" parent="."]
 offset_left = 2852.0
 offset_top = -7.0
@@ -433,6 +471,13 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("41_6qfbt")
+
+[node name="Exit" type="Button" parent="Sixth_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
 
 [node name="Seventh_Item" type="TextureRect" parent="."]
 offset_left = 2830.0
@@ -474,6 +519,13 @@ offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("46_xoj54")
 
+[node name="Exit" type="Button" parent="Seventh_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
+
 [node name="Eigth_Item" type="TextureRect" parent="."]
 offset_left = 1805.0
 offset_top = -1170.0
@@ -513,6 +565,13 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("51_cxsot")
+
+[node name="Exit" type="Button" parent="Eigth_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
 
 [node name="Ninth_Item" type="TextureRect" parent="."]
 offset_left = 932.0
@@ -554,6 +613,13 @@ offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("56_oe7ye")
 
+[node name="Exit" type="Button" parent="Ninth_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
+
 [node name="Tenth_Item" type="TextureRect" parent="."]
 offset_left = 49.0
 offset_top = -1159.0
@@ -593,3 +659,20 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("61_p16v8")
+
+[node name="Exit" type="Button" parent="Tenth_Item"]
+offset_left = 734.0
+offset_top = 11.0
+offset_right = 803.0
+offset_bottom = 79.0
+theme = ExtResource("14_xoj54")
+
+[node name="backButton" type="Button" parent="."]
+offset_left = 1307.0
+offset_top = 979.0
+offset_right = 1394.0
+offset_bottom = 1073.0
+icon = ExtResource("64_jti6f")
+flat = true
+icon_alignment = 1
+expand_icon = true
