@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bhygpmh37lqcp"]
+[gd_scene load_steps=76 format=3 uid="uid://bhygpmh37lqcp"]
 
 [ext_resource type="Script" uid="uid://dh43f0ycnx8p7" path="res://scenes/MakeItFunction.cs" id="1_1k2yw"]
 [ext_resource type="Texture2D" uid="uid://btkgiuq7p6ojj" path="res://sprites/Functions/background/intro.png" id="1_x8g7j"]
@@ -17,6 +17,7 @@
 [ext_resource type="Theme" uid="uid://bnyx8yfa3dkys" path="res://Themes/MakeItFunction/choicesTheme/1B.tres" id="14_n177a"]
 [ext_resource type="Theme" uid="uid://c7jvlwkf1enhw" path="res://Themes/MakeItFunction/MainTheme/exitButton.tres" id="14_xoj54"]
 [ext_resource type="Theme" uid="uid://b2ljohaahr8vs" path="res://Themes/MakeItFunction/choicesTheme/1C.tres" id="15_sduna"]
+[ext_resource type="ButtonGroup" uid="uid://chvjlonhq534p" path="res://ButtonGroups/firstGroup.tres" id="16_cxsot"]
 [ext_resource type="Theme" uid="uid://bx85ipb8ir0j0" path="res://Themes/MakeItFunction/choicesTheme/1D.tres" id="16_vgf2m"]
 [ext_resource type="Texture2D" uid="uid://dws1ux1o2p1ur" path="res://sprites/Functions/questions/4.png" id="17_8msul"]
 [ext_resource type="Theme" uid="uid://c4juo3sgctppn" path="res://Themes/MakeItFunction/choicesTheme/2A.tres" id="18_1aobj"]
@@ -49,6 +50,7 @@
 [ext_resource type="Theme" uid="uid://gdk1vruhfyqo" path="res://Themes/MakeItFunction/choicesTheme/6D.tres" id="41_6qfbt"]
 [ext_resource type="Theme" uid="uid://be24q33h05gbf" path="res://Themes/MakeItFunction/choicesTheme/7A.tres" id="43_qys4t"]
 [ext_resource type="Theme" uid="uid://qwq1d2lwkuda" path="res://Themes/MakeItFunction/choicesTheme/7B.tres" id="44_1k2yw"]
+[ext_resource type="ButtonGroup" uid="uid://bpfyvs12axnr1" path="res://ButtonGroups/sixthGroup.tres" id="44_c5k74"]
 [ext_resource type="Theme" uid="uid://cff606vy6d6s0" path="res://Themes/MakeItFunction/choicesTheme/7C.tres" id="45_w5tk1"]
 [ext_resource type="Theme" uid="uid://m8ew2su21105" path="res://Themes/MakeItFunction/choicesTheme/7D.tres" id="46_xoj54"]
 [ext_resource type="Theme" uid="uid://b5bsv4vnyoayh" path="res://Themes/MakeItFunction/choicesTheme/8A.tres" id="48_jti6f"]
@@ -65,9 +67,8 @@
 [ext_resource type="Theme" uid="uid://bn4ar318eg0lu" path="res://Themes/MakeItFunction/choicesTheme/10D.tres" id="61_p16v8"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="64_jti6f"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_xoj54"]
-resource_name = "firstGroup"
-allow_unpress = true
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsuep"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_jti6f"]
 resource_name = "secondGroup"
@@ -240,7 +241,7 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
-[node name="Button" type="Button" parent="First_Item"]
+[node name="Button1" type="Button" parent="First_Item"]
 layout_mode = 0
 offset_left = 97.0
 offset_top = 569.0
@@ -248,7 +249,7 @@ offset_right = 723.0
 offset_bottom = 645.0
 theme = ExtResource("13_ls5c0")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_xoj54")
+button_group = ExtResource("16_cxsot")
 
 [node name="Button2" type="Button" parent="First_Item"]
 layout_mode = 0
@@ -258,7 +259,7 @@ offset_right = 723.0
 offset_bottom = 750.0
 theme = ExtResource("14_n177a")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_xoj54")
+button_group = ExtResource("16_cxsot")
 
 [node name="Button3" type="Button" parent="First_Item"]
 layout_mode = 0
@@ -268,7 +269,7 @@ offset_right = 722.0
 offset_bottom = 850.0
 theme = ExtResource("15_sduna")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_xoj54")
+button_group = ExtResource("16_cxsot")
 
 [node name="Button4" type="Button" parent="First_Item"]
 layout_mode = 0
@@ -278,7 +279,21 @@ offset_right = 721.0
 offset_bottom = 951.0
 theme = ExtResource("16_vgf2m")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_xoj54")
+button_group = ExtResource("16_cxsot")
+
+[node name="Timer" type="Timer" parent="First_Item"]
+
+[node name="Label" type="Label" parent="First_Item"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Second_Item" type="TextureRect" parent="."]
 offset_left = 947.0
@@ -288,7 +303,7 @@ offset_bottom = 2268.0
 texture = ExtResource("17_8msul")
 expand_mode = 5
 
-[node name="Button" type="Button" parent="Second_Item"]
+[node name="Button1" type="Button" parent="Second_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 557.0
@@ -336,6 +351,19 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
+[node name="Label" type="Label" parent="Second_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Second_Item"]
+
 [node name="Third_Item" type="TextureRect" parent="."]
 offset_left = 1780.0
 offset_top = 1187.0
@@ -343,9 +371,8 @@ offset_right = 2596.0
 offset_bottom = 2266.0
 texture = ExtResource("21_d3yak")
 expand_mode = 5
-metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="Third_Item"]
+[node name="Button1" type="Button" parent="Third_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 557.0
@@ -393,6 +420,19 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
+[node name="Label" type="Label" parent="Third_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Third_Item"]
+
 [node name="Forth_Item" type="TextureRect" parent="."]
 offset_left = 2669.0
 offset_top = 1193.0
@@ -401,7 +441,7 @@ offset_bottom = 2272.0
 texture = ExtResource("22_vwj8f")
 expand_mode = 5
 
-[node name="Button" type="Button" parent="Forth_Item"]
+[node name="Button1" type="Button" parent="Forth_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 557.0
@@ -449,6 +489,19 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
+[node name="Label" type="Label" parent="Forth_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Forth_Item"]
+
 [node name="Fifth_Item" type="TextureRect" parent="."]
 offset_left = 1976.0
 offset_top = -5.0
@@ -457,7 +510,7 @@ offset_bottom = 1074.0
 texture = ExtResource("23_4b1v2")
 expand_mode = 5
 
-[node name="Button" type="Button" parent="Fifth_Item"]
+[node name="Button1" type="Button" parent="Fifth_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 558.0
@@ -505,6 +558,19 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
+[node name="Label" type="Label" parent="Fifth_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Fifth_Item"]
+
 [node name="Sixth_Item" type="TextureRect" parent="."]
 offset_left = 2852.0
 offset_top = -7.0
@@ -513,13 +579,15 @@ offset_bottom = 1072.0
 texture = ExtResource("24_q1gm0")
 expand_mode = 5
 
-[node name="Button" type="Button" parent="Sixth_Item"]
+[node name="Button1" type="Button" parent="Sixth_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 558.0
 offset_right = 729.0
 offset_bottom = 634.0
 theme = ExtResource("38_nfwas")
+toggle_mode = true
+button_group = ExtResource("44_c5k74")
 
 [node name="Button2" type="Button" parent="Sixth_Item"]
 layout_mode = 0
@@ -528,6 +596,8 @@ offset_top = 663.0
 offset_right = 729.0
 offset_bottom = 739.0
 theme = ExtResource("39_af3js")
+toggle_mode = true
+button_group = ExtResource("44_c5k74")
 
 [node name="Button3" type="Button" parent="Sixth_Item"]
 layout_mode = 0
@@ -536,6 +606,8 @@ offset_top = 763.0
 offset_right = 728.0
 offset_bottom = 839.0
 theme = ExtResource("40_1crmi")
+toggle_mode = true
+button_group = ExtResource("44_c5k74")
 
 [node name="Button4" type="Button" parent="Sixth_Item"]
 layout_mode = 0
@@ -544,6 +616,8 @@ offset_top = 864.0
 offset_right = 727.0
 offset_bottom = 940.0
 theme = ExtResource("41_6qfbt")
+toggle_mode = true
+button_group = ExtResource("44_c5k74")
 
 [node name="Exit" type="Button" parent="Sixth_Item"]
 layout_mode = 0
@@ -553,6 +627,19 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
+[node name="Label" type="Label" parent="Sixth_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Sixth_Item"]
+
 [node name="Seventh_Item" type="TextureRect" parent="."]
 offset_left = 2830.0
 offset_top = -1168.0
@@ -561,7 +648,7 @@ offset_bottom = -89.0
 texture = ExtResource("25_qkyp5")
 expand_mode = 5
 
-[node name="Button" type="Button" parent="Seventh_Item"]
+[node name="Button1" type="Button" parent="Seventh_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 558.0
@@ -609,6 +696,19 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
+[node name="Label" type="Label" parent="Seventh_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Seventh_Item"]
+
 [node name="Eigth_Item" type="TextureRect" parent="."]
 offset_left = 1805.0
 offset_top = -1170.0
@@ -617,7 +717,7 @@ offset_bottom = -91.0
 texture = ExtResource("26_t8wsm")
 expand_mode = 5
 
-[node name="Button" type="Button" parent="Eigth_Item"]
+[node name="Button1" type="Button" parent="Eigth_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 558.0
@@ -665,6 +765,19 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
+[node name="Label" type="Label" parent="Eigth_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Eigth_Item"]
+
 [node name="Ninth_Item" type="TextureRect" parent="."]
 offset_left = 932.0
 offset_top = -1177.0
@@ -673,7 +786,7 @@ offset_bottom = -98.0
 texture = ExtResource("27_q426i")
 expand_mode = 5
 
-[node name="Button" type="Button" parent="Ninth_Item"]
+[node name="Button1" type="Button" parent="Ninth_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 558.0
@@ -721,6 +834,19 @@ offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
+[node name="Label" type="Label" parent="Ninth_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Ninth_Item"]
+
 [node name="Tenth_Item" type="TextureRect" parent="."]
 offset_left = 49.0
 offset_top = -1159.0
@@ -729,7 +855,7 @@ offset_bottom = -80.0
 texture = ExtResource("28_v0n6d")
 expand_mode = 5
 
-[node name="Button" type="Button" parent="Tenth_Item"]
+[node name="Button1" type="Button" parent="Tenth_Item"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 558.0
@@ -776,6 +902,19 @@ offset_top = 11.0
 offset_right = 803.0
 offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
+
+[node name="Label" type="Label" parent="Tenth_Item"]
+offset_left = 12.0
+offset_top = 1000.0
+offset_right = 178.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsuep")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Tenth_Item"]
 
 [node name="backButton" type="Button" parent="."]
 offset_left = 1307.0

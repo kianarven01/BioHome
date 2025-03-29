@@ -1,0 +1,5 @@
+[gd_resource type="ButtonGroup" format=3 uid="uid://bpfyvs12axnr1"]
+
+[resource]
+resource_name = "sixthGroup"
+allow_unpress = true

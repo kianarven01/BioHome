@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=10 format=4 uid="uid://bnyx8yfa3dkys"]
+[gd_resource type="Theme" load_steps=11 format=4 uid="uid://bnyx8yfa3dkys"]
 
+[ext_resource type="Texture2D" uid="uid://dscbgegfu0qnt" path="res://sprites/Functions/answers/1.png" id="1_tvdyg"]
 [ext_resource type="Texture2D" uid="uid://clrymw2ccmko3" path="res://sprites/Functions/choices/1.png" id="1_ycg8m"]
 
 [sub_resource type="Image" id="Image_gigjw"]
@@ -990,17 +991,9 @@ cache/0/19/0/glyphs/134217802/size = Vector2(13, 18)
 cache/0/19/0/glyphs/134217802/uv_rect = Rect2(132, 19, 13, 18)
 cache/0/19/0/glyphs/134217802/texture_idx = 0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdw0d"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2h38p"]
+texture = ExtResource("1_tvdyg")
+region_rect = Rect2(64, 117, 631, 82)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0cpr"]
 content_margin_left = 4.0
@@ -1055,7 +1048,7 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = SubResource("FontFile_ql20f")
-Button/styles/disabled = SubResource("StyleBoxFlat_rdw0d")
+Button/styles/disabled = SubResource("StyleBoxTexture_2h38p")
 Button/styles/focus = SubResource("StyleBoxFlat_r0cpr")
 Button/styles/hover = SubResource("StyleBoxTexture_cwuih")
 Button/styles/normal = SubResource("StyleBoxTexture_o847s")
