@@ -352,6 +352,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Second_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0
@@ -421,6 +422,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Third_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0
@@ -490,6 +492,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Forth_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0
@@ -559,6 +562,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Fifth_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0
@@ -628,6 +632,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Sixth_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0
@@ -697,6 +702,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Seventh_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0
@@ -766,6 +772,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Eigth_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0
@@ -835,6 +842,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Ninth_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0
@@ -904,6 +912,7 @@ offset_bottom = 79.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Tenth_Item"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 1000.0
 offset_right = 178.0

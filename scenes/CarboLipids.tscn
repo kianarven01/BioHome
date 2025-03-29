@@ -1,0 +1,142 @@
+[gd_scene load_steps=15 format=3 uid="uid://c1fqaemo77fnn"]
+
+[ext_resource type="Texture2D" uid="uid://dll6sl1ljf8b3" path="res://Themes/CarboLipids/carbolipidbg.png" id="1_6t1ky"]
+[ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="2_k2xlk"]
+[ext_resource type="Script" uid="uid://condh5vphxtnh" path="res://Themes/CarboLipids/CarboLipids.cs" id="3_l1wlf"]
+[ext_resource type="Texture2D" uid="uid://rt5sjwra4dsp" path="res://Themes/CarboLipids/Carbohydrates.png" id="3_servf"]
+[ext_resource type="Texture2D" uid="uid://dkcoh2too8hh1" path="res://Themes/CarboLipids/Lipids.png" id="4_0iiq6"]
+[ext_resource type="Texture2D" uid="uid://b8g4ge2qv1600" path="res://Themes/CarboLipids/CarboLipidsGameBG.png" id="6_rgni1"]
+[ext_resource type="FontFile" uid="uid://crjn70ekcjkyr" path="res://fonts/Ldfcomicsans-jj7l.ttf" id="7_rgni1"]
+[ext_resource type="Texture2D" uid="uid://bq40gyyjwdu3l" path="res://Themes/CarboLipids/choices/1A.png" id="8_q16hh"]
+[ext_resource type="Texture2D" uid="uid://cgwti23rycafe" path="res://Themes/CarboLipids/choices/1B.png" id="9_82eso"]
+[ext_resource type="Texture2D" uid="uid://c80ycniemgsi5" path="res://Themes/CarboLipids/questions/Q1.png" id="10_0vg4b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_servf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iiq6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nrrw"]
+bg_color = Color(0.385493, 0.385493, 0.385492, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2b5uu"]
+
+[node name="CarboLipids" type="Node2D"]
+script = ExtResource("3_l1wlf")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1923.0
+offset_bottom = 1081.0
+texture = ExtResource("1_6t1ky")
+expand_mode = 1
+
+[node name="Carbohydrate" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 547.0
+offset_right = 1220.0
+offset_bottom = 693.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_servf")
+icon = ExtResource("3_servf")
+
+[node name="Lipids" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 725.0
+offset_right = 1223.0
+offset_bottom = 871.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0iiq6")
+icon = ExtResource("4_0iiq6")
+
+[node name="backButton" type="Button" parent="."]
+offset_left = 1818.0
+offset_top = 925.0
+offset_right = 1905.0
+offset_bottom = 1019.0
+icon = ExtResource("2_k2xlk")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="first_item" type="TextureRect" parent="."]
+offset_left = 2256.0
+offset_top = -6.0
+offset_right = 4304.0
+offset_bottom = 1109.0
+texture = ExtResource("6_rgni1")
+
+[node name="title" type="RichTextLabel" parent="first_item"]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 134.0
+offset_right = 1592.0
+offset_bottom = 282.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 125
+text = " Create a Maltose"
+
+[node name="clue" type="RichTextLabel" parent="first_item"]
+offset_left = 367.0
+offset_top = 298.0
+offset_right = 1846.0
+offset_bottom = 399.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = " Clue: Provides the immediate source of energy of the body’s cells and tissues. "
+
+[node name="Label" type="Label" parent="first_item"]
+layout_mode = 0
+offset_left = 977.0
+offset_top = 406.0
+offset_right = 1091.0
+offset_bottom = 679.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="answer_panel" type="PanelContainer" parent="first_item"]
+layout_mode = 0
+offset_left = 681.0
+offset_top = 733.0
+offset_right = 1378.0
+offset_bottom = 999.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nrrw")
+
+[node name="A1" type="TextureButton" parent="first_item"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 760.0
+offset_right = 970.0
+offset_bottom = 940.0
+texture_normal = ExtResource("8_q16hh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A2" type="TextureButton" parent="first_item"]
+offset_left = 1078.0
+offset_top = 761.0
+offset_right = 1298.0
+offset_bottom = 941.0
+texture_normal = ExtResource("9_82eso")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Q1" type="TextureRect" parent="first_item"]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 380.0
+offset_right = 852.0
+offset_bottom = 680.0
+texture = ExtResource("10_0vg4b")
+expand_mode = 1
+
+[node name="Q2" type="TextureRect" parent="first_item"]
+offset_left = 1220.0
+offset_top = 380.0
+offset_right = 1540.0
+offset_bottom = 680.0
+texture = SubResource("CanvasTexture_2b5uu")
