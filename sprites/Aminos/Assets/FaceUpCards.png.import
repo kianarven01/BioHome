@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyiew2o2gw3hn"
-path="res://.godot/imported/CarboLipidsGameBG.png-239e1abdfae98b448b0b2143d30057b7.ctex"
+uid="uid://cb7abhc5l1o62"
+path="res://.godot/imported/FaceUpCards.png-b7fa364d5008b4562f82d836a2bb9030.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Functions/CarboLipidsGameBG.png"
-dest_files=["res://.godot/imported/CarboLipidsGameBG.png-239e1abdfae98b448b0b2143d30057b7.ctex"]
+source_file="res://sprites/Aminos/Assets/FaceUpCards.png"
+dest_files=["res://.godot/imported/FaceUpCards.png-b7fa364d5008b4562f82d836a2bb9030.ctex"]
 
 [params]
 

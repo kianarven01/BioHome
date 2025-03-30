@@ -1,15 +1,15 @@
 [gd_scene load_steps=15 format=3 uid="uid://c1fqaemo77fnn"]
 
-[ext_resource type="Texture2D" uid="uid://dll6sl1ljf8b3" path="res://Themes/CarboLipids/carbolipidbg.png" id="1_6t1ky"]
+[ext_resource type="Texture2D" uid="uid://dll6sl1ljf8b3" path="res://sprites/CarboLipids/carbolipidbg.png" id="1_6t1ky"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="2_k2xlk"]
-[ext_resource type="Script" uid="uid://condh5vphxtnh" path="res://Themes/CarboLipids/CarboLipids.cs" id="3_l1wlf"]
-[ext_resource type="Texture2D" uid="uid://rt5sjwra4dsp" path="res://Themes/CarboLipids/Carbohydrates.png" id="3_servf"]
-[ext_resource type="Texture2D" uid="uid://dkcoh2too8hh1" path="res://Themes/CarboLipids/Lipids.png" id="4_0iiq6"]
-[ext_resource type="Texture2D" uid="uid://b8g4ge2qv1600" path="res://Themes/CarboLipids/CarboLipidsGameBG.png" id="6_rgni1"]
+[ext_resource type="Script" uid="uid://condh5vphxtnh" path="res://sprites/CarboLipids/CarboLipids.cs" id="3_l1wlf"]
+[ext_resource type="Texture2D" uid="uid://rt5sjwra4dsp" path="res://sprites/CarboLipids/Carbohydrates.png" id="3_servf"]
+[ext_resource type="Texture2D" uid="uid://dkcoh2too8hh1" path="res://sprites/CarboLipids/Lipids.png" id="4_0iiq6"]
+[ext_resource type="Texture2D" uid="uid://b8g4ge2qv1600" path="res://sprites/CarboLipids/CarboLipidsGameBG.png" id="6_rgni1"]
 [ext_resource type="FontFile" uid="uid://crjn70ekcjkyr" path="res://fonts/Ldfcomicsans-jj7l.ttf" id="7_rgni1"]
-[ext_resource type="Texture2D" uid="uid://bq40gyyjwdu3l" path="res://Themes/CarboLipids/choices/1A.png" id="8_q16hh"]
-[ext_resource type="Texture2D" uid="uid://cgwti23rycafe" path="res://Themes/CarboLipids/choices/1B.png" id="9_82eso"]
-[ext_resource type="Texture2D" uid="uid://c80ycniemgsi5" path="res://Themes/CarboLipids/questions/Q1.png" id="10_0vg4b"]
+[ext_resource type="Texture2D" uid="uid://bq40gyyjwdu3l" path="res://sprites/CarboLipids/choices/1A.png" id="8_q16hh"]
+[ext_resource type="Texture2D" uid="uid://cgwti23rycafe" path="res://sprites/CarboLipids/choices/1B.png" id="9_82eso"]
+[ext_resource type="Texture2D" uid="uid://c80ycniemgsi5" path="res://sprites/CarboLipids/questions/Q1.png" id="10_0vg4b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_servf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

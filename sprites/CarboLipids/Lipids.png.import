@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c80ycniemgsi5"
-path="res://.godot/imported/Q1.png-fc9e663a00de843e1cbd6e79eca8b757.ctex"
+uid="uid://dkcoh2too8hh1"
+path="res://.godot/imported/Lipids.png-f17fd5cfbb8d84ca38a0f3f78c371e9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Themes/CarboLipids/questions/Q1.png"
-dest_files=["res://.godot/imported/Q1.png-fc9e663a00de843e1cbd6e79eca8b757.ctex"]
+source_file="res://sprites/CarboLipids/Lipids.png"
+dest_files=["res://.godot/imported/Lipids.png-f17fd5cfbb8d84ca38a0f3f78c371e9b.ctex"]
 
 [params]
 

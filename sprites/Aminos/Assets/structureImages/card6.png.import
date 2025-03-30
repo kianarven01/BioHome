@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8g4ge2qv1600"
-path="res://.godot/imported/CarboLipidsGameBG.png-3b12ab5a801e1c2bfdc115934571e579.ctex"
+uid="uid://cvd0dc5b6viqg"
+path="res://.godot/imported/card6.png-9b61ec10015876593f99ead0d40ddfd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Themes/CarboLipids/CarboLipidsGameBG.png"
-dest_files=["res://.godot/imported/CarboLipidsGameBG.png-3b12ab5a801e1c2bfdc115934571e579.ctex"]
+source_file="res://sprites/Aminos/Assets/structureImages/card6.png"
+dest_files=["res://.godot/imported/card6.png-9b61ec10015876593f99ead0d40ddfd5.ctex"]
 
 [params]
 

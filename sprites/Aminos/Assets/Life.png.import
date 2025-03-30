@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rt5sjwra4dsp"
-path="res://.godot/imported/Carbohydrates.png-e937e0f511183d5c5fd0cb983b45a9ad.ctex"
+uid="uid://djhtxrbv0fjw2"
+path="res://.godot/imported/Life.png-7f822da3d29728d9747fc7d82d246bd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Themes/CarboLipids/Carbohydrates.png"
-dest_files=["res://.godot/imported/Carbohydrates.png-e937e0f511183d5c5fd0cb983b45a9ad.ctex"]
+source_file="res://sprites/Aminos/Assets/Life.png"
+dest_files=["res://.godot/imported/Life.png-7f822da3d29728d9747fc7d82d246bd6.ctex"]
 
 [params]
 

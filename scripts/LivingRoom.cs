@@ -17,6 +17,7 @@ public partial class LivingRoom : Node2D
 	private TextureRect tv;
 	private TextureRect tasks;
 	private Button playMif;
+	private Button playMta;
 	private Button carboButton;
 	private Button backButton;
 
@@ -37,6 +38,10 @@ public partial class LivingRoom : Node2D
 		// PlayMif button
 		playMif = GetNode<Button>("TaskView/Function/Button");
 		playMif.Pressed += OnPlayMifPressed;
+		
+		// PlayMta button
+		playMta = GetNode<Button>("TaskView/Aminos/Button");
+		playMta.Pressed += OnPlayMtaPressed;
 
 		// PlayCarboLipids button
 		carboButton = GetNode<Button>("TaskView/Carbo/Button");
@@ -71,6 +76,11 @@ public partial class LivingRoom : Node2D
 	private void OnPlayMifPressed()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/MakeItFunction.tscn");
+	}
+	
+	private void OnPlayMtaPressed()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/MatchTheAminos.tscn");
 	}
 
 	private void OnPlayCarboLipidsPressed()
