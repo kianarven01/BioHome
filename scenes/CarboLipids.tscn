@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bq40gyyjwdu3l" path="res://sprites/CarboLipids/choices/1A.png" id="8_q16hh"]
 [ext_resource type="Texture2D" uid="uid://cgwti23rycafe" path="res://sprites/CarboLipids/choices/1B.png" id="9_82eso"]
 [ext_resource type="Texture2D" uid="uid://c80ycniemgsi5" path="res://sprites/CarboLipids/questions/Q1.png" id="10_0vg4b"]
+[ext_resource type="Texture2D" uid="uid://bn2bpodshljgd" path="res://sprites/CarboLipids/question.png" id="11_82eso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_servf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -23,8 +24,6 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_2b5uu"]
 
 [node name="CarboLipids" type="Node2D"]
 script = ExtResource("3_l1wlf")
@@ -81,6 +80,7 @@ theme_override_font_sizes/normal_font_size = 125
 text = " Create a Maltose"
 
 [node name="clue" type="RichTextLabel" parent="first_item"]
+layout_mode = 0
 offset_left = 367.0
 offset_top = 298.0
 offset_right = 1846.0
@@ -89,7 +89,7 @@ theme_override_fonts/normal_font = ExtResource("7_rgni1")
 theme_override_font_sizes/normal_font_size = 40
 text = " Clue: Provides the immediate source of energy of the body’s cells and tissues. "
 
-[node name="Label" type="Label" parent="first_item"]
+[node name="plus_sign" type="Label" parent="first_item"]
 layout_mode = 0
 offset_left = 977.0
 offset_top = 406.0
@@ -117,6 +117,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="A2" type="TextureButton" parent="first_item"]
+layout_mode = 0
 offset_left = 1078.0
 offset_top = 761.0
 offset_right = 1298.0
@@ -135,8 +136,21 @@ texture = ExtResource("10_0vg4b")
 expand_mode = 1
 
 [node name="Q2" type="TextureRect" parent="first_item"]
+layout_mode = 0
 offset_left = 1220.0
 offset_top = 380.0
 offset_right = 1540.0
 offset_bottom = 680.0
-texture = SubResource("CanvasTexture_2b5uu")
+texture = ExtResource("11_82eso")
+expand_mode = 1
+
+[node name="timer_label" type="Label" parent="first_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Timer" type="Timer" parent="first_item"]
