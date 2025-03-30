@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1fqaemo77fnn"]
+[gd_scene load_steps=18 format=3 uid="uid://c1fqaemo77fnn"]
 
 [ext_resource type="Texture2D" uid="uid://dll6sl1ljf8b3" path="res://sprites/CarboLipids/carbolipidbg.png" id="1_6t1ky"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="2_k2xlk"]
-[ext_resource type="Script" uid="uid://condh5vphxtnh" path="res://sprites/CarboLipids/CarboLipids.cs" id="3_l1wlf"]
+[ext_resource type="Script" uid="uid://condh5vphxtnh" path="res://scripts/CarboLipids.cs" id="3_l1wlf"]
 [ext_resource type="Texture2D" uid="uid://rt5sjwra4dsp" path="res://sprites/CarboLipids/Carbohydrates.png" id="3_servf"]
 [ext_resource type="Texture2D" uid="uid://dkcoh2too8hh1" path="res://sprites/CarboLipids/Lipids.png" id="4_0iiq6"]
 [ext_resource type="Texture2D" uid="uid://b8g4ge2qv1600" path="res://sprites/CarboLipids/CarboLipidsGameBG.png" id="6_rgni1"]
@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bq40gyyjwdu3l" path="res://sprites/CarboLipids/choices/1A.png" id="8_q16hh"]
 [ext_resource type="Texture2D" uid="uid://cgwti23rycafe" path="res://sprites/CarboLipids/choices/1B.png" id="9_82eso"]
 [ext_resource type="Texture2D" uid="uid://c80ycniemgsi5" path="res://sprites/CarboLipids/questions/Q1.png" id="10_0vg4b"]
+[ext_resource type="Texture2D" uid="uid://gyn778hv6wvf" path="res://sprites/CarboLipids/choices/2A.png" id="11_2b5uu"]
 [ext_resource type="Texture2D" uid="uid://bn2bpodshljgd" path="res://sprites/CarboLipids/question.png" id="11_82eso"]
+[ext_resource type="Texture2D" uid="uid://djd7bbgpre35o" path="res://sprites/CarboLipids/choices/2B.png" id="12_xdhmv"]
+[ext_resource type="Texture2D" uid="uid://cwvlovsfwqdli" path="res://sprites/CarboLipids/questions/Q2.png" id="13_g3607"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_servf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -51,16 +54,6 @@ offset_right = 1223.0
 offset_bottom = 871.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0iiq6")
 icon = ExtResource("4_0iiq6")
-
-[node name="backButton" type="Button" parent="."]
-offset_left = 1818.0
-offset_top = 925.0
-offset_right = 1905.0
-offset_bottom = 1019.0
-icon = ExtResource("2_k2xlk")
-flat = true
-icon_alignment = 1
-expand_icon = true
 
 [node name="first_item" type="TextureRect" parent="."]
 offset_left = 2256.0
@@ -154,3 +147,106 @@ theme_override_font_sizes/font_size = 50
 text = "00"
 
 [node name="Timer" type="Timer" parent="first_item"]
+
+[node name="second_item" type="TextureRect" parent="."]
+offset_left = 4512.0
+offset_top = -12.0
+offset_right = 6560.0
+offset_bottom = 1103.0
+texture = ExtResource("6_rgni1")
+
+[node name="title" type="RichTextLabel" parent="second_item"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 134.0
+offset_right = 1571.0
+offset_bottom = 282.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 125
+text = "Create a Sucrose"
+
+[node name="clue" type="RichTextLabel" parent="second_item"]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 298.0
+offset_right = 1369.0
+offset_bottom = 399.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "Clue: Found in the bloodstream"
+
+[node name="plus_sign" type="Label" parent="second_item"]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 406.0
+offset_right = 1070.0
+offset_bottom = 679.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="answer_panel" type="PanelContainer" parent="second_item"]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 733.0
+offset_right = 1357.0
+offset_bottom = 999.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nrrw")
+
+[node name="A1" type="TextureButton" parent="second_item"]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 760.0
+offset_right = 949.0
+offset_bottom = 940.0
+texture_normal = ExtResource("11_2b5uu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A2" type="TextureButton" parent="second_item"]
+layout_mode = 0
+offset_left = 1057.0
+offset_top = 761.0
+offset_right = 1277.0
+offset_bottom = 941.0
+texture_normal = ExtResource("12_xdhmv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Q1" type="TextureRect" parent="second_item"]
+layout_mode = 0
+offset_left = 1183.0
+offset_top = 386.0
+offset_right = 1503.0
+offset_bottom = 686.0
+texture = ExtResource("13_g3607")
+expand_mode = 1
+
+[node name="Q2" type="TextureRect" parent="second_item"]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 376.0
+offset_right = 871.0
+offset_bottom = 676.0
+texture = ExtResource("11_82eso")
+expand_mode = 1
+
+[node name="timer_label" type="Label" parent="second_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Timer" type="Timer" parent="second_item"]
+
+[node name="backButton" type="Button" parent="."]
+offset_left = 1818.0
+offset_top = 925.0
+offset_right = 1905.0
+offset_bottom = 1019.0
+icon = ExtResource("2_k2xlk")
+flat = true
+icon_alignment = 1
+expand_icon = true
