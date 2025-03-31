@@ -1,13 +1,14 @@
 using Godot;
 using System;
 
-public partial class Card : Area2D
+public partial class Card : Node2D
 {
-	[Export] public Texture2D FrontTexture;  // Front image
-	[Export] public Texture2D BackTexture;   // Back image (same for all cards)
+	[Export] public Texture2D FrontTexture;
+	[Export] public Texture2D BackTexture;
 
 	private Sprite2D _frontSprite;
 	private Sprite2D _backSprite;
+	private Area2D _area;
 	private bool _isFlipped = false;
 	private bool _isMatched = false;
 
@@ -15,18 +16,28 @@ public partial class Card : Area2D
 
 	public override void _Ready()
 	{
+		 Scale = new Vector2(0.7f, 0.7f);
 		_frontSprite = GetNode<Sprite2D>("Front");
 		_backSprite = GetNode<Sprite2D>("Back");
+		_area = GetNode<Area2D>("Area2D"); // Ensure the Area2D node exists
 
 		if (FrontTexture != null)
+		{
 			_frontSprite.Texture = FrontTexture;
+			_frontSprite.Scale = new Vector2(1, 1); // Ensure uniform scaling
+		}
 
 		if (BackTexture != null)
+		{
 			_backSprite.Texture = BackTexture;
+			_backSprite.Scale = _frontSprite.Scale; // Match front texture scale
+		}
 
-		_frontSprite.Visible = false; // Start with back visible
+		_frontSprite.Visible = false; // Start with the back showing
 
-		Connect("input_event", new Callable(this, nameof(OnCardClicked)));
+		// Connect the `Area2D` input event signal correctly
+		_area.Connect("input_event", new Callable(this, nameof(OnCardClicked)));
+
 	}
 
 	private void OnCardClicked(Node viewport, InputEvent inputEvent, int shapeIdx)
