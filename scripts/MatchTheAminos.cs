@@ -6,8 +6,6 @@ using System.Linq;
 public partial class MatchTheAminos : Node2D
 {
 	private PackedScene CardScene = (PackedScene)ResourceLoader.Load("res://scenes/Card.tscn");
-
-	private string _imageFolder = "res://sprites/Aminos/Assets/structureImages/";
 	private List<Texture2D> _textures = new List<Texture2D>();
 	private List<Card> _selectedCards = new List<Card>();
 	private List<Card> _cards = new List<Card>();
@@ -15,6 +13,9 @@ public partial class MatchTheAminos : Node2D
 	private List<TextureRect> _hearts = new List<TextureRect>();
 	private Texture2D _backTexture;
 	private float _yOffset = 10f;
+	private Button structButton;
+	private Button funcButton;
+	private TextureRect mainGame;
 
 	// Manually defined card pairs
 	private List<(int, int)> _manualPairs = new List<(int, int)>
@@ -24,8 +25,21 @@ public partial class MatchTheAminos : Node2D
 
 	public override void _Ready()
 	{
+		structButton = GetNode<Button>("../../Background/structureButton");
+		funcButton = GetNode<Button>("../../Background/functionButton");
+		mainGame = GetNode<TextureRect>("../../MainBG");
+		mainGame.Visible = false;
+		
+		structButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/structureImages/");
+		funcButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/functionImages/");
+	}
+	
+	private void LoadGame(string cardDir)
+	{
+		mainGame.Visible = true;
+		mainGame.Position = new Vector2(0, 0);
 		_backTexture = (Texture2D)ResourceLoader.Load("res://sprites/Aminos/Assets/FaceDownCards.png");
-		LoadTexturesFromFolder();
+		LoadTexturesFromFolder(cardDir);
 		SpawnCards();
 		AddToGroup("GameController");
 		CallDeferred(nameof(SpawnLifeIndicator));
@@ -66,7 +80,7 @@ public partial class MatchTheAminos : Node2D
 		}
 	}
 
-	private void LoadTexturesFromFolder()
+	private void LoadTexturesFromFolder(string _imageFolder)
 	{
 		DirAccess dir = DirAccess.Open(_imageFolder);
 		if (dir != null)
@@ -208,6 +222,8 @@ public partial class MatchTheAminos : Node2D
 		{
 			_hearts[_hearts.Count - 1].QueueFree(); // Remove first heart
 			_hearts.RemoveAt(_hearts.Count - 1);
+		}else{
+			
 		}
 	}
 }

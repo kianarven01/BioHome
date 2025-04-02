@@ -1,25 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch7w301y6ixt3"]
+[gd_scene load_steps=12 format=3 uid="uid://ch7w301y6ixt3"]
 
 [ext_resource type="Texture2D" uid="uid://carhigab3wus2" path="res://sprites/Aminos/background/background.jpg" id="1_as721"]
 [ext_resource type="Theme" uid="uid://bw7idhgikqj78" path="res://Themes/MatchTheAminos/structureTheme.tres" id="2_wj68e"]
 [ext_resource type="Theme" uid="uid://cj1jd248a3mb1" path="res://Themes/MatchTheAminos/functionTheme.tres" id="3_rraun"]
 [ext_resource type="Texture2D" uid="uid://63h8rffioolk" path="res://sprites/Aminos/background/background2.png" id="4_6hob5"]
+[ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="4_rraun"]
 [ext_resource type="Script" uid="uid://dghhv23r8rb0i" path="res://scripts/MatchTheAminos.cs" id="5_wj68e"]
+[ext_resource type="Texture2D" uid="uid://b1vkal2ir45cr" path="res://sprites/Extras/exitBg.png" id="7_ff8ut"]
+[ext_resource type="Texture2D" uid="uid://dtguxqgbwbbjy" path="res://sprites/Extras/no.png" id="8_8v4pg"]
+[ext_resource type="Texture2D" uid="uid://du4r5hhr53vbh" path="res://sprites/Extras/yes.png" id="9_wyqiq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qt0be"]
+font_size = 70
+outline_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_rts0d"]
+font_size = 56
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_left = 2086.0
-offset_top = 171.0
-offset_right = 3995.0
-offset_bottom = 1251.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_as721")
+expand_mode = 1
 
 [node name="structureButton" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 629.0
+offset_left = 630.0
 offset_top = 522.0
-offset_right = 1299.0
+offset_right = 1300.0
 offset_bottom = 678.0
 theme = ExtResource("2_wj68e")
 
@@ -31,11 +41,21 @@ offset_right = 1296.0
 offset_bottom = 907.0
 theme = ExtResource("3_rraun")
 
+[node name="exitButton" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 1792.0
+offset_top = 951.0
+offset_right = 1912.0
+offset_bottom = 1071.0
+icon = ExtResource("4_rraun")
+flat = true
+expand_icon = true
+
 [node name="MainBG" type="TextureRect" parent="."]
-offset_left = 5.0
-offset_top = 9.0
-offset_right = 1914.0
-offset_bottom = 1089.0
+offset_left = 325.0
+offset_top = 1167.0
+offset_right = 2245.0
+offset_bottom = 2247.0
 texture = ExtResource("4_6hob5")
 expand_mode = 1
 
@@ -47,3 +67,59 @@ script = ExtResource("5_wj68e")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="exitButton" type="Button" parent="MainBG"]
+offset_left = 1795.0
+offset_top = 950.0
+offset_right = 1915.0
+offset_bottom = 1070.0
+icon = ExtResource("4_rraun")
+flat = true
+expand_icon = true
+
+[node name="ExitLabel" type="TextureRect" parent="."]
+offset_left = 2100.0
+offset_top = 103.0
+offset_right = 3270.0
+offset_bottom = 921.0
+texture = ExtResource("7_ff8ut")
+
+[node name="Title" type="Label" parent="ExitLabel"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 168.0
+offset_right = 793.0
+offset_bottom = 357.0
+text = "You Win!"
+label_settings = SubResource("LabelSettings_qt0be")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Subtitle" type="Label" parent="ExitLabel"]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 349.0
+offset_right = 944.0
+offset_bottom = 431.0
+text = "Do you want to play again?"
+label_settings = SubResource("LabelSettings_rts0d")
+
+[node name="NoButton" type="Button" parent="ExitLabel"]
+offset_left = 627.0
+offset_top = 522.0
+offset_right = 857.0
+offset_bottom = 609.0
+icon = ExtResource("8_8v4pg")
+flat = true
+expand_icon = true
+
+[node name="YesButton" type="Button" parent="ExitLabel"]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 520.0
+offset_right = 547.0
+offset_bottom = 607.0
+icon = ExtResource("9_wyqiq")
+flat = true
+expand_icon = true
