@@ -69,6 +69,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="exitButton" type="Button" parent="MainBG"]
+layout_mode = 0
 offset_left = 1795.0
 offset_top = 950.0
 offset_right = 1915.0
@@ -106,6 +107,7 @@ text = "Do you want to play again?"
 label_settings = SubResource("LabelSettings_rts0d")
 
 [node name="NoButton" type="Button" parent="ExitLabel"]
+layout_mode = 0
 offset_left = 627.0
 offset_top = 522.0
 offset_right = 857.0
