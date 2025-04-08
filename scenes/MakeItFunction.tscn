@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bhygpmh37lqcp"]
+[gd_scene load_steps=81 format=3 uid="uid://bhygpmh37lqcp"]
 
 [ext_resource type="Script" uid="uid://dh43f0ycnx8p7" path="res://scripts/MakeItFunction.cs" id="1_1k2yw"]
 [ext_resource type="Texture2D" uid="uid://btkgiuq7p6ojj" path="res://sprites/Functions/background/intro.png" id="1_x8g7j"]
@@ -66,6 +66,11 @@
 [ext_resource type="Theme" uid="uid://d0kpa0kg0ggob" path="res://Themes/MakeItFunction/choicesTheme/10C.tres" id="60_qm1wf"]
 [ext_resource type="Theme" uid="uid://bn4ar318eg0lu" path="res://Themes/MakeItFunction/choicesTheme/10D.tres" id="61_p16v8"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="64_jti6f"]
+[ext_resource type="Texture2D" uid="uid://b1vkal2ir45cr" path="res://sprites/Extras/exitBg.png" id="67_1h2tm"]
+[ext_resource type="Theme" uid="uid://e2r01sxxbcc1" path="res://Themes/MatchTheAminos/doneTheme.tres" id="68_cxsot"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1h2tm"]
+font_size = 31
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsuep"]
 bg_color = Color(0, 0, 0, 1)
@@ -101,6 +106,13 @@ allow_unpress = true
 [sub_resource type="ButtonGroup" id="ButtonGroup_oe7ye"]
 resource_name = "tenthGroup"
 allow_unpress = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_q8kkv"]
+font_size = 45
+outline_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxsot"]
+font_size = 24
 
 [node name="MakeItFunction" type="Node2D"]
 script = ExtResource("1_1k2yw")
@@ -221,6 +233,25 @@ offset_top = 805.0
 offset_right = 568.0
 offset_bottom = 877.0
 icon = ExtResource("11_5gg8a")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="scoreLabel" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 219.0
+offset_bottom = 63.0
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_1h2tm")
+
+[node name="backButton" type="Button" parent="Background"]
+offset_left = 724.0
+offset_top = 980.0
+offset_right = 811.0
+offset_bottom = 1074.0
+icon = ExtResource("64_jti6f")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -925,12 +956,36 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Tenth_Item"]
 
-[node name="backButton" type="Button" parent="."]
-offset_left = 1307.0
-offset_top = 979.0
-offset_right = 1394.0
-offset_bottom = 1073.0
-icon = ExtResource("64_jti6f")
-flat = true
-icon_alignment = 1
-expand_icon = true
+[node name="EndGame" type="TextureRect" parent="."]
+offset_left = 691.0
+offset_top = 408.0
+offset_right = 1306.0
+offset_bottom = 818.0
+texture = ExtResource("67_1h2tm")
+
+[node name="Label" type="Label" parent="EndGame"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 80.0
+offset_right = 451.0
+offset_bottom = 143.0
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_q8kkv")
+
+[node name="resultLabel" type="Label" parent="EndGame"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 164.0
+offset_right = 468.0
+offset_bottom = 248.0
+label_settings = SubResource("LabelSettings_cxsot")
+
+[node name="Button" type="Button" parent="EndGame"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 276.0
+offset_right = 425.0
+offset_bottom = 334.0
+theme = ExtResource("68_cxsot")
+text = "DONE
+"

@@ -12,11 +12,25 @@ public partial class MakeItFunction : Node2D
 	private Dictionary<Timer, Label> timers = new();
 	private Dictionary<Timer, int> timeLeft = new();
 	private HashSet<Timer> startedTimers = new();
+	private Label scoreLbl;
+	private int score = 0;
+	private int completedCount = 0;
+	private double totalStartTime = -1;
+	private Label resultLabel;
+	private TextureRect endGame;
+	private Button doneButton;
 
 	public override void _Ready()
 	{
-		backButton = GetNode<Button>("backButton");
+		scoreLbl = GetNode<Label>("Background/scoreLabel");
+		backButton = GetNode<Button>("Background/backButton");
 		backButton.Pressed += ReturnToLivingRoom;
+		doneButton = GetNode<Button>("EndGame/Button");
+		doneButton.Pressed += ReturnToLivingRoom;
+		endGame = GetNode<TextureRect>("EndGame");
+		endGame.Visible = false;
+		resultLabel = GetNode<Label>("EndGame/resultLabel"); // Add a Label node in your scene and hide it initially
+		resultLabel.Visible = false;
 
 		for (int i = 1; i <= 10; i++)
 		{
@@ -50,7 +64,7 @@ public partial class MakeItFunction : Node2D
 				};
 			List<Button> correctButtons = new();
 			
-			 foreach (string path in correctList)
+			foreach (string path in correctList)
 			{
 				correctButtons.Add(GetNode<Button>(path));
 			}
@@ -112,6 +126,11 @@ public partial class MakeItFunction : Node2D
 		{
 			items[index].Position = new Vector2(583, -1);
 		}
+		
+		if (totalStartTime < 0)
+		{
+			totalStartTime = Time.GetTicksMsec() / 1000.0; // Start in seconds
+		}
 	}
 
 	private string GetItemName(int index)
@@ -150,12 +169,37 @@ public partial class MakeItFunction : Node2D
 			}
 		}
 		
-		 await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
-
-		// Hide the parent of the pressed button
+		if (allButtons.Contains(pressedButton))
+		{
+			score += 1;
+			scoreLbl.Text = $"Score: {score}";
+		}
+		
 		if (pressedButton.GetParent() is Control parent)
 		{
-			parent.Visible = false;
+			foreach (var timer in timers.Keys)
+			{
+				if (timer.GetParent() == parent)
+				{
+					StopTimer(timer);
+					break;
+				}
+			}
+		}
+		
+		 await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
+		
+		// Hide the parent of the pressed button
+		if (pressedButton.GetParent() is Control _parent)
+		{
+			_parent.Visible = false;
+		}
+		
+		completedCount += 1;
+
+		if (completedCount == 10)
+		{
+			ShowFinalResults();
 		}
 	}
 	
@@ -198,5 +242,41 @@ public partial class MakeItFunction : Node2D
 			int seconds = timeLeft[timer] % 60;
 			timers[timer].Text = $"{minutes:D2}:{seconds:D2}"; // Format MM:SS
 		}
+	}
+	
+	private void StopTimer(Timer timer)
+	{
+		if (timers.ContainsKey(timer))
+		{
+			timer.Stop();
+			if (timeLeft.ContainsKey(timer))
+			{
+				timeLeft[timer] = 0;
+			}
+			UpdateLabel(timer); // Optional: update label to show 00:00 or final time
+		}
+	}
+	
+	private void ShowFinalResults()
+	{
+		endGame.Visible = true;
+		double endTime = Time.GetTicksMsec() / 1000.0;
+		double totalTime = endTime - totalStartTime;
+	
+		string message = $"✅ Final Score: {score}/10\n⏱️ Total Time: {totalTime:F2} seconds";
+
+		if (resultLabel != null)
+		{
+			resultLabel.Text = message;
+			resultLabel.Visible = true;
+		}
+		
+		foreach (var btn in buttons.Values)
+		{
+			btn.Disabled = true;
+		}
+
+		// ❌ Disable back button
+		backButton.Disabled = true;
 	}
 }
