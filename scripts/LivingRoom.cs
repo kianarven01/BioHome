@@ -19,6 +19,7 @@ public partial class LivingRoom : Node2D
 	private Button playMif;
 	private Button playMta;
 	private Button carboButton;
+	private Button codonButton;
 	private Button backButton;
 
 	public override void _Ready()
@@ -46,6 +47,10 @@ public partial class LivingRoom : Node2D
 		// PlayCarboLipids button
 		carboButton = GetNode<Button>("TaskView/Carbo/Button");
 		carboButton.Pressed += OnPlayCarboLipidsPressed;
+
+		// PlayCodon button
+		codonButton = GetNode<Button>("TaskView/Codon/Button");
+		codonButton.Pressed += OnPlayCodonPressed;
 
 		tv = GetNode<TextureRect>("TV");
 		tasks = GetNode<TextureRect>("Tasks");
@@ -86,5 +91,10 @@ public partial class LivingRoom : Node2D
 	private void OnPlayCarboLipidsPressed()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/CarboLipids.tscn");
+	}
+
+	private void OnPlayCodonPressed()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/Codon.tscn");
 	}
 }

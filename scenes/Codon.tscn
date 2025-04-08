@@ -1,0 +1,159 @@
+[gd_scene load_steps=8 format=3 uid="uid://cer3ao81rrsa6"]
+
+[ext_resource type="Texture2D" uid="uid://bl1e6wyssmgjo" path="res://sprites/Codon/Background.png" id="1_e13xn"]
+[ext_resource type="Script" uid="uid://b7coetmaqp1p0" path="res://sprites/Codon/Codon.cs" id="1_ipvu1"]
+[ext_resource type="Texture2D" uid="uid://di0cr4llfonfu" path="res://sprites/Codon/Button.png" id="2_ph5kb"]
+[ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="3_ph5kb"]
+[ext_resource type="Texture2D" uid="uid://dtr04f7bfb1ax" path="res://sprites/Codon/item_bg.png" id="5_36d21"]
+[ext_resource type="FontFile" uid="uid://b52dwtx7yibdv" path="res://fonts/Ldfcomicsansbold-zgma.ttf" id="6_bkh3i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w41f1"]
+bg_color = Color(0.701134, 0.25753, 0.699937, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Codon" type="Node2D"]
+script = ExtResource("1_ipvu1")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_e13xn")
+
+[node name="startButton" type="TextureButton" parent="Background"]
+offset_left = 672.0
+offset_top = 643.0
+offset_right = 1252.0
+offset_bottom = 920.0
+texture_normal = ExtResource("2_ph5kb")
+stretch_mode = 0
+
+[node name="backButton" type="Button" parent="."]
+offset_left = 1818.0
+offset_top = 925.0
+offset_right = 1905.0
+offset_bottom = 1019.0
+icon = ExtResource("3_ph5kb")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="first_item" type="TextureRect" parent="."]
+offset_left = 2158.0
+offset_right = 4078.0
+offset_bottom = 1080.0
+texture = ExtResource("5_36d21")
+
+[node name="timer_label" type="Label" parent="first_item"]
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Timer" type="Timer" parent="first_item"]
+
+[node name="question" type="RichTextLabel" parent="first_item"]
+offset_left = 530.0
+offset_top = 339.0
+offset_right = 1386.0
+offset_bottom = 487.0
+theme_override_fonts/normal_font = ExtResource("6_bkh3i")
+theme_override_font_sizes/normal_font_size = 125
+text = "TAC-GTG-ACA"
+
+[node name="button_q1" type="Button" parent="first_item"]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 532.0
+offset_right = 1344.0
+offset_bottom = 672.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "ATG-TAC-TGT"
+
+[node name="button_q2" type="Button" parent="first_item"]
+offset_left = 572.0
+offset_top = 709.0
+offset_right = 1338.0
+offset_bottom = 849.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "ATG-CAC-TGT"
+
+[node name="button_q3" type="Button" parent="first_item"]
+offset_left = 573.0
+offset_top = 885.0
+offset_right = 1339.0
+offset_bottom = 1025.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "ATG-CGC-TGT"
+
+[node name="second_item" type="TextureRect" parent="."]
+offset_left = 4316.0
+offset_right = 6236.0
+offset_bottom = 1080.0
+texture = ExtResource("5_36d21")
+
+[node name="timer_label" type="Label" parent="second_item"]
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Timer" type="Timer" parent="second_item"]
+
+[node name="question" type="RichTextLabel" parent="second_item"]
+offset_left = 397.0
+offset_top = 339.0
+offset_right = 1561.0
+offset_bottom = 487.0
+theme_override_fonts/normal_font = ExtResource("6_bkh3i")
+theme_override_font_sizes/normal_font_size = 125
+text = "CAA-CGT-GGC-CAC"
+
+[node name="button_q1" type="Button" parent="second_item"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 532.0
+offset_right = 1446.0
+offset_bottom = 672.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "GTT-GCA-CGG-GTG"
+
+[node name="button_q2" type="Button" parent="second_item"]
+offset_left = 515.0
+offset_top = 709.0
+offset_right = 1444.0
+offset_bottom = 849.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "GTT-GCT-CCG-GTG"
+
+[node name="button_q3" type="Button" parent="second_item"]
+offset_left = 516.0
+offset_top = 885.0
+offset_right = 1450.0
+offset_bottom = 1025.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "GTT-GCA-CCG-GTG"
