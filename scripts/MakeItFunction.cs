@@ -19,6 +19,8 @@ public partial class MakeItFunction : Node2D
 	private Label resultLabel;
 	private TextureRect endGame;
 	private Button doneButton;
+	private HashSet<Timer> finishedTimers = new();
+	private Button retryButton;
 
 	public override void _Ready()
 	{
@@ -31,6 +33,8 @@ public partial class MakeItFunction : Node2D
 		endGame.Visible = false;
 		resultLabel = GetNode<Label>("EndGame/resultLabel"); // Add a Label node in your scene and hide it initially
 		resultLabel.Visible = false;
+		retryButton = GetNode<Button>("EndGame/Retry");
+		retryButton.Pressed += RestartGame;
 
 		for (int i = 1; i <= 10; i++)
 		{
@@ -222,7 +226,7 @@ public partial class MakeItFunction : Node2D
 		{
 			 foreach (Node child in parent.GetChildren())
 			{
-				if (child is Button button)
+				if (child is Button button && button.Name != "Exit")
 				{
 					button.Disabled = true;
 				}
@@ -230,6 +234,17 @@ public partial class MakeItFunction : Node2D
 			await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
 			parent.Visible = false;
 			timer.Stop();
+			
+			if (!finishedTimers.Contains(timer))
+			{
+				completedCount += 1;
+				finishedTimers.Add(timer);
+
+				if (completedCount == 10)
+				{
+					ShowFinalResults();
+				}
+			}
 		}
 		UpdateLabel(timer);
 	}
@@ -279,4 +294,64 @@ public partial class MakeItFunction : Node2D
 		// ❌ Disable back button
 		backButton.Disabled = true;
 	}
+	
+	private void RestartGame()
+	{
+		// Reset score and UI
+		score = 0;
+		scoreLbl.Text = "Score: 0";
+		completedCount = 0;
+		totalStartTime = -1;
+
+		// Reset finished and started timers
+		startedTimers.Clear();
+		finishedTimers.Clear();
+
+		// Reset buttons
+		foreach (var btn in buttons.Values)
+		{
+			btn.Disabled = false;
+		}
+
+		backButton.Disabled = false;
+
+		// Hide result panel
+		endGame.Visible = false;
+		resultLabel.Visible = false;
+
+		// Reset items and exit buttons
+		for (int i = 1; i <= 10; i++)
+		{
+			items[i].Visible = false;
+		}
+
+		// Reset button groups
+		foreach (var group in buttonGroups.Keys)
+		{
+			foreach (Button btn in buttonGroups[group])
+			{
+				btn.Disabled = false;
+				btn.ButtonPressed = false;
+				btn.RemoveThemeStyleboxOverride("disabled");
+			}
+		}
+
+		// Reset timers and labels
+		foreach (var timer in timers.Keys)
+		{
+			timeLeft[timer] = 10;
+			UpdateLabel(timer);
+			timer.Stop();
+		}
+
+		// Reset group buttons selection (optional)
+		foreach (var group in buttonGroups.Keys)
+		{
+			foreach (Button btn in buttonGroups[group])
+			{
+				btn.ButtonPressed = false;
+			}
+		}
+	}
+
 }

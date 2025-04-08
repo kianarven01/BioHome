@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://bhygpmh37lqcp"]
+[gd_scene load_steps=82 format=3 uid="uid://bhygpmh37lqcp"]
 
 [ext_resource type="Script" uid="uid://dh43f0ycnx8p7" path="res://scripts/MakeItFunction.cs" id="1_1k2yw"]
 [ext_resource type="Texture2D" uid="uid://btkgiuq7p6ojj" path="res://sprites/Functions/background/intro.png" id="1_x8g7j"]
@@ -67,7 +67,8 @@
 [ext_resource type="Theme" uid="uid://bn4ar318eg0lu" path="res://Themes/MakeItFunction/choicesTheme/10D.tres" id="61_p16v8"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="64_jti6f"]
 [ext_resource type="Texture2D" uid="uid://b1vkal2ir45cr" path="res://sprites/Extras/exitBg.png" id="67_1h2tm"]
-[ext_resource type="Theme" uid="uid://e2r01sxxbcc1" path="res://Themes/MatchTheAminos/doneTheme.tres" id="68_cxsot"]
+[ext_resource type="Theme" uid="uid://e2r01sxxbcc1" path="res://Themes/MakeItFunction/MainTheme/doneTheme.tres" id="68_cxsot"]
+[ext_resource type="Theme" uid="uid://coq0he11wxokk" path="res://Themes/MakeItFunction/MainTheme/restartTheme.tres" id="69_q8kkv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1h2tm"]
 font_size = 31
@@ -990,3 +991,11 @@ offset_bottom = 334.0
 theme = ExtResource("68_cxsot")
 text = "DONE
 "
+
+[node name="Retry" type="Button" parent="EndGame"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 280.0
+offset_right = 197.0
+offset_bottom = 331.0
+theme = ExtResource("69_q8kkv")

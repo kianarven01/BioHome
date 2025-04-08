@@ -156,7 +156,8 @@ public partial class MatchTheAminos : Node2D
 				newCard.Position = startPosition + new Vector2(col * xSpacing, row * ySpacing);
 
 				// Set size dynamically
-				newCard.Scale = new Vector2(cardSize.X / 400f, cardSize.Y / 400f); // Assuming original size is 200x200px
+				float baseCardSize = 200f;
+				newCard.Scale = new Vector2(cardSize.X / baseCardSize, cardSize.Y / baseCardSize);
 
 				// Assign card ID and textures
 				newCard.CardId = cardIds[i];
@@ -225,5 +226,10 @@ public partial class MatchTheAminos : Node2D
 		}else{
 			
 		}
+	}
+	
+	private void ReturnToLivingRoom()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/living_room.tscn");    
 	}
 }
