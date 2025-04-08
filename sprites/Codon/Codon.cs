@@ -28,6 +28,7 @@ public partial class Codon : Node
         {
             GetNode<TextureRect>("first_item"),
             GetNode<TextureRect>("second_item"),
+            GetNode<TextureRect>("third_item"),
         };
 
         // Hide all items initially
@@ -82,7 +83,31 @@ public partial class Codon : Node
             items[index].Position = new Vector2(0, 0); // Ensure the item is positioned at (0, 0)
             currentItemIndex = index;
             GD.Print($"Showing item {index}");
+
+            // Connect button signals for the current item
+            //ConnectButtonsForCurrentItem();
         }
+    }
+
+    private void ConnectButtonsForCurrentItem()
+    {
+        // Get the current item
+        var currentItem = items[currentItemIndex];
+
+        // Get the buttons in the current item
+        var button1 = currentItem.GetNode<Button>("button_q1");
+        var button2 = currentItem.GetNode<Button>("button_q2");
+        var button3 = currentItem.GetNode<Button>("button_q3");
+
+        // Disconnect any existing signals to avoid duplicate connections
+        button1.Pressed -= OnFirstItemButtonPressed;
+        button2.Pressed -= OnFirstItemButtonPressed;
+        button3.Pressed -= OnFirstItemButtonPressed;
+
+        // Connect the buttons to the signal
+        button1.Pressed += OnFirstItemButtonPressed;
+        button2.Pressed += OnFirstItemButtonPressed;
+        button3.Pressed += OnFirstItemButtonPressed;
     }
 
     private void ShowNextItem()

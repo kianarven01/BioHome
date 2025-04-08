@@ -247,6 +247,7 @@ text = "SCORE: 0"
 label_settings = SubResource("LabelSettings_1h2tm")
 
 [node name="backButton" type="Button" parent="Background"]
+layout_mode = 0
 offset_left = 724.0
 offset_top = 980.0
 offset_right = 811.0

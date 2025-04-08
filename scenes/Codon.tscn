@@ -23,6 +23,7 @@ offset_bottom = 1080.0
 texture = ExtResource("1_e13xn")
 
 [node name="startButton" type="TextureButton" parent="Background"]
+layout_mode = 0
 offset_left = 672.0
 offset_top = 643.0
 offset_right = 1252.0
@@ -47,6 +48,7 @@ offset_bottom = 1080.0
 texture = ExtResource("5_36d21")
 
 [node name="timer_label" type="Label" parent="first_item"]
+layout_mode = 0
 offset_left = 108.0
 offset_top = 92.0
 offset_right = 171.0
@@ -57,6 +59,7 @@ text = "00"
 [node name="Timer" type="Timer" parent="first_item"]
 
 [node name="question" type="RichTextLabel" parent="first_item"]
+layout_mode = 0
 offset_left = 530.0
 offset_top = 339.0
 offset_right = 1386.0
@@ -78,6 +81,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "ATG-TAC-TGT"
 
 [node name="button_q2" type="Button" parent="first_item"]
+layout_mode = 0
 offset_left = 572.0
 offset_top = 709.0
 offset_right = 1338.0
@@ -89,6 +93,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "ATG-CAC-TGT"
 
 [node name="button_q3" type="Button" parent="first_item"]
+layout_mode = 0
 offset_left = 573.0
 offset_top = 885.0
 offset_right = 1339.0
@@ -106,6 +111,7 @@ offset_bottom = 1080.0
 texture = ExtResource("5_36d21")
 
 [node name="timer_label" type="Label" parent="second_item"]
+layout_mode = 0
 offset_left = 108.0
 offset_top = 92.0
 offset_right = 171.0
@@ -116,6 +122,7 @@ text = "00"
 [node name="Timer" type="Timer" parent="second_item"]
 
 [node name="question" type="RichTextLabel" parent="second_item"]
+layout_mode = 0
 offset_left = 397.0
 offset_top = 339.0
 offset_right = 1561.0
@@ -137,6 +144,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "GTT-GCA-CGG-GTG"
 
 [node name="button_q2" type="Button" parent="second_item"]
+layout_mode = 0
 offset_left = 515.0
 offset_top = 709.0
 offset_right = 1444.0
@@ -148,6 +156,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "GTT-GCT-CCG-GTG"
 
 [node name="button_q3" type="Button" parent="second_item"]
+layout_mode = 0
 offset_left = 516.0
 offset_top = 885.0
 offset_right = 1450.0
@@ -157,3 +166,67 @@ theme_override_fonts/font = ExtResource("6_bkh3i")
 theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "GTT-GCA-CCG-GTG"
+
+[node name="third_item" type="TextureRect" parent="."]
+offset_left = 6447.0
+offset_top = 9.0
+offset_right = 8367.0
+offset_bottom = 1089.0
+texture = ExtResource("5_36d21")
+
+[node name="timer_label" type="Label" parent="third_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Timer" type="Timer" parent="third_item"]
+
+[node name="question" type="RichTextLabel" parent="third_item"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 336.0
+offset_right = 1439.0
+offset_bottom = 484.0
+theme_override_fonts/normal_font = ExtResource("6_bkh3i")
+theme_override_font_sizes/normal_font_size = 125
+text = " TAC-GTG-ACA"
+
+[node name="button_q1" type="Button" parent="third_item"]
+layout_mode = 0
+offset_left = 647.0
+offset_top = 532.0
+offset_right = 1364.0
+offset_bottom = 672.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "AUG-CAC-UGU"
+
+[node name="button_q2" type="Button" parent="third_item"]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 707.0
+offset_right = 1366.0
+offset_bottom = 847.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "AUG-CUC-UGU"
+
+[node name="button_q3" type="Button" parent="third_item"]
+layout_mode = 0
+offset_left = 636.0
+offset_top = 885.0
+offset_right = 1371.0
+offset_bottom = 1025.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "AUG-CAC-UAU"
