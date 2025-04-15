@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cer3ao81rrsa6"]
+[gd_scene load_steps=9 format=3 uid="uid://cer3ao81rrsa6"]
 
 [ext_resource type="Texture2D" uid="uid://bl1e6wyssmgjo" path="res://sprites/Codon/Background.png" id="1_e13xn"]
-[ext_resource type="Script" uid="uid://b7coetmaqp1p0" path="res://sprites/Codon/Codon.cs" id="1_ipvu1"]
+[ext_resource type="Script" uid="uid://b7coetmaqp1p0" path="res://scripts/Codon.cs" id="1_ipvu1"]
 [ext_resource type="Texture2D" uid="uid://di0cr4llfonfu" path="res://sprites/Codon/Button.png" id="2_ph5kb"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="3_ph5kb"]
 [ext_resource type="Texture2D" uid="uid://dtr04f7bfb1ax" path="res://sprites/Codon/item_bg.png" id="5_36d21"]
 [ext_resource type="FontFile" uid="uid://b52dwtx7yibdv" path="res://fonts/Ldfcomicsansbold-zgma.ttf" id="6_bkh3i"]
+[ext_resource type="AudioStream" uid="uid://csu0qhcwd0eai" path="res://sounds/Correct SFX.mp3" id="7_w41f1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w41f1"]
 bg_color = Color(0.701134, 0.25753, 0.699937, 1)
@@ -16,6 +17,37 @@ corner_radius_bottom_left = 50
 
 [node name="Codon" type="Node2D"]
 script = ExtResource("1_ipvu1")
+
+[node name="GlobalTimer" type="Label" parent="."]
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="score" type="TextureRect" parent="."]
+offset_top = 3112.0
+offset_right = 1920.0
+offset_bottom = 4192.0
+texture = ExtResource("5_36d21")
+
+[node name="score_title" type="Label" parent="score"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 430.0
+offset_right = 1023.0
+offset_bottom = 499.0
+theme_override_font_sizes/font_size = 50
+text = "Score"
+
+[node name="score_total" type="Label" parent="score"]
+offset_left = 936.0
+offset_top = 561.0
+offset_right = 975.0
+offset_bottom = 630.0
+theme_override_font_sizes/font_size = 50
+text = "0"
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -175,7 +207,6 @@ offset_bottom = 1089.0
 texture = ExtResource("5_36d21")
 
 [node name="timer_label" type="Label" parent="third_item"]
-layout_mode = 0
 offset_left = 108.0
 offset_top = 92.0
 offset_right = 171.0
@@ -230,3 +261,8 @@ theme_override_fonts/font = ExtResource("6_bkh3i")
 theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "AUG-CAC-UAU"
+
+[node name="correct" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_w41f1")
+
+[node name="wrong" type="AudioStreamPlayer2D" parent="."]

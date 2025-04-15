@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://05la0gnuoemi"
+path="res://.godot/imported/Kahoot In Game Music Countdown 10s.mp3-d1ec5c87033dfe213a062288542c0ffd.mp3str"
+
+[deps]
+
+source_file="res://sounds/Kahoot In Game Music Countdown 10s.mp3"
+dest_files=["res://.godot/imported/Kahoot In Game Music Countdown 10s.mp3-d1ec5c87033dfe213a062288542c0ffd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
