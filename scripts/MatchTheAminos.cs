@@ -16,6 +16,7 @@ public partial class MatchTheAminos : Node2D
 	private Button structButton;
 	private Button funcButton;
 	private TextureRect mainGame;
+	private Button exitButton;
 
 	// Manually defined card pairs
 	private List<(int, int)> _manualPairs = new List<(int, int)>
@@ -27,11 +28,13 @@ public partial class MatchTheAminos : Node2D
 	{
 		structButton = GetNode<Button>("../../Background/structureButton");
 		funcButton = GetNode<Button>("../../Background/functionButton");
+		exitButton = GetNode<Button>("../../Background/exitButton");
 		mainGame = GetNode<TextureRect>("../../MainBG");
 		mainGame.Visible = false;
 		
 		structButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/structureImages/");
 		funcButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/functionImages/");
+		exitButton.Pressed += ReturnToLivingRoom;
 	}
 	
 	private void LoadGame(string cardDir)
