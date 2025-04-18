@@ -18,40 +18,13 @@ corner_radius_bottom_left = 50
 [node name="Codon" type="Node2D"]
 script = ExtResource("1_ipvu1")
 
-[node name="GlobalTimer" type="Label" parent="."]
-offset_left = 108.0
-offset_top = 92.0
-offset_right = 171.0
-offset_bottom = 184.0
-theme_override_font_sizes/font_size = 50
-text = "00"
-
-[node name="score" type="TextureRect" parent="."]
-offset_top = 3112.0
-offset_right = 1920.0
-offset_bottom = 4192.0
-texture = ExtResource("5_36d21")
-
-[node name="score_title" type="Label" parent="score"]
-layout_mode = 0
-offset_left = 890.0
-offset_top = 430.0
-offset_right = 1023.0
-offset_bottom = 499.0
-theme_override_font_sizes/font_size = 50
-text = "Score"
-
-[node name="score_total" type="Label" parent="score"]
-offset_left = 936.0
-offset_top = 561.0
-offset_right = 975.0
-offset_bottom = 630.0
-theme_override_font_sizes/font_size = 50
-text = "0"
+[node name="GlobalTimer" type="Timer" parent="."]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 1924.0
+offset_bottom = 1081.0
 texture = ExtResource("1_e13xn")
 
 [node name="startButton" type="TextureButton" parent="Background"]
@@ -79,25 +52,14 @@ offset_right = 4078.0
 offset_bottom = 1080.0
 texture = ExtResource("5_36d21")
 
-[node name="timer_label" type="Label" parent="first_item"]
+[node name="question" type="Label" parent="first_item"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 92.0
-offset_right = 171.0
-offset_bottom = 184.0
-theme_override_font_sizes/font_size = 50
-text = "00"
-
-[node name="Timer" type="Timer" parent="first_item"]
-
-[node name="question" type="RichTextLabel" parent="first_item"]
-layout_mode = 0
-offset_left = 530.0
-offset_top = 339.0
-offset_right = 1386.0
-offset_bottom = 487.0
-theme_override_fonts/normal_font = ExtResource("6_bkh3i")
-theme_override_font_sizes/normal_font_size = 125
+offset_left = 527.0
+offset_top = 328.0
+offset_right = 1370.0
+offset_bottom = 478.0
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 125
 text = "TAC-GTG-ACA"
 
 [node name="button_q1" type="Button" parent="first_item"]
@@ -136,31 +98,29 @@ theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "ATG-CGC-TGT"
 
+[node name="TimerLabel" type="Label" parent="first_item"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 87.0
+offset_right = 148.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
 [node name="second_item" type="TextureRect" parent="."]
 offset_left = 4316.0
 offset_right = 6236.0
 offset_bottom = 1080.0
 texture = ExtResource("5_36d21")
 
-[node name="timer_label" type="Label" parent="second_item"]
+[node name="question" type="Label" parent="second_item"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 92.0
-offset_right = 171.0
-offset_bottom = 184.0
-theme_override_font_sizes/font_size = 50
-text = "00"
-
-[node name="Timer" type="Timer" parent="second_item"]
-
-[node name="question" type="RichTextLabel" parent="second_item"]
-layout_mode = 0
-offset_left = 397.0
-offset_top = 339.0
-offset_right = 1561.0
-offset_bottom = 487.0
-theme_override_fonts/normal_font = ExtResource("6_bkh3i")
-theme_override_font_sizes/normal_font_size = 125
+offset_left = 389.0
+offset_top = 320.0
+offset_right = 1519.0
+offset_bottom = 470.0
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 125
 text = "CAA-CGT-GGC-CAC"
 
 [node name="button_q1" type="Button" parent="second_item"]
@@ -199,6 +159,15 @@ theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "GTT-GCA-CCG-GTG"
 
+[node name="TimerLabel" type="Label" parent="second_item"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 82.0
+offset_right = 170.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
 [node name="third_item" type="TextureRect" parent="."]
 offset_left = 6447.0
 offset_top = 9.0
@@ -206,24 +175,14 @@ offset_right = 8367.0
 offset_bottom = 1089.0
 texture = ExtResource("5_36d21")
 
-[node name="timer_label" type="Label" parent="third_item"]
-offset_left = 108.0
-offset_top = 92.0
-offset_right = 171.0
-offset_bottom = 184.0
-theme_override_font_sizes/font_size = 50
-text = "00"
-
-[node name="Timer" type="Timer" parent="third_item"]
-
-[node name="question" type="RichTextLabel" parent="third_item"]
+[node name="question" type="Label" parent="third_item"]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 336.0
-offset_right = 1439.0
-offset_bottom = 484.0
-theme_override_fonts/normal_font = ExtResource("6_bkh3i")
-theme_override_font_sizes/normal_font_size = 125
+offset_left = 554.0
+offset_top = 326.0
+offset_right = 1452.0
+offset_bottom = 476.0
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 125
 text = " TAC-GTG-ACA"
 
 [node name="button_q1" type="Button" parent="third_item"]
@@ -261,6 +220,49 @@ theme_override_fonts/font = ExtResource("6_bkh3i")
 theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
 text = "AUG-CAC-UAU"
+
+[node name="TimerLabel" type="Label" parent="third_item"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 82.0
+offset_right = 163.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="score" type="TextureRect" parent="."]
+offset_top = 3112.0
+offset_right = 1920.0
+offset_bottom = 4192.0
+texture = ExtResource("5_36d21")
+
+[node name="score_title" type="Label" parent="score"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 430.0
+offset_right = 1023.0
+offset_bottom = 499.0
+theme_override_font_sizes/font_size = 50
+text = "Score"
+
+[node name="score_total" type="Label" parent="score"]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 561.0
+offset_right = 975.0
+offset_bottom = 630.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="backtostartButton" type="Button" parent="score"]
+offset_left = 1790.0
+offset_top = 934.0
+offset_right = 1877.0
+offset_bottom = 1028.0
+icon = ExtResource("3_ph5kb")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="correct" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_w41f1")

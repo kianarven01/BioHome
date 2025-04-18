@@ -5,22 +5,15 @@ using System.Collections.Generic;
 public partial class Codon : Node
 {
     private Button backButton;
+    private Button backtostartButton;
     private TextureButton startButton;
     private List<TextureRect> items; // List to store all items
-    private int currentItemIndex = 0; 
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private bool isTimerRunning = false;
-    private int timeLeft = 10; 
-    private int score = 0; 
-    private Label scoreTotalLabel; 
-    private bool isQuizActive = true; 
-    
-    private AudioStreamPlayer2D correctSound;
-    private bool waitForSound = false;
-
-
+    private int currentItemIndex = 0; // Track the current item index
+    private int timeLeft = 10; // Countdown duration in seconds
+    private int score = 0; // Player's score
+    private Label scoreTotalLabel; // Label to display the score
+    private bool isQuizActive = true; // Tracks whether the quiz is active
+    private Timer globalTimer; // Global timer for the quiz
 
     private Dictionary<int, string> correctAnswers = new Dictionary<int, string>
     {
@@ -33,16 +26,14 @@ public partial class Codon : Node
     {
         // Back button to living_room.tscn
         backButton = GetNode<Button>("backButton");
-        backButton.Pressed += OnBackButtonPressed;
+        backButton.Pressed += OnBackToStartPressed;
+
+        backtostartButton = GetNode<Button>("score/backtostartButton");
+        backtostartButton.Pressed += OnBackButtonPressed;
 
         // Start button to show the first item
         startButton = GetNode<TextureButton>("Background/startButton");
         startButton.Pressed += OnStartButtonPressed;
-
-        correctSound = GetNode<AudioStreamPlayer2D>("correct");
-        correctSound.Finished += OnCorrectSoundFinished;
-
-
 
         // Initialize items list
         items = new List<TextureRect>
@@ -59,9 +50,17 @@ public partial class Codon : Node
         }
 
         // Reference the score_total label inside the score TextureRect
+        
         var scoreTextureRect = GetNode<TextureRect>("score");
         scoreTotalLabel = scoreTextureRect.GetNode<Label>("score_total");
+        scoreTextureRect.Show(); // Redundant but explicit
         UpdateScoreLabel();
+
+        // Initialize the global timer
+        globalTimer = GetNode<Timer>("GlobalTimer");
+        globalTimer.WaitTime = 1.0f; // Set the timer to trigger every second
+        globalTimer.OneShot = false; // Ensure the timer repeats
+        globalTimer.Timeout += OnGlobalTimerTimeout; // Connect the timeout signal
     }
 
     private void OnBackButtonPressed()
@@ -70,48 +69,32 @@ public partial class Codon : Node
         GetTree().ChangeSceneToFile("res://scenes/living_room.tscn");
     }
 
+    private void OnBackToStartPressed()
+    {
+        GD.Print("Back to start button pressed");
+
+        // Get the Background TextureRect and make it visible
+        var background = GetNode<TextureRect>("Background");
+        background.Visible = true;
+
+        // Optionally, hide other elements like the score screen
+        var scoreTextureRect = GetNode<TextureRect>("score");
+        scoreTextureRect.Visible = false;
+    }
+
     private void OnStartButtonPressed()
     {
         GD.Print("Start button pressed");
-        ShowItem(0); // Show the first item
-        StartTimer(); // Start the timer
+
+        // Reset the quiz state
+        ResetQuiz();
+
+        // Show the first item
+        ShowItem(0);
+
+        // Start the global timer
+        StartGlobalTimer();
     }
-
-    private void OnFirstItemButtonPressed(Button pressedButton)
-    {
-        GD.Print($"Button in item {currentItemIndex} pressed: {pressedButton.Name}");
-
-            // Check if the pressed button is the correct answer
-        if (correctAnswers.ContainsKey(currentItemIndex) && pressedButton.Name == correctAnswers[currentItemIndex])
-        {
-            GD.Print("Correct answer!");
-            score++;
-            UpdateScoreLabel();
-            correctSound.Play();
-            waitForSound = true;
-            return; // Wait until sound finishes before continuing
-        }
-        else
-        {
-            GD.Print("Wrong answer!");
-            ShowNextItem(); // Immediately show next item on wrong answer
-            if (currentItemIndex < items.Count)
-                StartTimer();
-        }
-
-    }
-
-    private void OnCorrectSoundFinished()
-    {
-        if (waitForSound)
-        {
-            waitForSound = false;
-            ShowNextItem();
-            if (currentItemIndex < items.Count)
-                StartTimer();
-        }
-    }
-
 
     private void ShowItem(int index)
     {
@@ -124,53 +107,65 @@ public partial class Codon : Node
         // Show the specified item
         if (index >= 0 && index < items.Count)
         {
-            items[index].Visible = true;
-            items[index].Position = new Vector2(0, 0); // Ensure the item is positioned at (0, 0)
+            var currentItem = items[index];
+            currentItem.Visible = true;
+            currentItem.Position = new Vector2(0, 0); // Ensure the item is positioned at (0, 0)
             currentItemIndex = index;
-            GD.Print($"Showing item {index}");
 
             // Connect button signals for the current item
-            ConnectButtonsForCurrentItem();
-        }
-    }
+            ConnectButtonsForCurrentItem(currentItem);
 
-    private void ConnectButtonsForCurrentItem()
-    {
-        // Get the current item
-        var currentItem = items[currentItemIndex];
-
-        // Get all buttons in the current item dynamically
-        foreach (var button in currentItem.GetChildren())
-        {
-            if (button is Button btn)
+            // Get the TimerLabel inside the current item
+            try
             {
-                // Check if the signal is already connected before disconnecting
-                if (btn.IsConnected("pressed", new Callable(this, nameof(OnFirstItemButtonPressed))))
-                {
-                    btn.Pressed -= () => OnFirstItemButtonPressed(btn);
-                }
-
-                // Connect the button to the signal
-                btn.Pressed += () => OnFirstItemButtonPressed(btn);
+                var timerLabel = currentItem.GetNode<Label>("TimerLabel");
+                UpdateTimerLabel(timerLabel); // Update the label inside the item
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr($"Error fetching TimerLabel for item {index}: {e.Message}");
+                return;
             }
         }
     }
 
-    private void ShowBackground()
+    private void ConnectButtonsForCurrentItem(TextureRect currentItem)
     {
-        // Hide all items
-        foreach (var item in items)
+        foreach (var child in currentItem.GetChildren())
         {
-            item.Visible = false;
+            if (child is Button button)
+            {
+                // First, disconnect if already connected
+                if (button.IsConnected("pressed", Callable.From(() => OnItemButtonPressed(button))))
+                {
+                    button.Disconnect("pressed", Callable.From(() => OnItemButtonPressed(button)));
+                }
+
+                // Now connect using a lambda that captures the button reference
+                button.Connect("pressed", Callable.From(() => OnItemButtonPressed(button)));
+            }
+        }
+    }
+
+
+    private void OnItemButtonPressed(Button pressedButton)
+    {
+        GD.Print($"Button pressed: {pressedButton.Name}");
+
+        if (correctAnswers.ContainsKey(currentItemIndex) && pressedButton.Name == correctAnswers[currentItemIndex])
+        {
+            GD.Print("Correct answer!");
+            score++;
+            UpdateScoreLabel();
+        }
+        else
+        {
+            GD.Print("Wrong answer!");
         }
 
-        // Show the Background TextureRect
-        var background = GetNode<TextureRect>("Background");
-        background.Visible = true;
-        background.Position = new Vector2(0, 0); // Ensure it's positioned correctly
-        currentItemIndex = -1; // Reset the index or set it to a special value
-        GD.Print("Background is now visible.");
+        ShowNextItem();
     }
+
 
     private void ShowNextItem()
     {
@@ -178,49 +173,19 @@ public partial class Codon : Node
         if (nextIndex < items.Count)
         {
             ShowItem(nextIndex);
+            ResetTimer(); // Reset the timer for the next item
         }
         else
         {
             GD.Print("No more items to show. Displaying final score.");
             ShowScoreScreen(); // Transition to the score screen
-
-            // Stop the timer explicitly
-            var timer = GetCurrentTimer();
-            if (timer != null && !timer.IsStopped())
-            {
-                timer.Stop();
-                GD.Print("Timer stopped after finishing all items.");
-            }
-
-            isQuizActive = false; // Mark the quiz as inactive
         }
     }
 
-    private void ShowScoreScreen()
+   private void ShowScoreScreen()
     {
-        // Stop the timer if it's running
-        // Try disconnecting from all timers in case we're at the end
-        foreach (var item in items)
-        {
-            var timer = item.GetNode<Timer>("Timer");
-            if (timer != null)
-            {
-                if (!timer.IsStopped())
-                {
-                    timer.Stop();
-                    GD.Print($"Timer stopped for item.");
-                }
-
-                if (timer.IsConnected("timeout", new Callable(this, nameof(OnTimerTimeout))))
-                {
-                    timer.Timeout -= OnTimerTimeout;
-                    GD.Print("Disconnected timeout signal from item.");
-                }
-            }
-        }
-
-        // Set the quiz state to inactive
-        isQuizActive = false;
+        StopGlobalTimer(); // Stop the global timer
+        isQuizActive = false; // Mark the quiz as inactive
 
         // Hide all items
         foreach (var item in items)
@@ -228,80 +193,46 @@ public partial class Codon : Node
             item.Visible = false;
         }
 
-        // Hide the Background TextureRect
-        var background = GetNode<TextureRect>("Background");
-        background.Visible = false;
-
         // Show the score TextureRect
         var scoreTextureRect = GetNode<TextureRect>("score");
-        scoreTextureRect.Visible = true;
-        scoreTextureRect.Position = new Vector2(0, 0); // Ensure it's positioned correctly
-        GD.Print("Score screen is now visible.");
+        scoreTextureRect.Visible = true; // Ensure the score node is visible
+        scoreTextureRect.Position = new Vector2(0, 0); // Position it at the top-left corner
+        scoreTextureRect.ZIndex = 100; // Ensure it's on top of other elements
+        GD.Print($"Score screen is now visible. Position: {scoreTextureRect.Position}, Visible: {scoreTextureRect.Visible}");
     }
 
-    private void UpdateScoreLabel()
+    private void StartGlobalTimer()
     {
-        scoreTotalLabel.Text = $"{score}"; // Update the score label
-        GD.Print($"Score updated: {score}");
-    }
-
-    private Timer GetCurrentTimer()
-    {
-        // Get the Timer node from the current item
-        return items[currentItemIndex].GetNode<Timer>("Timer");
-    }
-
-    private Label GetCurrentTimerLabel()
-    {
-        // Get the timer_label node from the current item
-        return items[currentItemIndex].GetNode<Label>("timer_label");
-    }
-
-    private void StartTimer()
-    {
-        if (!isQuizActive || isTimerRunning) // Prevent starting the timer if it's already running
+        if (!isQuizActive)
         {
-            GD.Print("Quiz is no longer active or timer is already running.");
+            GD.Print("Quiz is no longer active. Timer will not start.");
             return;
         }
 
-        var timer = GetCurrentTimer();
-        if (timer == null)
-        {
-            GD.Print("No timer found for current item.");
-            return;
-        }
-
-        // Always stop the timer before restarting
-        if (!timer.IsStopped())
-        {
-            timer.Stop();
-            GD.Print("Stopped previous timer before starting a new one.");
-        }
-
-        // Disconnect previous connection if any
-        if (timer.IsConnected("timeout", new Callable(this, nameof(OnTimerTimeout))))
-        {
-            timer.Timeout -= OnTimerTimeout;
-            GD.Print("Disconnected previous timeout signal.");
-        }
-
-        // Reconnect
-        timer.Timeout += OnTimerTimeout;
-
-        // Reset the timeLeft to 10 seconds every time the timer starts
-        timeLeft = 10;
-        UpdateTimerLabel(); // Update the label immediately to show 10 seconds
-
-        timer.WaitTime = 1.0f;  // Each timeout will happen every second
-        timer.OneShot = false;  // Repeat the timer (not one-shot)
-        timer.Start(); // Start the timer
-        isTimerRunning = true; // Mark the timer as running
-        GD.Print("Timer started for 10 seconds.");
+        timeLeft = 10; // Reset the timer duration
+        UpdateTimerLabel(null); // Update the label immediately (will be updated in ShowItem)
+        globalTimer.Start(); // Start the global timer
+        GD.Print("Global timer started for 10 seconds.");
     }
 
+    private void StopGlobalTimer()
+    {
+        if (globalTimer.IsStopped())
+        {
+            return; // Timer is already stopped
+        }
 
-    private void OnTimerTimeout()
+        globalTimer.Stop(); // Stop the timer
+        GD.Print("Global timer stopped.");
+    }
+
+    private void ResetTimer()
+    {
+        timeLeft = 10; // Reset the timer duration
+        UpdateTimerLabel(null); // Update the label immediately (will be updated in ShowItem)
+    }
+
+    private void OnGlobalTimerTimeout()
     {
         if (!isQuizActive)
         {
@@ -312,51 +243,65 @@ public partial class Codon : Node
         timeLeft--;
         GD.Print($"Time left: {timeLeft}");
 
-        if (currentItemIndex >= 0 && currentItemIndex < items.Count)
-        {
-            UpdateTimerLabel();
-        }
+        var currentItem = items[currentItemIndex];
+        var timerLabel = currentItem.GetNode<Label>("TimerLabel");
+        timerLabel.Text = timeLeft.ToString();
 
         if (timeLeft <= 0)
         {
             GD.Print("Time's up!");
-            var timer = GetCurrentTimer();
-            timer.Stop();
-            isTimerRunning = false;
-
-            // Move to the next item
-            if (currentItemIndex >= 0 && currentItemIndex < items.Count)
-            {
-                ShowNextItem();
-
-                // ✅ Reset time before starting again
-                timeLeft = 10;
-                UpdateTimerLabel();
-
-                StartTimer(); // Now it starts from 10
-            }
-            else
-            {
-                GD.Print("No more items. Timer will not restart.");
-                isQuizActive = false;
-            }
+            ShowNextItem(); // Move to next item
         }
     }
 
 
-    private void UpdateTimerLabel()
+    private void UpdateScoreLabel()
     {
-        // Ensure the currentItemIndex is valid
-        if (currentItemIndex < 0 || currentItemIndex >= items.Count)
-        {
-            GD.Print("No valid item to update the timer label.");
-            return; // Exit if there is no valid item
-        }
-
-        var timerLabel = GetCurrentTimerLabel(); // Get the timer_label for the current item
-        timerLabel.Text = timeLeft.ToString(); // Update the label with the remaining time
-        GD.Print($"Timer label updated: {timerLabel.Text}");
+        scoreTotalLabel.Text = $"{score}"; // Update the score label
+        GD.Print($"Score updated: {score}");
     }
 
-    
+    private void UpdateTimerLabel(Label timerLabel)
+    {
+        // If timerLabel is null, do nothing (for global timer updates)
+        if (timerLabel != null)
+        {
+            timerLabel.Text = timeLeft.ToString(); // Update the label with the remaining time
+            GD.Print($"Timer label updated: {timerLabel.Text}");
+        }
+        else
+        {
+            GD.Print("No TimerLabel provided to update.");
+        }
+    }
+
+    private void ResetQuiz()
+{
+    GD.Print("Resetting quiz...");
+
+    // Reset variables
+    currentItemIndex = 0;
+    timeLeft = 10;
+    score = 0;
+    isQuizActive = true;
+
+    // Reset score label
+    UpdateScoreLabel();
+
+    // Hide all items
+    foreach (var item in items)
+    {
+        item.Visible = false;
+    }
+
+    // Hide the score screen
+    var scoreTextureRect = GetNode<TextureRect>("score");
+    scoreTextureRect.Visible = false;
+
+    // Show the background
+    var background = GetNode<TextureRect>("Background");
+    background.Visible = true;
+
+    GD.Print("Quiz reset complete.");
+}
 }
