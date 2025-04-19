@@ -16,28 +16,29 @@ public partial class Card : Node2D
 
 	public override void _Ready()
 	{
-		 Scale = new Vector2(0.7f, 0.7f);
+		Scale = new Vector2(0.7f, 0.7f);
+
 		_frontSprite = GetNode<Sprite2D>("Front");
 		_backSprite = GetNode<Sprite2D>("Back");
-		_area = GetNode<Area2D>("Area2D"); // Ensure the Area2D node exists
+		_area = GetNode<Area2D>("Area2D");
 
 		if (FrontTexture != null)
 		{
 			_frontSprite.Texture = FrontTexture;
-			_frontSprite.Scale = new Vector2(1, 1); // Ensure uniform scaling
+			_frontSprite.Scale = new Vector2(1, 1);
 		}
 
 		if (BackTexture != null)
 		{
 			_backSprite.Texture = BackTexture;
-			_backSprite.Scale = _frontSprite.Scale; // Match front texture scale
+			_backSprite.Scale = _frontSprite.Scale;
 		}
 
-		_frontSprite.Visible = false; // Start with the back showing
+		// Start with back side visible
+		_frontSprite.Visible = false;
+		_backSprite.Visible = true;
 
-		// Connect the `Area2D` input event signal correctly
 		_area.Connect("input_event", new Callable(this, nameof(OnCardClicked)));
-
 	}
 
 	private void OnCardClicked(Node viewport, InputEvent inputEvent, int shapeIdx)
@@ -46,7 +47,7 @@ public partial class Card : Node2D
 		{
 			if (!_isFlipped && !_isMatched)
 			{
-				FlipCard();
+				FlipCard(true); // Flip face up
 				GetTree().CallGroup("GameController", "CheckMatch", this);
 			}
 		}
@@ -54,9 +55,20 @@ public partial class Card : Node2D
 
 	public void FlipCard()
 	{
-		_isFlipped = !_isFlipped;
-		_frontSprite.Visible = _isFlipped;
-		_backSprite.Visible = !_isFlipped;
+		FlipCard(!_isFlipped);
+	}
+
+	public void FlipCard(bool faceUp)
+	{
+		if (_frontSprite == null || _backSprite == null)
+		{
+			GD.PrintErr("Sprites are not initialized properly.");
+			return;
+		}
+
+		_isFlipped = faceUp;
+		_frontSprite.Visible = faceUp;
+		_backSprite.Visible = !faceUp;
 	}
 
 	public void SetMatched()

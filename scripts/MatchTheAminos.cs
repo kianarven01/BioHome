@@ -17,6 +17,7 @@ public partial class MatchTheAminos : Node2D
 	private Button funcButton;
 	private TextureRect mainGame;
 	private Button exitButton;
+	private Button gameExit;
 
 	// Manually defined card pairs
 	private List<(int, int)> _manualPairs = new List<(int, int)>
@@ -29,12 +30,14 @@ public partial class MatchTheAminos : Node2D
 		structButton = GetNode<Button>("../../Background/structureButton");
 		funcButton = GetNode<Button>("../../Background/functionButton");
 		exitButton = GetNode<Button>("../../Background/exitButton");
+		gameExit = GetNode<Button>("../../MainBG/exitButton");
 		mainGame = GetNode<TextureRect>("../../MainBG");
 		mainGame.Visible = false;
 		
 		structButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/structureImages/");
 		funcButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/functionImages/");
 		exitButton.Pressed += ReturnToLivingRoom;
+		gameExit.Pressed += ReturnToLivingRoom;
 	}
 	
 	private void LoadGame(string cardDir)
@@ -146,6 +149,7 @@ public partial class MatchTheAminos : Node2D
 		// Shuffle the card IDs
 		List<int> cardIds = _manualPairs.SelectMany(pair => new List<int> { pair.Item1, pair.Item2 }).ToList();
 		cardIds = cardIds.OrderBy(_ => GD.Randf()).ToList(); // Shuffle placement
+		List<Card> revealedCards = new List<Card>();
 
 		for (int i = 0; i < cardIds.Count; i++)
 		{
@@ -180,13 +184,31 @@ public partial class MatchTheAminos : Node2D
 				// Use CallDeferred to prevent setup conflicts
 				parent.CallDeferred("add_child", newCard);
 				_cards.Add(newCard);
+				
+				newCard.FlipCard(); // Show the front side on load
+				revealedCards.Add(newCard);
 			}
 			else
 			{
 				GD.PrintErr("CardScene is not of type Card!");
 			}
 		}
+		
+		foreach (var card in _cards)
+		{
+			card.CallDeferred("FlipCard", true); // Show front
+		}
+		
+		GetTree().CreateTimer(3.0f).Timeout += () =>
+		{
+			foreach (var card in revealedCards)
+			{
+				card.FlipCard(false); // Flip back to face-down
+			}
+		};
 	}
+	
+	
 
 	public void CheckMatch(Card selectedCard)
 	{
