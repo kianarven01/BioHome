@@ -18,6 +18,13 @@ public partial class MatchTheAminos : Node2D
 	private TextureRect mainGame;
 	private Button exitButton;
 	private Button gameExit;
+	private TextureRect exitSign;
+	private Label titleLbl;
+	private Label subtitleLbl;
+	private int _matchedCount = 0;
+	private string currentGame;
+	private Button playAgainBtn;
+	private Button noBtn;
 
 	// Manually defined card pairs
 	private List<(int, int)> _manualPairs = new List<(int, int)>
@@ -32,12 +39,19 @@ public partial class MatchTheAminos : Node2D
 		exitButton = GetNode<Button>("../../Background/exitButton");
 		gameExit = GetNode<Button>("../../MainBG/exitButton");
 		mainGame = GetNode<TextureRect>("../../MainBG");
+		exitSign = GetNode<TextureRect>("../../ExitLabel");
+		titleLbl = GetNode<Label>("../../ExitLabel/Title");
+		subtitleLbl = GetNode<Label>("../../ExitLabel/Subtitle");
+		playAgainBtn = GetNode<Button>("../../ExitLabel/YesButton");
+		noBtn = GetNode<Button>("../../ExitLabel/NoButton");
 		mainGame.Visible = false;
 		
 		structButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/structureImages/");
 		funcButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/functionImages/");
 		exitButton.Pressed += ReturnToLivingRoom;
-		gameExit.Pressed += ReturnToLivingRoom;
+		gameExit.Pressed += OnNoPressed;
+		noBtn.Pressed += OnNoPressed;
+		playAgainBtn.Pressed += OnPlayAgainPressed;
 	}
 	
 	private void LoadGame(string cardDir)
@@ -49,6 +63,7 @@ public partial class MatchTheAminos : Node2D
 		SpawnCards();
 		AddToGroup("GameController");
 		CallDeferred(nameof(SpawnLifeIndicator));
+		currentGame = cardDir;
 	}
 	
 	private void SpawnLifeIndicator()
@@ -209,7 +224,6 @@ public partial class MatchTheAminos : Node2D
 	}
 	
 	
-
 	public void CheckMatch(Card selectedCard)
 	{
 		if (_selectedCards.Contains(selectedCard))
@@ -223,10 +237,17 @@ public partial class MatchTheAminos : Node2D
 			Card secondCard = _selectedCards[1];
 
 			if (_manualPairs.Any(pair => (pair.Item1 == firstCard.CardId && pair.Item2 == secondCard.CardId) ||
-										 (pair.Item2 == firstCard.CardId && pair.Item1 == secondCard.CardId)))
+							 (pair.Item2 == firstCard.CardId && pair.Item1 == secondCard.CardId)))
 			{
 				firstCard.SetMatched();
 				secondCard.SetMatched();
+				_matchedCount += 2;
+
+				if (_matchedCount == _cards.Count)
+				{
+					ShowWinScreen("You Win!", "Do you want to play again?");
+					ToggleMainButtons(false);
+				}
 			}
 			else
 			{
@@ -244,17 +265,98 @@ public partial class MatchTheAminos : Node2D
 	
 	private void ReduceLife()
 	{
-		if (_hearts.Count > 0)
+		if (_hearts.Count > 1)
 		{
 			_hearts[_hearts.Count - 1].QueueFree(); // Remove first heart
 			_hearts.RemoveAt(_hearts.Count - 1);
 		}else{
-			
+			_hearts[_hearts.Count - 1].QueueFree(); // Remove first heart
+			_hearts.RemoveAt(_hearts.Count - 1);
+			ShowWinScreen("You Lose!", "Would you like to try again?");
+			ToggleMainButtons(false);
 		}
 	}
 	
 	private void ReturnToLivingRoom()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/living_room.tscn");    
+	}
+	
+	private void ShowWinScreen(string title, string sub)
+	{
+		exitSign.Position = new Vector2(396, 140);
+		exitSign.Visible = true;
+		titleLbl.Text = title;
+		subtitleLbl.Text = sub;
+	}
+	
+	private void ToggleMainButtons(bool enabled)
+	{
+		structButton.Disabled = !enabled;
+		funcButton.Disabled = !enabled;
+		exitButton.Disabled = !enabled;
+		gameExit.Disabled = !enabled;
+	}
+
+	private void OnPlayAgainPressed()
+	{
+		// Clean up old cards
+		foreach (var card in _cards)
+		{
+			card.QueueFree();
+		}
+		_cards.Clear();
+		_selectedCards.Clear();
+		_textures.Clear();
+		_matchedCount = 0;
+
+		// Clear hearts
+		foreach (var heart in _hearts)
+		{
+			heart.QueueFree();
+		}
+		_hearts.Clear();
+
+		// Remove life container
+		if (_lifeContainer != null)
+		{
+			_lifeContainer.QueueFree();
+		}
+
+		exitSign.Visible = false;
+		ToggleMainButtons(true);
+
+		LoadGame(currentGame); // or store previous path	
+	}
+	
+	private void OnNoPressed()
+	{
+		// Clean up old cards
+		foreach (var card in _cards)
+		{
+			card.QueueFree();
+		}
+		_cards.Clear();
+		_selectedCards.Clear();
+		_textures.Clear();
+		_matchedCount = 0;
+
+		// Clear hearts
+		foreach (var heart in _hearts)
+		{
+			heart.QueueFree();
+		}
+		_hearts.Clear();
+
+		// Remove life container
+		if (_lifeContainer != null)
+		{
+			_lifeContainer.QueueFree();
+		}
+
+		exitSign.Visible = false;
+		ToggleMainButtons(true);
+		
+		mainGame.Visible = false;
 	}
 }

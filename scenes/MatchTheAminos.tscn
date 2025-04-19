@@ -79,10 +79,10 @@ flat = true
 expand_icon = true
 
 [node name="ExitLabel" type="TextureRect" parent="."]
-offset_left = 2100.0
-offset_top = 103.0
-offset_right = 3270.0
-offset_bottom = 921.0
+offset_left = 2342.0
+offset_top = 329.0
+offset_right = 3512.0
+offset_bottom = 1147.0
 texture = ExtResource("7_ff8ut")
 
 [node name="Title" type="Label" parent="ExitLabel"]
