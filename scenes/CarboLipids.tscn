@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1fqaemo77fnn"]
+[gd_scene load_steps=46 format=3 uid="uid://c1fqaemo77fnn"]
 
 [ext_resource type="Texture2D" uid="uid://dll6sl1ljf8b3" path="res://sprites/CarboLipids/carbolipidbg.png" id="1_6t1ky"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="2_k2xlk"]
@@ -14,6 +14,34 @@
 [ext_resource type="Texture2D" uid="uid://bn2bpodshljgd" path="res://sprites/CarboLipids/question.png" id="11_82eso"]
 [ext_resource type="Texture2D" uid="uid://djd7bbgpre35o" path="res://sprites/CarboLipids/choices/2B.png" id="12_xdhmv"]
 [ext_resource type="Texture2D" uid="uid://cwvlovsfwqdli" path="res://sprites/CarboLipids/questions/Q2.png" id="13_g3607"]
+[ext_resource type="Texture2D" uid="uid://x0fe660ds8jx" path="res://sprites/CarboLipids/choices/3A.png" id="14_vpaap"]
+[ext_resource type="Texture2D" uid="uid://b3ho5jubw8jo5" path="res://sprites/CarboLipids/choices/3B.png" id="15_4gn47"]
+[ext_resource type="Texture2D" uid="uid://dsfltyksi8sf" path="res://sprites/CarboLipids/questions/Q3.png" id="16_xccm2"]
+[ext_resource type="Texture2D" uid="uid://dlmlgsp2gjnlv" path="res://sprites/CarboLipids/choices/4A.png" id="17_211ie"]
+[ext_resource type="Texture2D" uid="uid://ddw46aw6roosm" path="res://sprites/CarboLipids/choices/4B.png" id="18_unj4l"]
+[ext_resource type="Texture2D" uid="uid://bsigw1crq7l2o" path="res://sprites/CarboLipids/questions/Q4.png" id="19_jd3pr"]
+[ext_resource type="Texture2D" uid="uid://cex3bguokun7r" path="res://sprites/CarboLipids/choices/5A.png" id="20_ajnqu"]
+[ext_resource type="Texture2D" uid="uid://dpemiv43xv7dr" path="res://sprites/CarboLipids/choices/5B.png" id="21_ioakn"]
+[ext_resource type="Texture2D" uid="uid://bkjceftsp2g1w" path="res://sprites/CarboLipids/choices/5C.png" id="22_iv55f"]
+[ext_resource type="Texture2D" uid="uid://d0puurt1sgels" path="res://sprites/CarboLipids/questions/Q5.png" id="23_1njux"]
+[ext_resource type="Texture2D" uid="uid://c4j67wg8iaco3" path="res://sprites/CarboLipids/choices/6A.png" id="24_d4udj"]
+[ext_resource type="Texture2D" uid="uid://bgnil033v8gv" path="res://sprites/CarboLipids/questions/Q6A.png" id="24_iv55f"]
+[ext_resource type="Texture2D" uid="uid://byh4w3lkujve0" path="res://sprites/CarboLipids/questions/Q6B.png" id="25_1njux"]
+[ext_resource type="Texture2D" uid="uid://r4tqcttbmxku" path="res://sprites/CarboLipids/choices/6B.png" id="25_myrpo"]
+[ext_resource type="Texture2D" uid="uid://bpms81evcw2nf" path="res://sprites/CarboLipids/choices/6C.png" id="26_6nmam"]
+[ext_resource type="Texture2D" uid="uid://dvqo6e3p3k4yl" path="res://sprites/CarboLipids/choices/7A.png" id="29_p8o0l"]
+[ext_resource type="Texture2D" uid="uid://doks54aib6etn" path="res://sprites/CarboLipids/choices/7B.png" id="30_g2eyo"]
+[ext_resource type="Texture2D" uid="uid://bd73aijhstgmj" path="res://sprites/CarboLipids/choices/7C.png" id="31_trowx"]
+[ext_resource type="Texture2D" uid="uid://ddq53pwrsmwts" path="res://sprites/CarboLipids/questions/Q7.png" id="32_330fn"]
+[ext_resource type="Texture2D" uid="uid://t82bmvpekue6" path="res://sprites/CarboLipids/choices/8A.png" id="33_lxbwp"]
+[ext_resource type="Texture2D" uid="uid://cxosk7m31j4e1" path="res://sprites/CarboLipids/choices/8B.png" id="34_wlatu"]
+[ext_resource type="Texture2D" uid="uid://i48cb3ixp2fl" path="res://sprites/CarboLipids/choices/8C.png" id="35_bonle"]
+[ext_resource type="Texture2D" uid="uid://brko6sj3vmnbi" path="res://sprites/CarboLipids/questions/Q8.png" id="36_ercou"]
+[ext_resource type="AudioStream" uid="uid://05la0gnuoemi" path="res://sounds/Kahoot In Game Music Countdown 10s.mp3" id="38_slr2h"]
+[ext_resource type="AudioStream" uid="uid://csu0qhcwd0eai" path="res://sounds/Correct SFX.mp3" id="39_wpe0a"]
+[ext_resource type="AudioStream" uid="uid://cnv1u5e87yyei" path="res://sounds/Wrong SFX.mp3" id="40_02io7"]
+[ext_resource type="AudioStream" uid="uid://di6xauu5vcr0a" path="res://sounds/Kahoot! 80s Vibe Theme.mp3" id="41_hc3fj"]
+[ext_resource type="AudioStream" uid="uid://dkyj1j2gisjxc" path="res://sounds/Kahoot! Podium Theme Music.mp3" id="42_s05ha"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_servf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -30,6 +58,8 @@ corner_radius_bottom_left = 15
 
 [node name="CarboLipids" type="Node2D"]
 script = ExtResource("3_l1wlf")
+
+[node name="GlobalTimer" type="Timer" parent="."]
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1923.0
@@ -146,8 +176,6 @@ offset_bottom = 184.0
 theme_override_font_sizes/font_size = 50
 text = "00"
 
-[node name="Timer" type="Timer" parent="first_item"]
-
 [node name="second_item" type="TextureRect" parent="."]
 offset_left = 4512.0
 offset_top = -12.0
@@ -167,9 +195,9 @@ text = "Create a Sucrose"
 
 [node name="clue" type="RichTextLabel" parent="second_item"]
 layout_mode = 0
-offset_left = 808.0
+offset_left = 758.0
 offset_top = 298.0
-offset_right = 1369.0
+offset_right = 1319.0
 offset_bottom = 399.0
 theme_override_fonts/normal_font = ExtResource("7_rgni1")
 theme_override_font_sizes/normal_font_size = 40
@@ -239,7 +267,653 @@ offset_bottom = 184.0
 theme_override_font_sizes/font_size = 50
 text = "00"
 
-[node name="Timer" type="Timer" parent="second_item"]
+[node name="third_item" type="TextureRect" parent="."]
+offset_left = 6781.0
+offset_top = -4.0
+offset_right = 8829.0
+offset_bottom = 1111.0
+texture = ExtResource("6_rgni1")
+
+[node name="title" type="RichTextLabel" parent="third_item"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 134.0
+offset_right = 1571.0
+offset_bottom = 282.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 125
+text = "Create a Cellulose"
+
+[node name="clue" type="RichTextLabel" parent="third_item"]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 298.0
+offset_right = 1369.0
+offset_bottom = 399.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "Clue: Made from 1,4 beta linkages."
+
+[node name="plus_sign" type="Label" parent="third_item"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 409.0
+offset_right = 914.0
+offset_bottom = 682.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="answer_panel" type="PanelContainer" parent="third_item"]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 733.0
+offset_right = 1357.0
+offset_bottom = 999.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nrrw")
+
+[node name="A1" type="TextureButton" parent="third_item"]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 760.0
+offset_right = 949.0
+offset_bottom = 940.0
+texture_normal = ExtResource("14_vpaap")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A2" type="TextureButton" parent="third_item"]
+layout_mode = 0
+offset_left = 1057.0
+offset_top = 761.0
+offset_right = 1277.0
+offset_bottom = 941.0
+texture_normal = ExtResource("15_4gn47")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Q1" type="TextureRect" parent="third_item"]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 389.0
+offset_right = 1652.0
+offset_bottom = 689.0
+texture = ExtResource("16_xccm2")
+expand_mode = 1
+
+[node name="Q2" type="TextureRect" parent="third_item"]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 379.0
+offset_right = 715.0
+offset_bottom = 679.0
+texture = ExtResource("11_82eso")
+expand_mode = 1
+
+[node name="timer_label" type="Label" parent="third_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="fourth_item" type="TextureRect" parent="."]
+offset_left = 9081.0
+offset_top = 16.0
+offset_right = 11129.0
+offset_bottom = 1131.0
+texture = ExtResource("6_rgni1")
+
+[node name="title" type="RichTextLabel" parent="fourth_item"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 134.0
+offset_right = 1571.0
+offset_bottom = 282.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 125
+text = "Create a Glycogen"
+
+[node name="clue" type="RichTextLabel" parent="fourth_item"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 298.0
+offset_right = 1807.0
+offset_bottom = 399.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "Clue: Made from 1,4 and 1,6 alpha glucose linkages but has more branch points. "
+
+[node name="plus_sign" type="Label" parent="fourth_item"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 409.0
+offset_right = 914.0
+offset_bottom = 682.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="answer_panel" type="PanelContainer" parent="fourth_item"]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 733.0
+offset_right = 1357.0
+offset_bottom = 999.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nrrw")
+
+[node name="A1" type="TextureButton" parent="fourth_item"]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 760.0
+offset_right = 949.0
+offset_bottom = 940.0
+texture_normal = ExtResource("17_211ie")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A2" type="TextureButton" parent="fourth_item"]
+layout_mode = 0
+offset_left = 1057.0
+offset_top = 761.0
+offset_right = 1277.0
+offset_bottom = 941.0
+texture_normal = ExtResource("18_unj4l")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Q1" type="TextureRect" parent="fourth_item"]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 389.0
+offset_right = 1652.0
+offset_bottom = 689.0
+texture = ExtResource("19_jd3pr")
+expand_mode = 1
+
+[node name="Q2" type="TextureRect" parent="fourth_item"]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 379.0
+offset_right = 715.0
+offset_bottom = 679.0
+texture = ExtResource("11_82eso")
+expand_mode = 1
+
+[node name="timer_label" type="Label" parent="fourth_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="fifth_item" type="TextureRect" parent="."]
+offset_left = 10.0
+offset_top = 1472.0
+offset_right = 2058.0
+offset_bottom = 2587.0
+texture = ExtResource("6_rgni1")
+
+[node name="title" type="RichTextLabel" parent="fifth_item"]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 131.0
+offset_right = 1703.0
+offset_bottom = 279.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 125
+text = "Create a Triglyceride"
+
+[node name="clue" type="RichTextLabel" parent="fifth_item"]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 292.0
+offset_right = 1669.0
+offset_bottom = 393.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "Clue: Made up of three fatty acids attached to a glycerol molecule."
+
+[node name="plus_sign" type="Label" parent="fifth_item"]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 409.0
+offset_right = 1054.0
+offset_bottom = 682.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="answer_panel" type="PanelContainer" parent="fifth_item"]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 733.0
+offset_right = 1561.0
+offset_bottom = 999.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nrrw")
+
+[node name="A1" type="TextureButton" parent="fifth_item"]
+layout_mode = 0
+offset_left = 628.0
+offset_top = 768.0
+offset_right = 848.0
+offset_bottom = 948.0
+texture_normal = ExtResource("20_ajnqu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A2" type="TextureButton" parent="fifth_item"]
+layout_mode = 0
+offset_left = 958.0
+offset_top = 766.0
+offset_right = 1178.0
+offset_bottom = 946.0
+texture_normal = ExtResource("21_ioakn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A3" type="TextureButton" parent="fifth_item"]
+layout_mode = 0
+offset_left = 1265.0
+offset_top = 770.0
+offset_right = 1485.0
+offset_bottom = 950.0
+texture_normal = ExtResource("22_iv55f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Q1" type="TextureRect" parent="fifth_item"]
+layout_mode = 0
+offset_left = 1167.0
+offset_top = 389.0
+offset_right = 1576.0
+offset_bottom = 689.0
+texture = ExtResource("23_1njux")
+expand_mode = 1
+
+[node name="Q2" type="TextureRect" parent="fifth_item"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 379.0
+offset_right = 855.0
+offset_bottom = 679.0
+texture = ExtResource("11_82eso")
+expand_mode = 1
+
+[node name="timer_label" type="Label" parent="fifth_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="sixth_item" type="TextureRect" parent="."]
+offset_left = 2299.0
+offset_top = 1478.0
+offset_right = 4347.0
+offset_bottom = 2593.0
+texture = ExtResource("6_rgni1")
+
+[node name="title" type="RichTextLabel" parent="sixth_item"]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 131.0
+offset_right = 1737.0
+offset_bottom = 279.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 125
+text = "Create a Phospholipids "
+
+[node name="clue" type="RichTextLabel" parent="sixth_item"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 292.0
+offset_right = 1707.0
+offset_bottom = 393.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "Clue: Consist of a phosphate group, glycerol molecule, and  two fatty acids."
+
+[node name="plus_sign" type="Label" parent="sixth_item"]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 406.0
+offset_right = 623.0
+offset_bottom = 679.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="plus_sign2" type="Label" parent="sixth_item"]
+layout_mode = 0
+offset_left = 1217.0
+offset_top = 404.0
+offset_right = 1331.0
+offset_bottom = 677.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="answer_panel" type="PanelContainer" parent="sixth_item"]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 730.0
+offset_right = 1493.0
+offset_bottom = 996.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nrrw")
+
+[node name="A1" type="TextureButton" parent="sixth_item"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 765.0
+offset_right = 780.0
+offset_bottom = 945.0
+texture_normal = ExtResource("24_d4udj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A2" type="TextureButton" parent="sixth_item"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 763.0
+offset_right = 1110.0
+offset_bottom = 943.0
+texture_normal = ExtResource("25_myrpo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A3" type="TextureButton" parent="sixth_item"]
+layout_mode = 0
+offset_left = 1197.0
+offset_top = 767.0
+offset_right = 1417.0
+offset_bottom = 947.0
+texture_normal = ExtResource("26_6nmam")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Q1" type="TextureRect" parent="sixth_item"]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 386.0
+offset_right = 1145.0
+offset_bottom = 686.0
+texture = ExtResource("24_iv55f")
+expand_mode = 1
+
+[node name="Q2" type="TextureRect" parent="sixth_item"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 376.0
+offset_right = 424.0
+offset_bottom = 676.0
+texture = ExtResource("11_82eso")
+expand_mode = 1
+
+[node name="Q3" type="TextureRect" parent="sixth_item"]
+layout_mode = 0
+offset_left = 1398.0
+offset_top = 381.0
+offset_right = 1853.0
+offset_bottom = 681.0
+texture = ExtResource("25_1njux")
+expand_mode = 1
+
+[node name="timer_label" type="Label" parent="sixth_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="seventh_item" type="TextureRect" parent="."]
+offset_left = 4704.0
+offset_top = 1483.0
+offset_right = 6752.0
+offset_bottom = 2598.0
+texture = ExtResource("6_rgni1")
+
+[node name="title" type="RichTextLabel" parent="seventh_item"]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 111.0
+offset_right = 1586.0
+offset_bottom = 259.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 125
+text = "Create a Oleic acid"
+
+[node name="subtitle" type="RichTextLabel" parent="seventh_item"]
+offset_left = 764.0
+offset_top = 244.0
+offset_right = 1298.0
+offset_bottom = 294.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "(Monounsaturated fatty acid ) "
+
+[node name="clue" type="RichTextLabel" parent="seventh_item"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 308.0
+offset_right = 1708.0
+offset_bottom = 409.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "Clue: Consist of a phosphate group, glycerol molecule, and  two fatty acids."
+
+[node name="plus_sign" type="Label" parent="seventh_item"]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 413.0
+offset_right = 1079.0
+offset_bottom = 686.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="answer_panel" type="PanelContainer" parent="seventh_item"]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 730.0
+offset_right = 1493.0
+offset_bottom = 996.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nrrw")
+
+[node name="A1" type="TextureButton" parent="seventh_item"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 765.0
+offset_right = 780.0
+offset_bottom = 945.0
+texture_normal = ExtResource("29_p8o0l")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A2" type="TextureButton" parent="seventh_item"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 763.0
+offset_right = 1110.0
+offset_bottom = 943.0
+texture_normal = ExtResource("30_g2eyo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A3" type="TextureButton" parent="seventh_item"]
+layout_mode = 0
+offset_left = 1197.0
+offset_top = 767.0
+offset_right = 1417.0
+offset_bottom = 947.0
+texture_normal = ExtResource("31_trowx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Q1" type="TextureRect" parent="seventh_item"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 398.0
+offset_right = 857.0
+offset_bottom = 698.0
+texture = ExtResource("32_330fn")
+expand_mode = 1
+
+[node name="Q2" type="TextureRect" parent="seventh_item"]
+layout_mode = 0
+offset_left = 1213.0
+offset_top = 398.0
+offset_right = 1533.0
+offset_bottom = 698.0
+texture = ExtResource("11_82eso")
+expand_mode = 1
+
+[node name="timer_label" type="Label" parent="seventh_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="eighth_item" type="TextureRect" parent="."]
+offset_left = 7074.0
+offset_top = 1481.0
+offset_right = 9122.0
+offset_bottom = 2596.0
+texture = ExtResource("6_rgni1")
+
+[node name="title" type="RichTextLabel" parent="eighth_item"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 108.0
+offset_right = 1660.0
+offset_bottom = 269.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 125
+text = "Create a Butyric acid
+"
+
+[node name="subtitle" type="RichTextLabel" parent="eighth_item"]
+offset_left = 776.0
+offset_top = 249.0
+offset_right = 1204.0
+offset_bottom = 299.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "(Saturated fatty acid)"
+
+[node name="clue" type="RichTextLabel" parent="eighth_item"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 308.0
+offset_right = 1931.0
+offset_bottom = 409.0
+theme_override_fonts/normal_font = ExtResource("7_rgni1")
+theme_override_font_sizes/normal_font_size = 40
+text = "Clue: Made up of a straight chain of carbon atoms and a carboxylic acid functional group (-COOH)"
+
+[node name="plus_sign" type="Label" parent="eighth_item"]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 413.0
+offset_right = 1079.0
+offset_bottom = 686.0
+theme_override_font_sizes/font_size = 200
+text = "+"
+
+[node name="answer_panel" type="PanelContainer" parent="eighth_item"]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 730.0
+offset_right = 1493.0
+offset_bottom = 996.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nrrw")
+
+[node name="A1" type="TextureButton" parent="eighth_item"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 765.0
+offset_right = 780.0
+offset_bottom = 945.0
+texture_normal = ExtResource("33_lxbwp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A2" type="TextureButton" parent="eighth_item"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 763.0
+offset_right = 1110.0
+offset_bottom = 943.0
+texture_normal = ExtResource("34_wlatu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="A3" type="TextureButton" parent="eighth_item"]
+layout_mode = 0
+offset_left = 1197.0
+offset_top = 767.0
+offset_right = 1417.0
+offset_bottom = 947.0
+texture_normal = ExtResource("35_bonle")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Q1" type="TextureRect" parent="eighth_item"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 398.0
+offset_right = 857.0
+offset_bottom = 698.0
+texture = ExtResource("36_ercou")
+expand_mode = 1
+
+[node name="Q2" type="TextureRect" parent="eighth_item"]
+layout_mode = 0
+offset_left = 1213.0
+offset_top = 398.0
+offset_right = 1533.0
+offset_bottom = 698.0
+texture = ExtResource("11_82eso")
+expand_mode = 1
+
+[node name="timer_label" type="Label" parent="eighth_item"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 92.0
+offset_right = 171.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="score" type="TextureRect" parent="."]
+offset_left = -2.0
+offset_top = 3217.0
+offset_right = 2026.0
+offset_bottom = 4314.0
+texture = ExtResource("1_6t1ky")
+
+[node name="score_title" type="Label" parent="score"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 530.0
+offset_right = 1029.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 50
+text = "Score"
+
+[node name="score_total" type="Label" parent="score"]
+layout_mode = 0
+offset_left = 948.0
+offset_top = 663.0
+offset_right = 987.0
+offset_bottom = 732.0
+theme_override_font_sizes/font_size = 50
+text = "0"
 
 [node name="backButton" type="Button" parent="."]
 offset_left = 1818.0
@@ -250,3 +924,18 @@ icon = ExtResource("2_k2xlk")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="kahoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("38_slr2h")
+
+[node name="correct" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("39_wpe0a")
+
+[node name="wrong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("40_02io7")
+
+[node name="start_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("41_hc3fj")
+
+[node name="score_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("42_s05ha")

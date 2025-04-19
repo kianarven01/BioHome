@@ -4,55 +4,117 @@ using System;
 public partial class CarboLipids : Node
 {
 	private Button backButton;
-
-	// For game select buttons
 	private Button carboButton;
-	private Button lipidButton;
+	private Button lipidsButton;
 
-	// For questionnaires
-	private TextureRect firstItem;
-	private TextureRect q2; 
+	private TextureRect[] quizItems;
+	private int currentItemIndex = 0;
 
-	// For answer buttons
-	private TextureButton a1;
-	private TextureButton a2;
-
-	// For timer
-	private Timer timer;
+	private TextureRect currentItem;
+	private TextureButton a1, a2, a3;
+	private TextureRect q2;
 	private Label timerLabel;
-	private int timeLeft = 15;
 
-	private bool isTimerActive = false; // To track if the timer is running
+	private Timer globalTimer;
+	private int timeLeft = 10;
+	private bool isTimerActive = false;
+
+	private bool isCarboQuiz = true;
+
+	// Score tracking
+	private int score = 0;
+	private TextureRect scoreScreen;
+	private Label scoreLabel;
+	private string[] correctAnswers;
+
+
+	// Delegates for signal cleanup
+	private Action a1Handler;
+	private Action a2Handler;
+	private Action a3Handler;
+	private TextureButton previousA1;
+	private TextureButton previousA2;
+	private TextureButton previousA3;
+
+	private AudioStreamPlayer2D correctSound;
+    private AudioStreamPlayer2D wrongSound;
+    private AudioStreamPlayer2D themeMusic;
+    private AudioStreamPlayer2D startMusic;
+    private AudioStreamPlayer2D scoreMusic;
 
 	public override void _Ready()
 	{
-		// Back button to living_room.tscn
 		backButton = GetNode<Button>("backButton");
 		backButton.Pressed += OnBackButtonPressed;
 
-		// Carbo button to first_item.tscn
 		carboButton = GetNode<Button>("Background/Carbohydrate");
-		firstItem = GetNode<TextureRect>("first_item");
 		carboButton.Pressed += OnCarboButtonPressed;
-		firstItem.Visible = false; // Hide the first item initially
 
-		// Timer and label setup
-		timer = GetNode<Timer>("first_item/Timer");
-		timerLabel = GetNode<Label>("first_item/timer_label");
-		timer.Timeout += OnTimerTimeout;
+		lipidsButton = GetNode<Button>("Background/Lipids");
+		lipidsButton.Pressed += OnLipidsButtonPressed;
 
-		// Answer buttons and Q2 setup
-		a1 = GetNode<TextureButton>("first_item/A1");
-		a2 = GetNode<TextureButton>("first_item/A2");
-		q2 = GetNode<TextureRect>("first_item/Q2");
+		correctSound = GetNode<AudioStreamPlayer2D>("correct");
+        wrongSound = GetNode<AudioStreamPlayer2D>("wrong");
+        themeMusic = GetNode<AudioStreamPlayer2D>("kahoot");
+        startMusic = GetNode<AudioStreamPlayer2D>("start_music");
+        scoreMusic = GetNode<AudioStreamPlayer2D>("score_music");
+        startMusic.Play();
 
-		// Set the initial texture for Q2
-		q2.Texture = GD.Load<Texture2D>("res://sprites/CarboLipids/question.png");
-		q2.Visible = true; // Ensure Q2 is visible initially
+		globalTimer = GetNode<Timer>("GlobalTimer");
+		globalTimer.Timeout += OnTimerTimeout;
 
-		// Connect answer buttons to the same method
-		a1.Pressed += () => OnAnswerPressed(a1);
-		a2.Pressed += () => OnAnswerPressed(a2);
+		scoreScreen = GetNode<TextureRect>("score");
+		scoreLabel = scoreScreen.GetNode<Label>("score_total");
+		scoreScreen.Visible = false;
+
+		// Initialize Carbo quiz by default
+		InitializeCarboQuiz();
+	}
+
+	private void InitializeCarboQuiz()
+	{
+		isCarboQuiz = true;
+		quizItems = new TextureRect[]
+		{
+			GetNode<TextureRect>("first_item"),
+			GetNode<TextureRect>("second_item"),
+			GetNode<TextureRect>("third_item"),
+			GetNode<TextureRect>("fourth_item"),
+		};
+
+		correctAnswers = new string[]
+		{
+			"A2",
+			"A1",
+			"A1",
+			"A1",
+		};
+
+		foreach (var item in quizItems)
+			item.Visible = false;
+	}
+
+	private void InitializeLipidsQuiz()
+	{
+		isCarboQuiz = false;
+		quizItems = new TextureRect[]
+		{
+			GetNode<TextureRect>("fifth_item"),
+			GetNode<TextureRect>("sixth_item"),
+			GetNode<TextureRect>("seventh_item"),
+			GetNode<TextureRect>("eighth_item"),
+		};
+
+		correctAnswers = new string[]
+		{
+			"A3",
+			"A2",
+			"A1",
+			"A3",
+		};
+
+		foreach (var item in quizItems)
+			item.Visible = false;
 	}
 
 	private void OnBackButtonPressed()
@@ -62,66 +124,166 @@ public partial class CarboLipids : Node
 
 	private void OnCarboButtonPressed()
 	{
-		firstItem.Visible = true; // Show the first item
-		firstItem.Position = new Vector2(0, 0); // Set position as needed
+		score = 0;
+		currentItemIndex = 0;
+		scoreScreen.Visible = false;
+		startMusic.Stop();
 
-		// Reset Q2 with the default question mark texture
+		InitializeCarboQuiz();
+		ShowItem(currentItemIndex);
+	}
+
+	private void OnLipidsButtonPressed()
+	{
+		score = 0;
+		currentItemIndex = 0;
+		scoreScreen.Visible = false;
+		startMusic.Stop();
+		
+		InitializeLipidsQuiz();
+		ShowItem(currentItemIndex);
+	}
+
+	private void ShowItem(int index)
+	{
+		if (index >= quizItems.Length)
+		{
+			ShowScoreScreen();
+			return;
+		}
+
+		foreach (var item in quizItems)
+			item.Visible = false;
+
+		currentItem = quizItems[index];
+		currentItem.Visible = true;
+		currentItem.Position = new Vector2(0, 0);
+
+		timerLabel = currentItem.GetNode<Label>("timer_label");
+		q2 = currentItem.GetNode<TextureRect>("Q2");
+		a1 = currentItem.GetNodeOrNull<TextureButton>("A1");
+		a2 = currentItem.GetNodeOrNull<TextureButton>("A2");
+		a3 = currentItem.GetNodeOrNull<TextureButton>("A3");
+
 		q2.Texture = GD.Load<Texture2D>("res://sprites/CarboLipids/question.png");
-		q2.Visible = true; // Ensure Q2 is visible
+		q2.Visible = true;
 
-		// Start the timer
-		timeLeft = 10; // Reset the countdown
-		UpdateTimerLabel(); // Update the label immediately
-		timer.WaitTime = 1.0f; // Set the timer to tick every second
-		timer.OneShot = false; // Keep the timer running
-		timer.Start();
-		isTimerActive = true; // Enable input while the timer is active
+		// Disconnect previous handlers if they exist
+		if (previousA1 != null && a1Handler != null) previousA1.Pressed -= a1Handler;
+		if (previousA2 != null && a2Handler != null) previousA2.Pressed -= a2Handler;
+		if (previousA3 != null && a3Handler != null) previousA3.Pressed -= a3Handler;
+
+		// Create and connect new handlers
+		a1Handler = () => OnAnswerPressed(a1);
+		a2Handler = () => OnAnswerPressed(a2);
+		a3Handler = () => OnAnswerPressed(a3);
+
+		if (a1 != null) a1.Pressed += a1Handler;
+		if (a2 != null) a2.Pressed += a2Handler;
+		if (a3 != null) a3.Pressed += a3Handler;
+
+		previousA1 = a1;
+		previousA2 = a2;
+		previousA3 = a3;
+
+		timeLeft = 10;
+		UpdateTimerLabel();
+		globalTimer.WaitTime = 1.0f;
+		globalTimer.OneShot = false;
+		globalTimer.Start();
+		isTimerActive = true;
+
+		// Restart theme music on each new item
+		themeMusic.Stop();
+		themeMusic.Play();
+
 	}
 
 	private void OnAnswerPressed(TextureButton selectedButton)
 	{
-		if (!isTimerActive) return; // Ignore input if the timer is not active
+		if (!isTimerActive || selectedButton == null) return;
 
-		// Set Q2's texture to match the selected button's texture
+		isTimerActive = false;
+		globalTimer.Stop();
+		themeMusic.Stop();
+
 		var originalTexture = selectedButton.TextureNormal;
-
-		// Create a new ImageTexture to scale the texture
 		var image = originalTexture.GetImage();
-		image.Resize(320, 300, Image.Interpolation.Bilinear); // Resize to fit Q2
+		image.Resize(320, 300, Image.Interpolation.Bilinear);
 		var scaledTexture = ImageTexture.CreateFromImage(image);
 
-		// Assign the scaled texture to Q2
 		q2.Texture = scaledTexture;
-
-		// Ensure Q2's texture fits its defined size
 		q2.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
-
-		// Make Q2 visible
 		q2.Visible = true;
 
-		GD.Print($"Q2 filled with scaled texture from {selectedButton.Name}");
+		GD.Print($"Answer selected from {selectedButton.Name}");
+
+		if (selectedButton.Name == correctAnswers[currentItemIndex])
+		{
+			score++;
+			GD.Print("Correct! Score: " + score);
+			correctSound.Play(); 
+		}
+		else
+		{
+			GD.Print("Wrong answer!");
+			wrongSound.Play();
+		}
+
+
+		GetTree().CreateTimer(1.5f).Timeout += () =>
+		{
+			currentItemIndex++;
+			ShowItem(currentItemIndex);
+		};
 	}
+
 	private void OnTimerTimeout()
 	{
 		timeLeft--;
 
 		if (timeLeft <= 0)
 		{
-			timer.Stop(); // Stop the timer
-			isTimerActive = false; // Disable input
-			firstItem.Visible = false; // Hide the first item
+			globalTimer.Stop();
+			isTimerActive = false;
 
-			// Show Q2 with the default question mark texture
+			q2.Texture = GD.Load<Texture2D>("res://sprites/CarboLipids/question.png");
 			q2.Visible = true;
 
-			GD.Print("Time's up! Q2 set to question mark.");
+			GD.Print("Time's up! Moving to next item...");
+
+			wrongSound.Play();
+
+			GetTree().CreateTimer(1.5f).Timeout += () =>
+			{
+				currentItemIndex++;
+				ShowItem(currentItemIndex);
+			};
 		}
-		UpdateTimerLabel();
+
+		else
+		{
+			UpdateTimerLabel();
+		}
 	}
 
 	private void UpdateTimerLabel()
 	{
-		int seconds = timeLeft % 60;
-		timerLabel.Text = $"{seconds:D2}"; // Format as MM:SS
+		timerLabel.Text = $"{timeLeft:D2}";
 	}
+
+	private void ShowScoreScreen()
+	{
+		foreach (var item in quizItems)
+			item.Visible = false;
+
+		scoreScreen.Visible = true;
+		scoreScreen.Position = new Vector2(0, 0);
+		scoreLabel.Text = $"{score}";
+
+		scoreMusic.Play();
+
+		GD.Print("Score screen should now be visible");
+	}
+
 }
