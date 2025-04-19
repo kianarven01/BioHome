@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cer3ao81rrsa6"]
+[gd_scene load_steps=11 format=3 uid="uid://cer3ao81rrsa6"]
 
 [ext_resource type="Texture2D" uid="uid://bl1e6wyssmgjo" path="res://sprites/Codon/Background.png" id="1_e13xn"]
 [ext_resource type="Script" uid="uid://b7coetmaqp1p0" path="res://scripts/Codon.cs" id="1_ipvu1"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="3_ph5kb"]
 [ext_resource type="Texture2D" uid="uid://dtr04f7bfb1ax" path="res://sprites/Codon/item_bg.png" id="5_36d21"]
 [ext_resource type="FontFile" uid="uid://b52dwtx7yibdv" path="res://fonts/Ldfcomicsansbold-zgma.ttf" id="6_bkh3i"]
+[ext_resource type="AudioStream" uid="uid://05la0gnuoemi" path="res://sounds/Kahoot In Game Music Countdown 10s.mp3" id="7_ed67h"]
 [ext_resource type="AudioStream" uid="uid://csu0qhcwd0eai" path="res://sounds/Correct SFX.mp3" id="7_w41f1"]
+[ext_resource type="AudioStream" uid="uid://cnv1u5e87yyei" path="res://sounds/Wrong SFX.mp3" id="8_w41f1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w41f1"]
 bg_color = Color(0.701134, 0.25753, 0.699937, 1)
@@ -35,16 +37,6 @@ offset_right = 1252.0
 offset_bottom = 920.0
 texture_normal = ExtResource("2_ph5kb")
 stretch_mode = 0
-
-[node name="backButton" type="Button" parent="."]
-offset_left = 1818.0
-offset_top = 925.0
-offset_right = 1905.0
-offset_bottom = 1019.0
-icon = ExtResource("3_ph5kb")
-flat = true
-icon_alignment = 1
-expand_icon = true
 
 [node name="first_item" type="TextureRect" parent="."]
 offset_left = 2158.0
@@ -105,7 +97,7 @@ offset_top = 87.0
 offset_right = 148.0
 offset_bottom = 179.0
 theme_override_font_sizes/font_size = 50
-text = "00"
+text = "10"
 
 [node name="second_item" type="TextureRect" parent="."]
 offset_left = 4316.0
@@ -166,7 +158,7 @@ offset_top = 82.0
 offset_right = 170.0
 offset_bottom = 174.0
 theme_override_font_sizes/font_size = 50
-text = "00"
+text = "10"
 
 [node name="third_item" type="TextureRect" parent="."]
 offset_left = 6447.0
@@ -228,12 +220,13 @@ offset_top = 82.0
 offset_right = 163.0
 offset_bottom = 174.0
 theme_override_font_sizes/font_size = 50
-text = "00"
+text = "10"
 
 [node name="score" type="TextureRect" parent="."]
-offset_top = 3112.0
-offset_right = 1920.0
-offset_bottom = 4192.0
+offset_left = 10.0
+offset_top = 1703.0
+offset_right = 1930.0
+offset_bottom = 2783.0
 texture = ExtResource("5_36d21")
 
 [node name="score_title" type="Label" parent="score"]
@@ -254,17 +247,21 @@ offset_bottom = 630.0
 theme_override_font_sizes/font_size = 50
 text = "0"
 
-[node name="backtostartButton" type="Button" parent="score"]
-offset_left = 1790.0
-offset_top = 934.0
-offset_right = 1877.0
-offset_bottom = 1028.0
+[node name="backButton" type="Button" parent="."]
+offset_left = 1771.0
+offset_top = 931.0
+offset_right = 1858.0
+offset_bottom = 1025.0
 icon = ExtResource("3_ph5kb")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="kahoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ed67h")
+
 [node name="correct" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_w41f1")
 
 [node name="wrong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_w41f1")

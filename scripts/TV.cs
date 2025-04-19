@@ -3,38 +3,59 @@ using System;
 
 public partial class TV : TextureRect
 {
-	private CanvasLayer tvUI; // Use CanvasLayer instead of CanvasItem
-	private TextureRect UIbg;
-	private TextureRect tasks;
-	private Button ExitButton;
+    [Signal]
+    public delegate void TVUIVisibilityChangedEventHandler(bool isVisible);
 
-	public override void _Ready()
-	{
-		tvUI = GetNode<CanvasLayer>("TV_UI"); // Get TV_UI as CanvasLayer
-		tvUI.Visible = false; // Hide UI initially
-		UIbg = GetNode<TextureRect>("TV_UI/UIbg");
-		UIbg.Position = new Vector2(184, 72);
-		tasks = GetNode<TextureRect>("../Tasks");
-		ExitButton = GetNode<Button>("../exitButton");
-	}
+    private CanvasLayer tvUI;
+    private TextureRect UIbg;
+    private TextureRect tasks;
+    private Button ExitButton;
 
-	public override void _Input(InputEvent @event)
-	{
-		// Prevent TV from being clickable when UI is open
-		if (tvUI.Visible) return;
+    public override void _Ready()
+    {
+        tvUI = GetNode<CanvasLayer>("TV_UI");
+        tvUI.Visible = false;
 
-		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+		if (tvUI is TV_UI uiScript)
 		{
-			Vector2 clickPosition = mouseEvent.Position;
+			uiScript.Connect("RequestCloseTVUI", new Callable(this, nameof(CloseTVUI)));
+		}
 
-			// Check if the click is inside the TV's area
-			if (GetGlobalRect().HasPoint(clickPosition))
-			{
-				GD.Print("TV tapped!");
-				tvUI.Visible = true; // Show UI
-				tasks.SetProcessInput(false);
-				ExitButton.MouseFilter = Control.MouseFilterEnum.Ignore;
-			}
+        UIbg = GetNode<TextureRect>("TV_UI/UIbg");
+        UIbg.Position = new Vector2(184, 72);
+        tasks = GetNode<TextureRect>("../Tasks");
+        ExitButton = GetNode<Button>("../exitButton");
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (tvUI.Visible) return;
+
+        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+        {
+            Vector2 clickPosition = mouseEvent.Position;
+
+            if (GetGlobalRect().HasPoint(clickPosition))
+            {
+                GD.Print("TV tapped!");
+                tvUI.Visible = true;
+
+                EmitSignal("TVUIVisibilityChanged", true);
+
+                tasks.SetProcessInput(false);
+                ExitButton.MouseFilter = Control.MouseFilterEnum.Ignore;
+            }
+        }
+    }
+
+	public void CloseTVUI()
+	{
+		if (tvUI.Visible)
+		{
+			tvUI.Visible = false;
+			EmitSignal("TVUIVisibilityChanged", false); // ✅ Now only this emits the signal
+			tasks.SetProcessInput(true);
+			ExitButton.MouseFilter = Control.MouseFilterEnum.Stop;
 		}
 	}
 

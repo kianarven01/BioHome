@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d331i2778xnbp"]
+[gd_scene load_steps=14 format=3 uid="uid://d331i2778xnbp"]
 
 [ext_resource type="Script" uid="uid://cyourtxv86tp5" path="res://scripts/MainMenu.cs" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://dajdvtilw0xxt" path="res://scenes/LandingScene.tscn" id="2_fu7sn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bgt52rfp6yisl" path="res://sprites/Extras/StartButton.png" id="5_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://chvy8miswo1xq" path="res://sprites/Extras/BioHomeLabel.png" id="5_qe12f"]
 [ext_resource type="Script" uid="uid://c41ehdpq2ae7d" path="res://scripts/StartButton.cs" id="7_8qtwp"]
+[ext_resource type="AudioStream" uid="uid://c5kmjbeh36nve" path="res://sounds/Kahoot! Jungle Lobby Theme.mp3" id="10_5dd4i"]
 
 [sub_resource type="Animation" id="Animation_8qtwp"]
 length = 0.001
@@ -112,3 +113,6 @@ offset_bottom = 205.003
 scale = Vector2(0.746887, 1.0775)
 mouse_filter = 2
 texture = ExtResource("4_glbon")
+
+[node name="kahoot_jungle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_5dd4i")

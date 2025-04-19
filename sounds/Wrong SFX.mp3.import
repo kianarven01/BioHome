@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Wrong SFX.mp3-c5e1208b73b5557d55814abaaf70032
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0.2
 bpm=0.0
 beat_count=0

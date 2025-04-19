@@ -21,9 +21,22 @@ public partial class LivingRoom : Node2D
 	private Button carboButton;
 	private Button codonButton;
 	private Button backButton;
+	private AudioStreamPlayer2D musicPlayer;
 
 	public override void _Ready()
 	{
+		musicPlayer = GetNode<AudioStreamPlayer2D>("kahoot_lobby");
+		if (!musicPlayer.Playing)
+		{
+			GD.Print("Music is not playing, playing now.");
+			musicPlayer.Play();
+		}
+		else
+		{
+			GD.Print("Music is already playing.");
+		}
+
+	
 		exitSign = GetNode<TextureRect>("Exit"); 
 		exitSign.Visible = false; // Hide UI initially
 		
@@ -54,8 +67,37 @@ public partial class LivingRoom : Node2D
 
 		tv = GetNode<TextureRect>("TV");
 		tasks = GetNode<TextureRect>("Tasks");
-		
+
+		if (tv is TV tvScript)
+		{
+			GD.Print("Connecting signal TVUIVisibilityChanged");
+			tvScript.Connect("TVUIVisibilityChanged", new Callable(this, nameof(OnTVUIVisibilityChanged)));
+		}
+		else
+		{
+			GD.PrintErr("Failed to cast TV node to TV script.");
+		}
+
+
+    }
+
+	private void OnTVUIVisibilityChanged(bool isVisible)
+	{
+		GD.Print("Received signal: TVUIVisibilityChanged(" + isVisible + ")");
+
+		if (isVisible)
+		{
+			GD.Print("Stopping music");
+			musicPlayer.Stop();
+		}
+		else
+		{
+			GD.Print("Playing music");
+			musicPlayer.Play();
+		}
 	}
+
+
 
 	private void OnExitButtonPressed()
 	{

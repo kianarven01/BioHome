@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public partial class Codon : Node
 {
     private Button backButton;
-    private Button backtostartButton;
     private TextureButton startButton;
     private List<TextureRect> items; // List to store all items
     private int currentItemIndex = 0; // Track the current item index
@@ -14,6 +13,12 @@ public partial class Codon : Node
     private Label scoreTotalLabel; // Label to display the score
     private bool isQuizActive = true; // Tracks whether the quiz is active
     private Timer globalTimer; // Global timer for the quiz
+
+    private AudioStreamPlayer2D correctSound;
+    private AudioStreamPlayer2D wrongSound;
+    private AudioStreamPlayer2D themeMusic;
+
+
 
     private Dictionary<int, string> correctAnswers = new Dictionary<int, string>
     {
@@ -26,14 +31,18 @@ public partial class Codon : Node
     {
         // Back button to living_room.tscn
         backButton = GetNode<Button>("backButton");
-        backButton.Pressed += OnBackToStartPressed;
+        backButton.Pressed += OnBackButtonPressed;
 
-        backtostartButton = GetNode<Button>("score/backtostartButton");
-        backtostartButton.Pressed += OnBackButtonPressed;
+
 
         // Start button to show the first item
         startButton = GetNode<TextureButton>("Background/startButton");
         startButton.Pressed += OnStartButtonPressed;
+
+        correctSound = GetNode<AudioStreamPlayer2D>("correct");
+        wrongSound = GetNode<AudioStreamPlayer2D>("wrong");
+        themeMusic = GetNode<AudioStreamPlayer2D>("kahoot");
+        
 
         // Initialize items list
         items = new List<TextureRect>
@@ -69,19 +78,6 @@ public partial class Codon : Node
         GetTree().ChangeSceneToFile("res://scenes/living_room.tscn");
     }
 
-    private void OnBackToStartPressed()
-    {
-        GD.Print("Back to start button pressed");
-
-        // Get the Background TextureRect and make it visible
-        var background = GetNode<TextureRect>("Background");
-        background.Visible = true;
-
-        // Optionally, hide other elements like the score screen
-        var scoreTextureRect = GetNode<TextureRect>("score");
-        scoreTextureRect.Visible = false;
-    }
-
     private void OnStartButtonPressed()
     {
         GD.Print("Start button pressed");
@@ -111,6 +107,12 @@ public partial class Codon : Node
             currentItem.Visible = true;
             currentItem.Position = new Vector2(0, 0); // Ensure the item is positioned at (0, 0)
             currentItemIndex = index;
+
+            if (themeMusic.Playing)
+            {
+                themeMusic.Stop(); // Stop if already playing to reset it
+            }
+            themeMusic.Play(); // Play from the beginning
 
             // Connect button signals for the current item
             ConnectButtonsForCurrentItem(currentItem);
@@ -148,28 +150,45 @@ public partial class Codon : Node
     }
 
 
-    private void OnItemButtonPressed(Button pressedButton)
+    private async void OnItemButtonPressed(Button pressedButton)
     {
         GD.Print($"Button pressed: {pressedButton.Name}");
 
         if (correctAnswers.ContainsKey(currentItemIndex) && pressedButton.Name == correctAnswers[currentItemIndex])
         {
             GD.Print("Correct answer!");
-            score++;
-            UpdateScoreLabel();
+            correctSound.Play();
         }
         else
         {
             GD.Print("Wrong answer!");
+            wrongSound.Play();
+        }
+
+        // Wait 0.5 seconds to let the sound play
+        await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
+
+        if (correctAnswers.ContainsKey(currentItemIndex) && pressedButton.Name == correctAnswers[currentItemIndex])
+        {
+            score++;
+            UpdateScoreLabel();
         }
 
         ShowNextItem();
     }
 
 
+
+
     private void ShowNextItem()
     {
         int nextIndex = currentItemIndex + 1;
+
+        if (themeMusic.Playing)
+        {
+            themeMusic.Stop();
+        }
+
         if (nextIndex < items.Count)
         {
             ShowItem(nextIndex);
@@ -182,10 +201,10 @@ public partial class Codon : Node
         }
     }
 
-   private void ShowScoreScreen()
+    private void ShowScoreScreen()
     {
-        StopGlobalTimer(); // Stop the global timer
-        isQuizActive = false; // Mark the quiz as inactive
+        StopGlobalTimer();
+        isQuizActive = false;
 
         // Hide all items
         foreach (var item in items)
@@ -193,13 +212,20 @@ public partial class Codon : Node
             item.Visible = false;
         }
 
-        // Show the score TextureRect
+        // Show the score screen
         var scoreTextureRect = GetNode<TextureRect>("score");
-        scoreTextureRect.Visible = true; // Ensure the score node is visible
-        scoreTextureRect.Position = new Vector2(0, 0); // Position it at the top-left corner
-        scoreTextureRect.ZIndex = 100; // Ensure it's on top of other elements
+        scoreTextureRect.Visible = true;
+        scoreTextureRect.Position = new Vector2(0, 0);
+        scoreTextureRect.ZIndex = 100;
+
+        // Make sure the back button is above it
+        backButton.Visible = true;
+        backButton.Disabled = false;
+        backButton.ZIndex = 200;
+
         GD.Print($"Score screen is now visible. Position: {scoreTextureRect.Position}, Visible: {scoreTextureRect.Visible}");
     }
+
 
     private void StartGlobalTimer()
     {
@@ -232,7 +258,7 @@ public partial class Codon : Node
         UpdateTimerLabel(null); // Update the label immediately (will be updated in ShowItem)
     }
 
-    private void OnGlobalTimerTimeout()
+    private async void OnGlobalTimerTimeout()
     {
         if (!isQuizActive)
         {
@@ -250,7 +276,12 @@ public partial class Codon : Node
         if (timeLeft <= 0)
         {
             GD.Print("Time's up!");
-            ShowNextItem(); // Move to next item
+            wrongSound.Play();
+
+            // Optional: small delay to let the sound play before moving on
+            await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
+
+            ShowNextItem();
         }
     }
 

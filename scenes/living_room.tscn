@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxdek8wdmp80v"]
+[gd_scene load_steps=26 format=3 uid="uid://bxdek8wdmp80v"]
 
 [ext_resource type="Script" uid="uid://clpm87q17muv" path="res://scripts/LivingRoom.cs" id="1_tcv1k"]
 [ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://sprites/Extras/livingroombg.png" id="2_sc017"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dxdo5pvv36r5n" path="res://sprites/Extras/task2.png" id="18_6ryxo"]
 [ext_resource type="Texture2D" uid="uid://d0scl083fs4q2" path="res://sprites/Extras/task3.png" id="19_xdb3q"]
 [ext_resource type="Texture2D" uid="uid://do3akyg1uxns2" path="res://sprites/Extras/task4.png" id="20_81vpo"]
+[ext_resource type="AudioStream" uid="uid://bydvk3imbueyj" path="res://sounds/Kahoot Lobby Music.mp3" id="22_5cgma"]
 
 [sub_resource type="SystemFont" id="SystemFont_jm2cs"]
 font_weight = 600
@@ -256,3 +257,6 @@ offset_bottom = 311.692
 scale = Vector2(0.28351, 0.312588)
 icon = ExtResource("12_6ryxo")
 flat = true
+
+[node name="kahoot_lobby" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_5cgma")
