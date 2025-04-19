@@ -175,6 +175,7 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 
 [node name="Label" type="Label" parent="second_item"]
+layout_mode = 0
 offset_left = 1514.0
 offset_top = 269.0
 offset_right = 1623.0
@@ -249,6 +250,7 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 
 [node name="Label" type="Label" parent="third_item"]
+layout_mode = 0
 offset_left = 1410.0
 offset_top = 281.0
 offset_right = 1519.0
@@ -322,6 +324,7 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 
 [node name="Label" type="Label" parent="fourth_item"]
+layout_mode = 0
 offset_left = 1514.0
 offset_top = 269.0
 offset_right = 1623.0
@@ -396,6 +399,7 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 
 [node name="Label" type="Label" parent="fifth_item"]
+layout_mode = 0
 offset_left = 1658.0
 offset_top = 281.0
 offset_right = 1767.0
