@@ -119,19 +119,17 @@ font_size = 24
 script = ExtResource("1_1k2yw")
 
 [node name="Background" type="TextureRect" parent="."]
-offset_left = 583.0
-offset_top = -1.0
-offset_right = 1399.0
-offset_bottom = 1078.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_x8g7j")
 expand_mode = 5
 
 [node name="B1" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 98.0
-offset_top = 389.0
-offset_right = 172.0
-offset_bottom = 461.0
+offset_left = 329.0
+offset_top = 533.0
+offset_right = 496.0
+offset_bottom = 677.0
 text = "
 "
 icon = ExtResource("2_23bgc")
@@ -141,10 +139,10 @@ expand_icon = true
 
 [node name="B2" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 363.0
-offset_top = 388.0
-offset_right = 437.0
-offset_bottom = 460.0
+offset_left = 630.0
+offset_top = 383.0
+offset_right = 793.0
+offset_bottom = 533.0
 icon = ExtResource("3_b52nx")
 flat = true
 icon_alignment = 1
@@ -152,10 +150,10 @@ expand_icon = true
 
 [node name="B3" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 622.0
-offset_top = 387.0
-offset_right = 696.0
-offset_bottom = 459.0
+offset_left = 945.0
+offset_top = 469.0
+offset_right = 1106.0
+offset_bottom = 611.0
 icon = ExtResource("4_74vtm")
 flat = true
 icon_alignment = 1
@@ -163,10 +161,10 @@ expand_icon = true
 
 [node name="B4" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 517.0
-offset_right = 300.0
-offset_bottom = 589.0
+offset_left = 1293.0
+offset_top = 387.0
+offset_right = 1458.0
+offset_bottom = 565.0
 icon = ExtResource("5_jn705")
 flat = true
 icon_alignment = 1
@@ -174,10 +172,10 @@ expand_icon = true
 
 [node name="B5" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 494.0
-offset_top = 518.0
-offset_right = 568.0
-offset_bottom = 590.0
+offset_left = 1606.0
+offset_top = 478.0
+offset_right = 1770.0
+offset_bottom = 623.0
 icon = ExtResource("6_3m784")
 flat = true
 icon_alignment = 1
@@ -185,10 +183,10 @@ expand_icon = true
 
 [node name="B6" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 671.0
-offset_right = 177.0
-offset_bottom = 743.0
+offset_left = 591.0
+offset_top = 736.0
+offset_right = 779.0
+offset_bottom = 899.0
 icon = ExtResource("7_roae4")
 flat = true
 icon_alignment = 1
@@ -196,10 +194,10 @@ expand_icon = true
 
 [node name="B7" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 368.0
-offset_top = 670.0
-offset_right = 442.0
-offset_bottom = 742.0
+offset_left = 1166.0
+offset_top = 735.0
+offset_right = 1390.0
+offset_bottom = 891.0
 icon = ExtResource("8_v8cba")
 flat = true
 icon_alignment = 1
@@ -207,10 +205,10 @@ expand_icon = true
 
 [node name="B8" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 627.0
-offset_top = 669.0
-offset_right = 701.0
-offset_bottom = 741.0
+offset_left = 297.0
+offset_top = 853.0
+offset_right = 464.0
+offset_bottom = 1027.0
 icon = ExtResource("9_5xwvf")
 flat = true
 icon_alignment = 1
@@ -218,10 +216,10 @@ expand_icon = true
 
 [node name="B9" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 804.0
-offset_right = 300.0
-offset_bottom = 876.0
+offset_left = 851.0
+offset_top = 850.0
+offset_right = 1070.0
+offset_bottom = 1015.0
 icon = ExtResource("10_jr2bc")
 flat = true
 icon_alignment = 1
@@ -229,10 +227,10 @@ expand_icon = true
 
 [node name="B10" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 494.0
-offset_top = 805.0
-offset_right = 568.0
-offset_bottom = 877.0
+offset_left = 1476.0
+offset_top = 815.0
+offset_right = 1649.0
+offset_bottom = 984.0
 icon = ExtResource("11_5gg8a")
 flat = true
 icon_alignment = 1
@@ -249,67 +247,67 @@ label_settings = SubResource("LabelSettings_1h2tm")
 
 [node name="backButton" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 724.0
-offset_top = 980.0
-offset_right = 811.0
-offset_bottom = 1074.0
+offset_left = 1765.0
+offset_top = 935.0
+offset_right = 1882.0
+offset_bottom = 1059.0
 icon = ExtResource("64_jti6f")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
 [node name="First_Item" type="TextureRect" parent="."]
-offset_left = 101.0
-offset_top = 1185.0
-offset_right = 917.0
-offset_bottom = 2264.0
+offset_left = 30.0
+offset_top = 1160.0
+offset_right = 1950.0
+offset_bottom = 2240.0
 texture = ExtResource("12_oxix7")
 expand_mode = 5
 
 [node name="Exit" type="Button" parent="First_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1819.0
+offset_top = 6.0
+offset_right = 1888.0
+offset_bottom = 74.0
 theme = ExtResource("14_xoj54")
 
 [node name="Button1" type="Button" parent="First_Item"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 569.0
-offset_right = 723.0
-offset_bottom = 645.0
+offset_left = 345.0
+offset_top = 746.0
+offset_right = 971.0
+offset_bottom = 822.0
 theme = ExtResource("13_ls5c0")
 toggle_mode = true
 button_group = ExtResource("16_cxsot")
 
 [node name="Button2" type="Button" parent="First_Item"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 674.0
-offset_right = 723.0
-offset_bottom = 750.0
+offset_left = 342.0
+offset_top = 848.0
+offset_right = 968.0
+offset_bottom = 924.0
 theme = ExtResource("14_n177a")
 toggle_mode = true
 button_group = ExtResource("16_cxsot")
 
 [node name="Button3" type="Button" parent="First_Item"]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 774.0
-offset_right = 722.0
-offset_bottom = 850.0
+offset_left = 1000.0
+offset_top = 746.0
+offset_right = 1626.0
+offset_bottom = 822.0
 theme = ExtResource("15_sduna")
 toggle_mode = true
 button_group = ExtResource("16_cxsot")
 
 [node name="Button4" type="Button" parent="First_Item"]
 layout_mode = 0
-offset_left = 95.0
-offset_top = 875.0
-offset_right = 721.0
-offset_bottom = 951.0
+offset_left = 999.0
+offset_top = 849.0
+offset_right = 1625.0
+offset_bottom = 925.0
 theme = ExtResource("16_vgf2m")
 toggle_mode = true
 button_group = ExtResource("16_cxsot")
@@ -329,59 +327,59 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Second_Item" type="TextureRect" parent="."]
-offset_left = 947.0
-offset_top = 1189.0
-offset_right = 1763.0
-offset_bottom = 2268.0
+offset_left = 19.0
+offset_top = 2275.0
+offset_right = 1939.0
+offset_bottom = 3355.0
 texture = ExtResource("17_8msul")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Second_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 557.0
-offset_right = 729.0
-offset_bottom = 633.0
+offset_left = 350.0
+offset_top = 727.0
+offset_right = 976.0
+offset_bottom = 803.0
 theme = ExtResource("18_1aobj")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_jti6f")
 
 [node name="Button2" type="Button" parent="Second_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 662.0
-offset_right = 729.0
-offset_bottom = 738.0
+offset_left = 350.0
+offset_top = 832.0
+offset_right = 976.0
+offset_bottom = 908.0
 theme = ExtResource("19_5d2sx")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_jti6f")
 
 [node name="Button3" type="Button" parent="Second_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 762.0
-offset_right = 728.0
-offset_bottom = 838.0
+offset_left = 1001.0
+offset_top = 728.0
+offset_right = 1627.0
+offset_bottom = 804.0
 theme = ExtResource("20_5apch")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_jti6f")
 
 [node name="Button4" type="Button" parent="Second_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 863.0
-offset_right = 727.0
-offset_bottom = 939.0
+offset_left = 1000.0
+offset_top = 829.0
+offset_right = 1626.0
+offset_bottom = 905.0
 theme = ExtResource("21_ls5c0")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_jti6f")
 
 [node name="Exit" type="Button" parent="Second_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1812.0
+offset_top = 6.0
+offset_right = 1881.0
+offset_bottom = 74.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Second_Item"]
@@ -399,59 +397,59 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Second_Item"]
 
 [node name="Third_Item" type="TextureRect" parent="."]
-offset_left = 1780.0
-offset_top = 1187.0
-offset_right = 2596.0
-offset_bottom = 2266.0
+offset_left = 1970.0
+offset_top = 2277.0
+offset_right = 3890.0
+offset_bottom = 3357.0
 texture = ExtResource("21_d3yak")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Third_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 557.0
-offset_right = 729.0
-offset_bottom = 633.0
+offset_left = 338.0
+offset_top = 750.0
+offset_right = 964.0
+offset_bottom = 826.0
 theme = ExtResource("23_d3yak")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_wsuep")
 
 [node name="Button2" type="Button" parent="Third_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 662.0
-offset_right = 729.0
-offset_bottom = 738.0
+offset_left = 338.0
+offset_top = 847.0
+offset_right = 964.0
+offset_bottom = 923.0
 theme = ExtResource("24_vwj8f")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_wsuep")
 
 [node name="Button3" type="Button" parent="Third_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 762.0
-offset_right = 728.0
-offset_bottom = 838.0
+offset_left = 1004.0
+offset_top = 749.0
+offset_right = 1630.0
+offset_bottom = 825.0
 theme = ExtResource("25_4b1v2")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_wsuep")
 
 [node name="Button4" type="Button" parent="Third_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 863.0
-offset_right = 727.0
-offset_bottom = 939.0
+offset_left = 1003.0
+offset_top = 848.0
+offset_right = 1629.0
+offset_bottom = 924.0
 theme = ExtResource("26_q1gm0")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_wsuep")
 
 [node name="Exit" type="Button" parent="Third_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1814.0
+offset_top = 6.0
+offset_right = 1883.0
+offset_bottom = 74.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Third_Item"]
@@ -469,59 +467,59 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Third_Item"]
 
 [node name="Forth_Item" type="TextureRect" parent="."]
-offset_left = 2669.0
-offset_top = 1193.0
-offset_right = 3485.0
-offset_bottom = 2272.0
+offset_left = 1982.0
+offset_top = 1178.0
+offset_right = 3902.0
+offset_bottom = 2258.0
 texture = ExtResource("22_vwj8f")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Forth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 557.0
-offset_right = 729.0
-offset_bottom = 633.0
+offset_left = 344.0
+offset_top = 746.0
+offset_right = 970.0
+offset_bottom = 822.0
 theme = ExtResource("28_qkyp5")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_1h2tm")
 
 [node name="Button2" type="Button" parent="Forth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 662.0
-offset_right = 729.0
-offset_bottom = 738.0
+offset_left = 344.0
+offset_top = 845.0
+offset_right = 970.0
+offset_bottom = 921.0
 theme = ExtResource("29_t8wsm")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_1h2tm")
 
 [node name="Button3" type="Button" parent="Forth_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 762.0
-offset_right = 728.0
-offset_bottom = 838.0
+offset_left = 992.0
+offset_top = 747.0
+offset_right = 1618.0
+offset_bottom = 823.0
 theme = ExtResource("30_q426i")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_1h2tm")
 
 [node name="Button4" type="Button" parent="Forth_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 863.0
-offset_right = 727.0
-offset_bottom = 939.0
+offset_left = 992.0
+offset_top = 845.0
+offset_right = 1618.0
+offset_bottom = 921.0
 theme = ExtResource("31_v0n6d")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_1h2tm")
 
 [node name="Exit" type="Button" parent="Forth_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1812.0
+offset_top = 8.0
+offset_right = 1881.0
+offset_bottom = 76.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Forth_Item"]
@@ -539,59 +537,59 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Forth_Item"]
 
 [node name="Fifth_Item" type="TextureRect" parent="."]
-offset_left = 1976.0
-offset_top = -5.0
-offset_right = 2792.0
-offset_bottom = 1074.0
+offset_left = 3959.0
+offset_top = 1213.0
+offset_right = 5879.0
+offset_bottom = 2293.0
 texture = ExtResource("23_4b1v2")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Fifth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 558.0
-offset_right = 729.0
-offset_bottom = 634.0
+offset_left = 337.0
+offset_top = 748.0
+offset_right = 963.0
+offset_bottom = 824.0
 theme = ExtResource("33_1tt3j")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_cxsot")
 
 [node name="Button2" type="Button" parent="Fifth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 663.0
-offset_right = 729.0
-offset_bottom = 739.0
+offset_left = 337.0
+offset_top = 853.0
+offset_right = 963.0
+offset_bottom = 929.0
 theme = ExtResource("34_hg0m6")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_cxsot")
 
 [node name="Button3" type="Button" parent="Fifth_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 763.0
-offset_right = 728.0
-offset_bottom = 839.0
+offset_left = 984.0
+offset_top = 749.0
+offset_right = 1610.0
+offset_bottom = 825.0
 theme = ExtResource("35_bs6ta")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_cxsot")
 
 [node name="Button4" type="Button" parent="Fifth_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 864.0
-offset_right = 727.0
-offset_bottom = 940.0
+offset_left = 983.0
+offset_top = 850.0
+offset_right = 1609.0
+offset_bottom = 926.0
 theme = ExtResource("36_l35go")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_cxsot")
 
 [node name="Exit" type="Button" parent="Fifth_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1804.0
+offset_top = 2.0
+offset_right = 1873.0
+offset_bottom = 70.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Fifth_Item"]
@@ -609,59 +607,59 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Fifth_Item"]
 
 [node name="Sixth_Item" type="TextureRect" parent="."]
-offset_left = 2852.0
-offset_top = -7.0
-offset_right = 3668.0
-offset_bottom = 1072.0
+offset_left = 2006.0
+offset_top = 35.0
+offset_right = 3926.0
+offset_bottom = 1115.0
 texture = ExtResource("24_q1gm0")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Sixth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 558.0
-offset_right = 729.0
-offset_bottom = 634.0
+offset_left = 342.0
+offset_top = 747.0
+offset_right = 968.0
+offset_bottom = 823.0
 theme = ExtResource("38_nfwas")
 toggle_mode = true
 button_group = ExtResource("44_c5k74")
 
 [node name="Button2" type="Button" parent="Sixth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 663.0
-offset_right = 729.0
-offset_bottom = 739.0
+offset_left = 342.0
+offset_top = 848.0
+offset_right = 968.0
+offset_bottom = 924.0
 theme = ExtResource("39_af3js")
 toggle_mode = true
 button_group = ExtResource("44_c5k74")
 
 [node name="Button3" type="Button" parent="Sixth_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 763.0
-offset_right = 728.0
-offset_bottom = 839.0
+offset_left = 986.0
+offset_top = 746.0
+offset_right = 1612.0
+offset_bottom = 822.0
 theme = ExtResource("40_1crmi")
 toggle_mode = true
 button_group = ExtResource("44_c5k74")
 
 [node name="Button4" type="Button" parent="Sixth_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 864.0
-offset_right = 727.0
-offset_bottom = 940.0
+offset_left = 985.0
+offset_top = 848.0
+offset_right = 1611.0
+offset_bottom = 924.0
 theme = ExtResource("41_6qfbt")
 toggle_mode = true
 button_group = ExtResource("44_c5k74")
 
 [node name="Exit" type="Button" parent="Sixth_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1807.0
+offset_top = 5.0
+offset_right = 1876.0
+offset_bottom = 73.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Sixth_Item"]
@@ -679,59 +677,59 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Sixth_Item"]
 
 [node name="Seventh_Item" type="TextureRect" parent="."]
-offset_left = 2830.0
-offset_top = -1168.0
-offset_right = 3646.0
-offset_bottom = -89.0
+offset_left = 3998.0
+offset_top = -1252.0
+offset_right = 5918.0
+offset_bottom = -172.0
 texture = ExtResource("25_qkyp5")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Seventh_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 558.0
-offset_right = 729.0
-offset_bottom = 634.0
+offset_left = 327.0
+offset_top = 752.0
+offset_right = 953.0
+offset_bottom = 828.0
 theme = ExtResource("43_qys4t")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_q8kkv")
 
 [node name="Button2" type="Button" parent="Seventh_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 663.0
-offset_right = 729.0
-offset_bottom = 739.0
+offset_left = 327.0
+offset_top = 857.0
+offset_right = 953.0
+offset_bottom = 933.0
 theme = ExtResource("44_1k2yw")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_q8kkv")
 
 [node name="Button3" type="Button" parent="Seventh_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 763.0
-offset_right = 728.0
-offset_bottom = 839.0
+offset_left = 989.0
+offset_top = 751.0
+offset_right = 1615.0
+offset_bottom = 827.0
 theme = ExtResource("45_w5tk1")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_q8kkv")
 
 [node name="Button4" type="Button" parent="Seventh_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 864.0
-offset_right = 727.0
-offset_bottom = 940.0
+offset_left = 988.0
+offset_top = 852.0
+offset_right = 1614.0
+offset_bottom = 928.0
 theme = ExtResource("46_xoj54")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_q8kkv")
 
 [node name="Exit" type="Button" parent="Seventh_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1778.0
+offset_top = 22.0
+offset_right = 1847.0
+offset_bottom = 90.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Seventh_Item"]
@@ -749,59 +747,59 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Seventh_Item"]
 
 [node name="Eigth_Item" type="TextureRect" parent="."]
-offset_left = 1805.0
-offset_top = -1170.0
-offset_right = 2621.0
-offset_bottom = -91.0
+offset_left = 2008.0
+offset_top = -1242.0
+offset_right = 3928.0
+offset_bottom = -162.0
 texture = ExtResource("26_t8wsm")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Eigth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 558.0
-offset_right = 729.0
-offset_bottom = 634.0
+offset_left = 346.0
+offset_top = 754.0
+offset_right = 972.0
+offset_bottom = 830.0
 theme = ExtResource("48_jti6f")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_lm7fn")
 
 [node name="Button2" type="Button" parent="Eigth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 663.0
-offset_right = 729.0
-offset_bottom = 739.0
+offset_left = 346.0
+offset_top = 859.0
+offset_right = 972.0
+offset_bottom = 935.0
 theme = ExtResource("49_wsuep")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_lm7fn")
 
 [node name="Button3" type="Button" parent="Eigth_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 763.0
-offset_right = 728.0
-offset_bottom = 839.0
+offset_left = 998.0
+offset_top = 757.0
+offset_right = 1624.0
+offset_bottom = 833.0
 theme = ExtResource("50_1h2tm")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_lm7fn")
 
 [node name="Button4" type="Button" parent="Eigth_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 864.0
-offset_right = 727.0
-offset_bottom = 940.0
+offset_left = 997.0
+offset_top = 858.0
+offset_right = 1623.0
+offset_bottom = 934.0
 theme = ExtResource("51_cxsot")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_lm7fn")
 
 [node name="Exit" type="Button" parent="Eigth_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1811.0
+offset_top = 14.0
+offset_right = 1880.0
+offset_bottom = 82.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Eigth_Item"]
@@ -819,59 +817,59 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Eigth_Item"]
 
 [node name="Ninth_Item" type="TextureRect" parent="."]
-offset_left = 932.0
-offset_top = -1177.0
-offset_right = 1748.0
-offset_bottom = -98.0
+offset_left = 9.0
+offset_top = -1256.0
+offset_right = 1929.0
+offset_bottom = -176.0
 texture = ExtResource("27_q426i")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Ninth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 558.0
-offset_right = 729.0
-offset_bottom = 634.0
+offset_left = 327.0
+offset_top = 749.0
+offset_right = 953.0
+offset_bottom = 825.0
 theme = ExtResource("53_q8kkv")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_c5k74")
 
 [node name="Button2" type="Button" parent="Ninth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 663.0
-offset_right = 729.0
-offset_bottom = 739.0
+offset_left = 327.0
+offset_top = 851.0
+offset_right = 953.0
+offset_bottom = 927.0
 theme = ExtResource("54_lm7fn")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_c5k74")
 
 [node name="Button3" type="Button" parent="Ninth_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 763.0
-offset_right = 728.0
-offset_bottom = 839.0
+offset_left = 984.0
+offset_top = 751.0
+offset_right = 1610.0
+offset_bottom = 827.0
 theme = ExtResource("55_c5k74")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_c5k74")
 
 [node name="Button4" type="Button" parent="Ninth_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 864.0
-offset_right = 727.0
-offset_bottom = 940.0
+offset_left = 983.0
+offset_top = 852.0
+offset_right = 1609.0
+offset_bottom = 928.0
 theme = ExtResource("56_oe7ye")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_c5k74")
 
 [node name="Exit" type="Button" parent="Ninth_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1808.0
+offset_top = 5.0
+offset_right = 1877.0
+offset_bottom = 73.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Ninth_Item"]
@@ -889,59 +887,58 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Ninth_Item"]
 
 [node name="Tenth_Item" type="TextureRect" parent="."]
-offset_left = 49.0
-offset_top = -1159.0
-offset_right = 865.0
-offset_bottom = -80.0
+offset_left = 4025.0
+offset_top = 34.0
+offset_right = 5945.0
+offset_bottom = 1114.0
 texture = ExtResource("28_v0n6d")
 expand_mode = 5
 
 [node name="Button1" type="Button" parent="Tenth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 558.0
-offset_right = 729.0
-offset_bottom = 634.0
+offset_left = 333.0
+offset_top = 751.0
+offset_right = 959.0
+offset_bottom = 827.0
 theme = ExtResource("58_luuui")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_oe7ye")
 
 [node name="Button2" type="Button" parent="Tenth_Item"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 663.0
-offset_right = 729.0
-offset_bottom = 739.0
+offset_left = 333.0
+offset_top = 856.0
+offset_right = 959.0
+offset_bottom = 932.0
 theme = ExtResource("59_hb878")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_oe7ye")
 
 [node name="Button3" type="Button" parent="Tenth_Item"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 763.0
-offset_right = 728.0
-offset_bottom = 839.0
+offset_left = 999.0
+offset_top = 751.0
+offset_right = 1625.0
+offset_bottom = 827.0
 theme = ExtResource("60_qm1wf")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_oe7ye")
 
 [node name="Button4" type="Button" parent="Tenth_Item"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 864.0
-offset_right = 727.0
-offset_bottom = 940.0
+offset_left = 998.0
+offset_top = 852.0
+offset_right = 1624.0
+offset_bottom = 928.0
 theme = ExtResource("61_p16v8")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_oe7ye")
 
 [node name="Exit" type="Button" parent="Tenth_Item"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = 11.0
-offset_right = 803.0
-offset_bottom = 79.0
+offset_left = 1802.0
+offset_right = 1871.0
+offset_bottom = 68.0
 theme = ExtResource("14_xoj54")
 
 [node name="Label" type="Label" parent="Tenth_Item"]
@@ -959,10 +956,10 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Tenth_Item"]
 
 [node name="EndGame" type="TextureRect" parent="."]
-offset_left = 691.0
-offset_top = 408.0
-offset_right = 1306.0
-offset_bottom = 818.0
+offset_left = 664.0
+offset_top = 367.0
+offset_right = 1279.0
+offset_bottom = 777.0
 texture = ExtResource("67_1h2tm")
 
 [node name="Label" type="Label" parent="EndGame"]

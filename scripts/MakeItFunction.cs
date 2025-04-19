@@ -128,7 +128,7 @@ public partial class MakeItFunction : Node2D
 		items[index].Visible = true;
 		if (index <= 10)
 		{
-			items[index].Position = new Vector2(583, -1);
+			items[index].Position = new Vector2(0, 0);
 		}
 		
 		if (totalStartTime < 0)
