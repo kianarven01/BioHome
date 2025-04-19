@@ -79,7 +79,7 @@ public partial class LivingRoom : Node2D
 		}
 
 
-    }
+	}
 
 	private void OnTVUIVisibilityChanged(bool isVisible)
 	{
