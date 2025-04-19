@@ -17,6 +17,8 @@ public partial class Codon : Node
     private AudioStreamPlayer2D correctSound;
     private AudioStreamPlayer2D wrongSound;
     private AudioStreamPlayer2D themeMusic;
+    private AudioStreamPlayer2D startMusic;
+    private AudioStreamPlayer2D scoreMusic;
 
 
 
@@ -24,7 +26,9 @@ public partial class Codon : Node
     {
         { 0, "button_q2" }, // Correct answer for first_item
         { 1, "button_q3" }, // Correct answer for second_item
-        { 2, "button_q1" }  // Correct answer for third_item
+        { 2, "button_q1" },  // Correct answer for third_item
+        { 3, "button_q3" },  // Correct answer for fourth_item
+        { 4, "button_q3" } // Correct answer for fifth_item
     };
 
     public override void _Ready()
@@ -33,8 +37,6 @@ public partial class Codon : Node
         backButton = GetNode<Button>("backButton");
         backButton.Pressed += OnBackButtonPressed;
 
-
-
         // Start button to show the first item
         startButton = GetNode<TextureButton>("Background/startButton");
         startButton.Pressed += OnStartButtonPressed;
@@ -42,6 +44,9 @@ public partial class Codon : Node
         correctSound = GetNode<AudioStreamPlayer2D>("correct");
         wrongSound = GetNode<AudioStreamPlayer2D>("wrong");
         themeMusic = GetNode<AudioStreamPlayer2D>("kahoot");
+        startMusic = GetNode<AudioStreamPlayer2D>("start_music");
+        scoreMusic = GetNode<AudioStreamPlayer2D>("score_music");
+        startMusic.Play();
         
 
         // Initialize items list
@@ -50,6 +55,8 @@ public partial class Codon : Node
             GetNode<TextureRect>("first_item"),
             GetNode<TextureRect>("second_item"),
             GetNode<TextureRect>("third_item"),
+            GetNode<TextureRect>("fourth_item"),
+            GetNode<TextureRect>("fifth_item")
         };
 
         // Hide all items initially
@@ -81,6 +88,12 @@ public partial class Codon : Node
     private void OnStartButtonPressed()
     {
         GD.Print("Start button pressed");
+
+        if (startMusic.Playing)
+        {
+            startMusic.Stop();
+        }
+
 
         // Reset the quiz state
         ResetQuiz();
@@ -177,9 +190,6 @@ public partial class Codon : Node
         ShowNextItem();
     }
 
-
-
-
     private void ShowNextItem()
     {
         int nextIndex = currentItemIndex + 1;
@@ -206,6 +216,16 @@ public partial class Codon : Node
         StopGlobalTimer();
         isQuizActive = false;
 
+        // Stop other music if playing
+        if (themeMusic.Playing)
+            themeMusic.Stop();
+
+        if (startMusic.Playing)
+            startMusic.Stop();
+
+        // Play score screen music
+        scoreMusic.Play();
+
         // Hide all items
         foreach (var item in items)
         {
@@ -225,6 +245,7 @@ public partial class Codon : Node
 
         GD.Print($"Score screen is now visible. Position: {scoreTextureRect.Position}, Visible: {scoreTextureRect.Visible}");
     }
+
 
 
     private void StartGlobalTimer()
@@ -307,32 +328,32 @@ public partial class Codon : Node
     }
 
     private void ResetQuiz()
-{
-    GD.Print("Resetting quiz...");
-
-    // Reset variables
-    currentItemIndex = 0;
-    timeLeft = 10;
-    score = 0;
-    isQuizActive = true;
-
-    // Reset score label
-    UpdateScoreLabel();
-
-    // Hide all items
-    foreach (var item in items)
     {
-        item.Visible = false;
+        GD.Print("Resetting quiz...");
+
+        // Reset variables
+        currentItemIndex = 0;
+        timeLeft = 10;
+        score = 0;
+        isQuizActive = true;
+
+        // Reset score label
+        UpdateScoreLabel();
+
+        // Hide all items
+        foreach (var item in items)
+        {
+            item.Visible = false;
+        }
+
+        // Hide the score screen
+        var scoreTextureRect = GetNode<TextureRect>("score");
+        scoreTextureRect.Visible = false;
+
+        // Show the background
+        var background = GetNode<TextureRect>("Background");
+        background.Visible = true;
+
+        GD.Print("Quiz reset complete.");
     }
-
-    // Hide the score screen
-    var scoreTextureRect = GetNode<TextureRect>("score");
-    scoreTextureRect.Visible = false;
-
-    // Show the background
-    var background = GetNode<TextureRect>("Background");
-    background.Visible = true;
-
-    GD.Print("Quiz reset complete.");
-}
 }

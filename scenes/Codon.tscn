@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cer3ao81rrsa6"]
+[gd_scene load_steps=14 format=3 uid="uid://cer3ao81rrsa6"]
 
 [ext_resource type="Texture2D" uid="uid://bl1e6wyssmgjo" path="res://sprites/Codon/Background.png" id="1_e13xn"]
 [ext_resource type="Script" uid="uid://b7coetmaqp1p0" path="res://scripts/Codon.cs" id="1_ipvu1"]
@@ -6,9 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="3_ph5kb"]
 [ext_resource type="Texture2D" uid="uid://dtr04f7bfb1ax" path="res://sprites/Codon/item_bg.png" id="5_36d21"]
 [ext_resource type="FontFile" uid="uid://b52dwtx7yibdv" path="res://fonts/Ldfcomicsansbold-zgma.ttf" id="6_bkh3i"]
+[ext_resource type="FontFile" uid="uid://dcpooywdciewd" path="res://fonts/Ldfcomicsanslight-6dZo.ttf" id="6_stsq8"]
 [ext_resource type="AudioStream" uid="uid://05la0gnuoemi" path="res://sounds/Kahoot In Game Music Countdown 10s.mp3" id="7_ed67h"]
 [ext_resource type="AudioStream" uid="uid://csu0qhcwd0eai" path="res://sounds/Correct SFX.mp3" id="7_w41f1"]
 [ext_resource type="AudioStream" uid="uid://cnv1u5e87yyei" path="res://sounds/Wrong SFX.mp3" id="8_w41f1"]
+[ext_resource type="AudioStream" uid="uid://di6xauu5vcr0a" path="res://sounds/Kahoot! 80s Vibe Theme.mp3" id="10_vugfx"]
+[ext_resource type="AudioStream" uid="uid://dkyj1j2gisjxc" path="res://sounds/Kahoot! Podium Theme Music.mp3" id="11_stsq8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w41f1"]
 bg_color = Color(0.701134, 0.25753, 0.699937, 1)
@@ -23,10 +26,8 @@ script = ExtResource("1_ipvu1")
 [node name="GlobalTimer" type="Timer" parent="."]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_left = 4.0
-offset_top = 1.0
-offset_right = 1924.0
-offset_bottom = 1081.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_e13xn")
 
 [node name="startButton" type="TextureButton" parent="Background"]
@@ -99,6 +100,19 @@ offset_bottom = 179.0
 theme_override_font_sizes/font_size = 50
 text = "10"
 
+[node name="Label" type="Label" parent="first_item"]
+layout_mode = 0
+offset_left = 1343.0
+offset_top = 277.0
+offset_right = 1452.0
+offset_bottom = 346.0
+theme_override_colors/font_shadow_color = Color(0.798487, 0.0955307, 0.59917, 1)
+theme_override_colors/font_outline_color = Color(0.703356, 2.34878e-05, 0.51229, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_stsq8")
+theme_override_font_sizes/font_size = 50
+text = "DNA"
+
 [node name="second_item" type="TextureRect" parent="."]
 offset_left = 4316.0
 offset_right = 6236.0
@@ -159,6 +173,18 @@ offset_right = 170.0
 offset_bottom = 174.0
 theme_override_font_sizes/font_size = 50
 text = "10"
+
+[node name="Label" type="Label" parent="second_item"]
+offset_left = 1514.0
+offset_top = 269.0
+offset_right = 1623.0
+offset_bottom = 338.0
+theme_override_colors/font_shadow_color = Color(0.798487, 0.0955307, 0.59917, 1)
+theme_override_colors/font_outline_color = Color(0.703356, 2.34878e-05, 0.51229, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_stsq8")
+theme_override_font_sizes/font_size = 50
+text = "DNA"
 
 [node name="third_item" type="TextureRect" parent="."]
 offset_left = 6447.0
@@ -222,6 +248,165 @@ offset_bottom = 174.0
 theme_override_font_sizes/font_size = 50
 text = "10"
 
+[node name="Label" type="Label" parent="third_item"]
+offset_left = 1410.0
+offset_top = 281.0
+offset_right = 1519.0
+offset_bottom = 350.0
+theme_override_colors/font_shadow_color = Color(0.798487, 0.0955307, 0.59917, 1)
+theme_override_colors/font_outline_color = Color(0.703356, 2.34878e-05, 0.51229, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_stsq8")
+theme_override_font_sizes/font_size = 50
+text = "RNA"
+
+[node name="fourth_item" type="TextureRect" parent="."]
+offset_left = 8632.0
+offset_right = 10552.0
+offset_bottom = 1080.0
+texture = ExtResource("5_36d21")
+
+[node name="question" type="Label" parent="fourth_item"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 320.0
+offset_right = 1519.0
+offset_bottom = 470.0
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 125
+text = "CAA-CGT-GGC-CAC"
+
+[node name="button_q1" type="Button" parent="fourth_item"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 532.0
+offset_right = 1446.0
+offset_bottom = 672.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "GTT-GCA-CGG-GTG"
+
+[node name="button_q2" type="Button" parent="fourth_item"]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 709.0
+offset_right = 1444.0
+offset_bottom = 849.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "GTT-GCT-CCG-GTG"
+
+[node name="button_q3" type="Button" parent="fourth_item"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 885.0
+offset_right = 1450.0
+offset_bottom = 1025.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "GTT-GCA-CCG-GTG"
+
+[node name="TimerLabel" type="Label" parent="fourth_item"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 82.0
+offset_right = 170.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[node name="Label" type="Label" parent="fourth_item"]
+offset_left = 1514.0
+offset_top = 269.0
+offset_right = 1623.0
+offset_bottom = 338.0
+theme_override_colors/font_shadow_color = Color(0.798487, 0.0955307, 0.59917, 1)
+theme_override_colors/font_outline_color = Color(0.703356, 2.34878e-05, 0.51229, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_stsq8")
+theme_override_font_sizes/font_size = 50
+text = "RNA"
+
+[node name="fifth_item" type="TextureRect" parent="."]
+offset_left = 2229.0
+offset_top = 1671.0
+offset_right = 4149.0
+offset_bottom = 2751.0
+texture = ExtResource("5_36d21")
+
+[node name="question" type="Label" parent="fifth_item"]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 331.0
+offset_right = 1679.0
+offset_bottom = 481.0
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 125
+text = "GGC-CAC-GAG-GTT-AGA"
+
+[node name="button_q1" type="Button" parent="fifth_item"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 538.0
+offset_right = 1579.0
+offset_bottom = 678.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "CCG-GUG-CUC-CUA-UCU"
+
+[node name="button_q2" type="Button" parent="fifth_item"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 709.0
+offset_right = 1579.0
+offset_bottom = 849.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "CCG-GCG-CUC-CAA-UCU"
+
+[node name="button_q3" type="Button" parent="fifth_item"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 885.0
+offset_right = 1579.0
+offset_bottom = 1025.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_bkh3i")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_w41f1")
+text = "CCG-GUG-CUC-CAA-UCU"
+
+[node name="TimerLabel" type="Label" parent="fifth_item"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 82.0
+offset_right = 170.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[node name="Label" type="Label" parent="fifth_item"]
+offset_left = 1658.0
+offset_top = 281.0
+offset_right = 1767.0
+offset_bottom = 350.0
+theme_override_colors/font_shadow_color = Color(0.798487, 0.0955307, 0.59917, 1)
+theme_override_colors/font_outline_color = Color(0.703356, 2.34878e-05, 0.51229, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_stsq8")
+theme_override_font_sizes/font_size = 50
+text = "RNA"
+
 [node name="score" type="TextureRect" parent="."]
 offset_left = 10.0
 offset_top = 1703.0
@@ -265,3 +450,9 @@ stream = ExtResource("7_w41f1")
 
 [node name="wrong" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_w41f1")
+
+[node name="start_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_vugfx")
+
+[node name="score_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_stsq8")
