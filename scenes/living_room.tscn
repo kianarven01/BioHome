@@ -49,6 +49,35 @@ offset_right = 698.0
 offset_bottom = 685.0
 texture = ExtResource("8_d4nal")
 
+[node name="Book2" type="TextureRect" parent="Drawer"]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 136.0
+offset_right = 258.0
+offset_bottom = 229.0
+
+[node name="Book3" type="TextureRect" parent="Drawer"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 219.0
+offset_right = 207.0
+offset_bottom = 312.0
+
+[node name="Book4" type="TextureRect" parent="Drawer"]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 224.0
+offset_right = 297.0
+offset_bottom = 317.0
+
+[node name="Book1" type="Button" parent="Drawer"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 134.0
+offset_right = 158.0
+offset_bottom = 229.0
+flat = true
+
 [node name="TV" type="TextureRect" parent="."]
 offset_left = 730.0
 offset_top = 375.0
@@ -260,3 +289,49 @@ flat = true
 
 [node name="kahoot_lobby" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_5cgma")
+
+[node name="Book" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 248.0
+offset_top = -1238.0
+offset_right = 1393.0
+offset_bottom = -592.0
+
+[node name="LeftPage" type="TextureRect" parent="Book"]
+layout_mode = 0
+offset_left = 693.0
+offset_top = -418.0
+offset_right = 992.0
+offset_bottom = 115.0
+expand_mode = 3
+stretch_mode = 6
+
+[node name="RightPage" type="TextureRect" parent="Book"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 3
+stretch_mode = 6
+
+[node name="NextButton" type="Button" parent="Book"]
+offset_left = 39.0
+offset_top = 461.0
+offset_right = 137.0
+offset_bottom = 568.0
+
+[node name="PrevButton" type="Button" parent="Book"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 281.0
+offset_right = 114.0
+offset_bottom = 388.0
+
+[node name="close_button" type="Button" parent="Book"]
+offset_left = 1182.0
+offset_top = -34.0
+offset_right = 1323.0
+offset_bottom = 133.0
+scale = Vector2(0.6, 0.603659)
+icon = ExtResource("7_sc017")
+flat = true
