@@ -28,8 +28,11 @@ public partial class LivingRoom : Node2D
 	private Button prevPage;
 	private Button closeBook; 
 	private AudioStreamPlayer2D musicPlayer;
-	private Control book;
+	private TextureRect book;
 	private Button lipidsBook;
+	private Button carbsBook;
+	private Button naBook;
+	private Button proteinBook;
 	[Export] public TextureRect LeftPage;
 	[Export] public TextureRect RightPage;
 
@@ -90,10 +93,19 @@ public partial class LivingRoom : Node2D
 		
 		lipidsBook = GetNode<Button>("Drawer/Book1");
 		lipidsBook.Pressed += () => showBook("res://sprites/Flipbook/Lipids/");
+		
+		carbsBook = GetNode<Button>("Drawer/Book2");
+		carbsBook.Pressed += () => showBook("res://sprites/Flipbook/Carbs/");
+		
+		naBook = GetNode<Button>("Drawer/Book3");
+		naBook.Pressed += () => showBook("res://sprites/Flipbook/NucliecAcid/");
+		
+		proteinBook = GetNode<Button>("Drawer/Book4");
+		proteinBook.Pressed += () => showBook("res://sprites/Flipbook/Protein/");
 
 		tv = GetNode<TextureRect>("TV");
 		tasks = GetNode<TextureRect>("Tasks");
-		book = GetNode<Control>("Book");
+		book = GetNode<TextureRect>("Book");
 
 		if (tv is TV tvScript)
 		{
@@ -132,7 +144,7 @@ public partial class LivingRoom : Node2D
 		InitializePagePositions();
 		InitializeNavigationButtons();
 		book.Visible = true;
-		book.Position = new Vector2(336, 215);	
+		book.Position = new Vector2(510, 215);	
 	}
 	
 	private void hideBook()
@@ -190,7 +202,7 @@ public partial class LivingRoom : Node2D
 		RightPage.StretchMode = TextureRect.StretchModeEnum.KeepAspect;
 		// Set the initial position for LeftPage and RightPage
 		LeftPage.Position = new Vector2(0, 0);  // Left side of the screen
-		RightPage.Position = new Vector2(LeftPage.Size.X, 0);  // Right side of the screen
+		RightPage.Position = new Vector2(LeftPage.Size.X - 5, 0);  // Right side of the screen
 	}
 	
 	private void InitializeNavigationButtons()

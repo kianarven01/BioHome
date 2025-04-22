@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx3njjhwchgm2"
-path="res://.godot/imported/11.jpg-d67ad879ef574ef7e9a6dc484f7714fc.ctex"
+uid="uid://ca7568dpnlxgr"
+path="res://.godot/imported/98.jpg-aa14204f1880a076904221f6efb209de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Flipbook/Lipids/11.jpg"
-dest_files=["res://.godot/imported/11.jpg-d67ad879ef574ef7e9a6dc484f7714fc.ctex"]
+source_file="res://sprites/Flipbook/Protein/98.jpg"
+dest_files=["res://.godot/imported/98.jpg-aa14204f1880a076904221f6efb209de.ctex"]
 
 [params]
 

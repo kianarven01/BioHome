@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpdqwgv8hvhle"
-path="res://.godot/imported/13.jpg-c17b004dfa39c44b2a8a4bdb81e7917f.ctex"
+uid="uid://cmo1vm63nioem"
+path="res://.godot/imported/9.jpg-aa5707d8b084d21bbf3934f393a7503f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Flipbook/Lipids/13.jpg"
-dest_files=["res://.godot/imported/13.jpg-c17b004dfa39c44b2a8a4bdb81e7917f.ctex"]
+source_file="res://sprites/Flipbook/NucliecAcid/9.jpg"
+dest_files=["res://.godot/imported/9.jpg-aa5707d8b084d21bbf3934f393a7503f.ctex"]
 
 [params]
 
