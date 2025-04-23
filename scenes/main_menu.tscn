@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d331i2778xnbp"]
+[gd_scene load_steps=19 format=3 uid="uid://d331i2778xnbp"]
 
 [ext_resource type="Script" uid="uid://cyourtxv86tp5" path="res://scripts/MainMenu.cs" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://dajdvtilw0xxt" path="res://scenes/LandingScene.tscn" id="2_fu7sn"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://chvy8miswo1xq" path="res://sprites/Extras/BioHomeLabel.png" id="5_qe12f"]
 [ext_resource type="Script" uid="uid://c41ehdpq2ae7d" path="res://scripts/StartButton.cs" id="7_8qtwp"]
 [ext_resource type="AudioStream" uid="uid://c5kmjbeh36nve" path="res://sounds/Kahoot! Jungle Lobby Theme.mp3" id="10_5dd4i"]
+[ext_resource type="Theme" uid="uid://giebgwmnmf6m" path="res://Themes/MainMenu/Info.tres" id="10_flqon"]
+[ext_resource type="Theme" uid="uid://do006c28vigyd" path="res://Themes/MainMenu/Ratings.tres" id="10_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://0qijwjwj20u6" path="res://sprites/Extras/2.png" id="12_rcqid"]
+[ext_resource type="Texture2D" uid="uid://gq3gyrp5i2hh" path="res://Themes/MakeItFunction/MainTheme/closeButton.png" id="13_1ajci"]
+[ext_resource type="ButtonGroup" uid="uid://ceewdur74vds7" path="res://react.tres" id="14_7b55j"]
 
 [sub_resource type="Animation" id="Animation_8qtwp"]
 length = 0.001
@@ -113,6 +118,122 @@ offset_bottom = 205.003
 scale = Vector2(0.746887, 1.0775)
 mouse_filter = 2
 texture = ExtResource("4_glbon")
+
+[node name="infoBtn" type="Button" parent="LandingScene"]
+layout_mode = 0
+offset_left = 267.836
+offset_top = -216.228
+offset_right = 302.836
+offset_bottom = -179.228
+theme = ExtResource("10_flqon")
+
+[node name="rateBtn" type="Button" parent="LandingScene"]
+layout_mode = 0
+offset_left = 307.223
+offset_top = -217.469
+offset_right = 342.223
+offset_bottom = -180.469
+theme = ExtResource("10_lgwnu")
+
+[node name="RatingPanel" type="TextureRect" parent="LandingScene"]
+layout_mode = 0
+offset_left = -81.9484
+offset_top = -613.017
+offset_right = 214.052
+offset_bottom = -246.017
+texture = ExtResource("12_rcqid")
+expand_mode = 1
+
+[node name="Button6" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 232.346
+offset_top = 160.122
+offset_right = 249.346
+offset_bottom = 179.122
+button_group = ExtResource("14_7b55j")
+
+[node name="Button4" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 229.094
+offset_top = 76.1306
+offset_right = 273.094
+offset_bottom = 125.131
+toggle_mode = true
+button_group = ExtResource("14_7b55j")
+
+[node name="Button5" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 162.245
+offset_top = 160.122
+offset_right = 179.245
+offset_bottom = 179.122
+button_group = ExtResource("14_7b55j")
+
+[node name="Button2" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 126.833
+offset_top = 76.1306
+offset_right = 170.833
+offset_bottom = 125.131
+toggle_mode = true
+button_group = ExtResource("14_7b55j")
+
+[node name="Button" type="Button" parent="LandingScene/RatingPanel"]
+layout_mode = 0
+offset_left = 22.0422
+offset_top = 76.1306
+offset_right = 66.0422
+offset_bottom = 125.131
+toggle_mode = true
+button_group = ExtResource("14_7b55j")
+
+[node name="close_button" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 264.961
+offset_top = -16.6442
+offset_right = 336.961
+offset_bottom = 52.3558
+scale = Vector2(0.6, 0.603659)
+icon = ExtResource("13_1ajci")
+flat = true
+expand_icon = true
+
+[node name="Button7" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 161.884
+offset_top = 201.084
+offset_right = 178.884
+offset_bottom = 220.084
+button_group = ExtResource("14_7b55j")
+
+[node name="Button8" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 231.985
+offset_top = 200.67
+offset_right = 248.985
+offset_bottom = 219.67
+button_group = ExtResource("14_7b55j")
+
+[node name="Button9" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 162.245
+offset_top = 241.632
+offset_right = 179.245
+offset_bottom = 260.632
+button_group = ExtResource("14_7b55j")
+
+[node name="Button10" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 231.624
+offset_top = 242.046
+offset_right = 248.624
+offset_bottom = 261.046
+button_group = ExtResource("14_7b55j")
+
+[node name="Button11" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 162.245
+offset_top = 280.938
+offset_right = 179.245
+offset_bottom = 299.938
+button_group = ExtResource("14_7b55j")
+
+[node name="Button12" type="Button" parent="LandingScene/RatingPanel"]
+offset_left = 231.985
+offset_top = 280.938
+offset_right = 248.985
+offset_bottom = 299.938
+button_group = ExtResource("14_7b55j")
 
 [node name="kahoot_jungle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_5dd4i")
