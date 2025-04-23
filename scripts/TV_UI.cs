@@ -27,22 +27,31 @@ public partial class TV_UI : CanvasLayer
 
 		// Connect buttons (inside UIbg)
 		Button closeButton = _uiBg.GetNodeOrNull<Button>("close_button");
-		Button video1Button = _uiBg.GetNodeOrNull<Button>("video1");
+		Button video1Button = _uiBg.GetNodeOrNull<Button>("carboBtn");
+		Button video2Button = _uiBg.GetNodeOrNull<Button>("naBtn");
+		Button video3Button = _uiBg.GetNodeOrNull<Button>("lipidsBtn");
+		Button video4Button = _uiBg.GetNodeOrNull<Button>("proteinBtn");
 
 		closeButton.ZIndex = 100;
 		closeButton.Pressed += CloseUI;
-		video1Button.Pressed += PlayVideo;
+		video1Button.Pressed += () => PlayVideo("res://videos/1Carbo.ogv");
+		video2Button.Pressed += () => PlayVideo("res://videos/2Nucleic.ogv");
+		video3Button.Pressed += () => PlayVideo("res://videos/4Lipids.ogv");
+		video4Button.Pressed += () => PlayVideo("res://videos/3Protein.ogv");
 	}
 
-	private void PlayVideo()
+	private void PlayVideo(string videoDir)
 	{
 		if (_videoPlayer.IsPlaying()) return; 
 
-		_videoPlayer.Stream = GD.Load<VideoStream>("res://videos/video1.ogv");
+		_videoPlayer.Stream = GD.Load<VideoStream>(videoDir);
 		_videoPlayer.Play();
 		_videoPlayer.Visible = true;
-
-		GetNode<Button>("UIbg/video1").Disabled = true; 
+		
+		GetNode<Button>("UIbg/carboBtn").Disabled = true;	
+		GetNode<Button>("UIbg/naBtn").Disabled = true;	
+		GetNode<Button>("UIbg/proteinBtn").Disabled = true;	
+		GetNode<Button>("UIbg/lipidsBtn").Disabled = true;	
 	}
 
 	private void CloseUI()
@@ -51,7 +60,10 @@ public partial class TV_UI : CanvasLayer
 		{
 			_videoPlayer.Stop();
 			_videoPlayer.Visible = false;
-			GetNode<Button>("UIbg/video1").Disabled = false;
+			GetNode<Button>("UIbg/carboBtn").Disabled = false;
+			GetNode<Button>("UIbg/naBtn").Disabled = false;
+			GetNode<Button>("UIbg/proteinBtn").Disabled = false;
+			GetNode<Button>("UIbg/lipidsBtn").Disabled = false;
 		}
 		else
 		{

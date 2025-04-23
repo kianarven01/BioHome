@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxdek8wdmp80v"]
+[gd_scene load_steps=29 format=3 uid="uid://bxdek8wdmp80v"]
 
 [ext_resource type="Script" uid="uid://clpm87q17muv" path="res://scripts/LivingRoom.cs" id="1_tcv1k"]
 [ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://sprites/Extras/livingroombg.png" id="2_sc017"]
@@ -8,10 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bff21bdc2ixl1" path="res://sprites/Extras/TV_UI.png" id="6_karft"]
 [ext_resource type="Texture2D" uid="uid://k7d4sfugja3k" path="res://sprites/Extras/tasks.png" id="7_7smae"]
 [ext_resource type="Texture2D" uid="uid://gq3gyrp5i2hh" path="res://Themes/MakeItFunction/MainTheme/closeButton.png" id="7_sc017"]
+[ext_resource type="Texture2D" uid="uid://bj1pd73h1pn30" path="res://sprites/Extras/carbo.png" id="8_81vpo"]
 [ext_resource type="Texture2D" uid="uid://n7dbxrtfun71" path="res://sprites/Extras/drawer.png" id="8_d4nal"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="9_3a64r"]
+[ext_resource type="Texture2D" uid="uid://q0ciol0f84yo" path="res://sprites/Extras/na.png" id="9_7j5qw"]
 [ext_resource type="Texture2D" uid="uid://b1vkal2ir45cr" path="res://sprites/Extras/exitBg.png" id="10_uuwu5"]
+[ext_resource type="Texture2D" uid="uid://jpkr1uj32ec4" path="res://sprites/Extras/lipids.png" id="11_3rehq"]
 [ext_resource type="Texture2D" uid="uid://du4r5hhr53vbh" path="res://sprites/Extras/yes.png" id="11_5cgma"]
+[ext_resource type="Texture2D" uid="uid://br8q5v3lweplp" path="res://sprites/Extras/protein.png" id="12_2baer"]
 [ext_resource type="Texture2D" uid="uid://bg5624a8kbdxn" path="res://sprites/Extras/tasksFilled.png" id="12_3a64r"]
 [ext_resource type="Texture2D" uid="uid://dtguxqgbwbbjy" path="res://sprites/Extras/no.png" id="12_6ryxo"]
 [ext_resource type="Script" uid="uid://dfe37p1vpg38d" path="res://scripts/TaskView.cs" id="16_5cgma"]
@@ -49,6 +53,7 @@ offset_bottom = 685.0
 texture = ExtResource("8_d4nal")
 
 [node name="Book3" type="Button" parent="Drawer"]
+layout_mode = 0
 offset_left = 162.0
 offset_top = 218.0
 offset_right = 213.0
@@ -56,6 +61,7 @@ offset_bottom = 310.0
 flat = true
 
 [node name="Book2" type="Button" parent="Drawer"]
+layout_mode = 0
 offset_left = 209.0
 offset_top = 136.0
 offset_right = 258.0
@@ -71,6 +77,7 @@ offset_bottom = 229.0
 flat = true
 
 [node name="Book4" type="Button" parent="Drawer"]
+layout_mode = 0
 offset_left = 250.0
 offset_top = 222.0
 offset_right = 301.0
@@ -129,6 +136,65 @@ offset_bottom = 126.758
 scale = Vector2(0.6, 0.603659)
 icon = ExtResource("7_sc017")
 flat = true
+
+[node name="naBtn" type="Button" parent="TV/TV_UI/UIbg"]
+offset_left = 976.436
+offset_top = 59.7889
+offset_right = 1857.44
+offset_bottom = 523.789
+
+[node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/naBtn"]
+offset_right = 881.0
+offset_bottom = 464.0
+mouse_filter = 2
+texture = ExtResource("9_7j5qw")
+expand_mode = 1
+
+[node name="carboBtn" type="Button" parent="TV/TV_UI/UIbg"]
+layout_mode = 0
+offset_left = 64.9999
+offset_top = 59.0
+offset_right = 945.0
+offset_bottom = 528.0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/carboBtn"]
+layout_mode = 0
+offset_top = 1.14978
+offset_right = 881.0
+offset_bottom = 465.15
+mouse_filter = 2
+texture = ExtResource("8_81vpo")
+expand_mode = 1
+
+[node name="proteinBtn" type="Button" parent="TV/TV_UI/UIbg"]
+offset_left = 977.684
+offset_top = 540.398
+offset_right = 1858.68
+offset_bottom = 1004.4
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/proteinBtn"]
+offset_left = -1.24846
+offset_top = -2.29963
+offset_right = 879.752
+offset_bottom = 461.7
+mouse_filter = 2
+texture = ExtResource("12_2baer")
+expand_mode = 1
+
+[node name="lipidsBtn" type="Button" parent="TV/TV_UI/UIbg"]
+offset_left = 65.0
+offset_top = 537.31
+offset_right = 946.0
+offset_bottom = 1001.31
+
+[node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/lipidsBtn"]
+offset_right = 881.0
+offset_bottom = 464.0
+mouse_filter = 2
+texture = ExtResource("11_3rehq")
+expand_mode = 1
 
 [node name="Tasks" type="TextureRect" parent="."]
 offset_left = 1250.0
@@ -287,6 +353,7 @@ offset_right = 1314.0
 offset_bottom = -173.0
 
 [node name="LeftPage" type="TextureRect" parent="Book"]
+layout_mode = 0
 offset_left = 693.0
 offset_top = -418.0
 offset_right = 992.0
@@ -295,24 +362,28 @@ expand_mode = 3
 stretch_mode = 6
 
 [node name="RightPage" type="TextureRect" parent="Book"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 expand_mode = 3
 stretch_mode = 6
 
 [node name="NextButton" type="Button" parent="Book"]
+layout_mode = 0
 offset_left = 39.0
 offset_top = 461.0
 offset_right = 137.0
 offset_bottom = 568.0
 
 [node name="PrevButton" type="Button" parent="Book"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 281.0
 offset_right = 114.0
 offset_bottom = 388.0
 
 [node name="close_button" type="Button" parent="Book"]
+layout_mode = 0
 offset_left = 932.0
 offset_top = -35.0
 offset_right = 1073.0
