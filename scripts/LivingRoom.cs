@@ -35,6 +35,7 @@ public partial class LivingRoom : Node2D
 	private Button proteinBook;
 	[Export] public TextureRect LeftPage;
 	[Export] public TextureRect RightPage;
+	private bool _isFlipping = false;
 
 	private List<Texture2D> _pages = new();
 	private int _currentPageIndex = 0;
@@ -145,11 +146,17 @@ public partial class LivingRoom : Node2D
 		InitializeNavigationButtons();
 		book.Visible = true;
 		book.Position = new Vector2(510, 215);	
+		toggleObjects(true);
+		tv.SetProcessInput(false);
+		tasks.SetProcessInput(false);
 	}
 	
 	private void hideBook()
 	{
 		book.Visible = false;
+		toggleObjects(false);
+		tv.SetProcessInput(true);
+		tasks.SetProcessInput(true);
 	}
 
 	private void OnExitButtonPressed()
@@ -258,21 +265,72 @@ public partial class LivingRoom : Node2D
 		RightPage.Texture = (_currentPageIndex + 1 < _pages.Count) ? _pages[_currentPageIndex + 1] : null;
 	}
 
-	private void FlipForward()
+	private async void FlipForward()
 	{
-		if (_currentPageIndex + 2 < _pages.Count)
+		if (_isFlipping || _currentPageIndex + 2 >= _pages.Count)
+			return;
+
+		_isFlipping = true;
+
+		// Animate right page flipping out (scale X from 1 to 0)
+		for (float i = 1f; i >= 0f; i -= 0.1f)
 		{
-			_currentPageIndex += 2;
-			UpdatePages();
+			RightPage.Scale = new Vector2(i, 1);
+			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
 		}
+
+		// Change page content
+		_currentPageIndex += 2;
+		UpdatePages();
+
+		// Animate right page flipping in (scale X from 0 to 1)
+		for (float i = 0f; i <= 1f; i += 0.1f)
+		{
+			RightPage.Scale = new Vector2(i, 1);
+			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
+		}
+
+		RightPage.Scale = Vector2.One;
+		_isFlipping = false;
 	}
 
-	private void FlipBackward()
+	private async void FlipBackward()
 	{
-		if (_currentPageIndex - 2 >= 0)
+		if (_isFlipping || _currentPageIndex - 2 < 0)
+			return;
+
+		_isFlipping = true;
+
+		// Animate right page flipping out (scale X from 1 to 0)
+		for (float i = 1f; i >= 0f; i -= 0.1f)
 		{
-			_currentPageIndex -= 2;
-			UpdatePages();
+			RightPage.Scale = new Vector2(i, 1);  // Scale down right page
+			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
 		}
+
+		// Change page content
+		_currentPageIndex -= 2;
+		UpdatePages();
+
+		// Animate right page flipping in (scale X from 0 to 1)
+		for (float i = 0f; i <= 1f; i += 0.1f)
+		{
+			RightPage.Scale = new Vector2(i, 1);  // Scale right page back to normal
+			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
+		}
+
+		RightPage.Scale = Vector2.One;  // Reset scale to normal
+		_isFlipping = false;
 	}
+		
+	private void toggleObjects(bool state)
+	{
+		lipidsBook.Disabled = state;
+		carbsBook.Disabled = state;
+		naBook.Disabled = state;
+		proteinBook.Disabled = state;
+		exitButton.Disabled = state;
+	}
+	
+	
 }

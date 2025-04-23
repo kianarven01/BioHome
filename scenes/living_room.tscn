@@ -138,12 +138,14 @@ icon = ExtResource("7_sc017")
 flat = true
 
 [node name="naBtn" type="Button" parent="TV/TV_UI/UIbg"]
+layout_mode = 0
 offset_left = 976.436
 offset_top = 59.7889
 offset_right = 1857.44
 offset_bottom = 523.789
 
 [node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/naBtn"]
+layout_mode = 0
 offset_right = 881.0
 offset_bottom = 464.0
 mouse_filter = 2
@@ -168,6 +170,7 @@ texture = ExtResource("8_81vpo")
 expand_mode = 1
 
 [node name="proteinBtn" type="Button" parent="TV/TV_UI/UIbg"]
+layout_mode = 0
 offset_left = 977.684
 offset_top = 540.398
 offset_right = 1858.68
@@ -175,6 +178,7 @@ offset_bottom = 1004.4
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/proteinBtn"]
+layout_mode = 0
 offset_left = -1.24846
 offset_top = -2.29963
 offset_right = 879.752
@@ -184,12 +188,14 @@ texture = ExtResource("12_2baer")
 expand_mode = 1
 
 [node name="lipidsBtn" type="Button" parent="TV/TV_UI/UIbg"]
+layout_mode = 0
 offset_left = 65.0
 offset_top = 537.31
 offset_right = 946.0
 offset_bottom = 1001.31
 
 [node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/lipidsBtn"]
+layout_mode = 0
 offset_right = 881.0
 offset_bottom = 464.0
 mouse_filter = 2
