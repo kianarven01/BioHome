@@ -23,6 +23,11 @@ public partial class MainMenu : Node2D
 	private Control learnGroup;
 	private Control satisfactionGroup;
 	private List<string> ratings;
+	private Button infoBtn;
+	private Button okBtn;
+	private Button proceedBtn;
+	private TextureRect info1;
+	private TextureRect info2;
 
 	public override void _Ready()
 	{
@@ -33,10 +38,18 @@ public partial class MainMenu : Node2D
 		closeRatings = GetNode<Button>("LandingScene/RatingPanel/close_button");
 		submitBtn = GetNode<Button>("LandingScene/RatingPanel/submitBtn");
 		ratings = new List<string>{"", "", "", "", ""};
+		infoBtn = GetNode<Button>("LandingScene/infoBtn");
+		okBtn = GetNode<Button>("LandingScene/Info1/okBtn");
+		proceedBtn = GetNode<Button>("LandingScene/Info2/proceedBtn");
+		info1 = GetNode<TextureRect>("LandingScene/Info1");
+		info2 = GetNode<TextureRect>("LandingScene/Info2");
 		
 		rateBtn.Pressed += showRatings;
 		closeRatings.Pressed += closeRating;
 		submitBtn.Pressed += sendRatings;
+		infoBtn.Pressed += () => toggleInfo(true, false);
+		okBtn.Pressed += () => toggleInfo(false, true);
+		proceedBtn.Pressed += () => toggleInfo(false, false);
 		submitBtn.Disabled = true;
 		
 		react =  GD.Load<ButtonGroup>("res://groups/react.tres");
@@ -73,6 +86,11 @@ public partial class MainMenu : Node2D
 	private void closeRating()
 	{
 		ratingsPnl.Visible = false;
+		UncheckAllButtons(reactGroup);
+		UncheckAllButtons(effectivityGroup);
+		UncheckAllButtons(easeGroup);
+		UncheckAllButtons(learnGroup);
+		UncheckAllButtons(satisfactionGroup);
 	}
 
 	public override void _Input(InputEvent @event)
@@ -119,6 +137,17 @@ public partial class MainMenu : Node2D
 		}
 	}
 	
+	private void UncheckAllButtons(Control parent)
+	{
+		foreach (Node child in parent.GetChildren())
+		{
+			if (child is CheckButton checkButton)
+			{
+				checkButton.ButtonPressed = false;
+			}
+		}
+	}
+
 	public void SendEmail(string fromEmail, string toEmail, string subject, string body)
 	{
 		var message = new MimeMessage();
@@ -156,6 +185,7 @@ public partial class MainMenu : Node2D
 				// Disconnect from the server
 				client.Disconnect(true);
 				client.Dispose();
+				ratingsPnl.Visible = false;
 			}
 		}
 	}
@@ -164,5 +194,18 @@ public partial class MainMenu : Node2D
 	{
 		string message = $"What do they think about the game? {ratings[0]}\nIt helps them be more effective in learning? {ratings[1]}\nIs it easy to use? {ratings[2]}\nDo they learn quickly to use it? {ratings[3]}\nAre they satisfied? {ratings[4]}"; 
 		SendEmail("gerryvienlifeflores@gmail.com", "thisyourman106@gmail.com", "Anonymous Ratings", message);
+		UncheckAllButtons(reactGroup);
+		UncheckAllButtons(effectivityGroup);
+		UncheckAllButtons(easeGroup);
+		UncheckAllButtons(learnGroup);
+		UncheckAllButtons(satisfactionGroup);
+	}
+	
+	private void toggleInfo(bool visible1, bool visible2)
+	{
+		info1.Position = new Vector2(-132, -166);
+		info2.Position = new Vector2(-132, -166);
+		info1.Visible = visible1;
+		info2.Visible = visible2;
 	}
 }
