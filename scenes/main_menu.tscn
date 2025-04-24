@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d331i2778xnbp"]
+[gd_scene load_steps=24 format=3 uid="uid://d331i2778xnbp"]
 
 [ext_resource type="Script" uid="uid://cyourtxv86tp5" path="res://scripts/MainMenu.cs" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://dajdvtilw0xxt" path="res://scenes/LandingScene.tscn" id="2_fu7sn"]
@@ -14,7 +14,12 @@
 [ext_resource type="Theme" uid="uid://do006c28vigyd" path="res://Themes/MainMenu/Ratings.tres" id="10_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://0qijwjwj20u6" path="res://sprites/Extras/2.png" id="12_rcqid"]
 [ext_resource type="Texture2D" uid="uid://gq3gyrp5i2hh" path="res://Themes/MakeItFunction/MainTheme/closeButton.png" id="13_1ajci"]
-[ext_resource type="ButtonGroup" uid="uid://ceewdur74vds7" path="res://react.tres" id="14_7b55j"]
+[ext_resource type="Theme" uid="uid://bhpuem2lpeqew" path="res://Themes/MainMenu/veryGood.tres" id="13_7b55j"]
+[ext_resource type="ButtonGroup" uid="uid://ceewdur74vds7" path="res://groups/react.tres" id="14_7b55j"]
+[ext_resource type="ButtonGroup" uid="uid://blnbrlmthi0fb" path="res://groups/effectivity.tres" id="16_8egab"]
+[ext_resource type="ButtonGroup" uid="uid://c75jrkrjna7ye" path="res://groups/ease.tres" id="17_gw5y6"]
+[ext_resource type="ButtonGroup" uid="uid://qcm62qucyfqp" path="res://groups/learn.tres" id="18_svtp6"]
+[ext_resource type="ButtonGroup" uid="uid://cml87l2in2e38" path="res://groups/satisfaction.tres" id="19_1dfpl"]
 
 [sub_resource type="Animation" id="Animation_8qtwp"]
 length = 0.001
@@ -144,46 +149,35 @@ offset_bottom = -246.017
 texture = ExtResource("12_rcqid")
 expand_mode = 1
 
-[node name="Button6" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 232.346
-offset_top = 160.122
-offset_right = 249.346
-offset_bottom = 179.122
+[node name="React" type="Control" parent="LandingScene/RatingPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Very Good" type="CheckButton" parent="LandingScene/RatingPanel/React"]
+offset_left = 22.7648
+offset_top = 79.854
+offset_right = 66.7648
+offset_bottom = 135.854
+theme = ExtResource("13_7b55j")
 button_group = ExtResource("14_7b55j")
 
-[node name="Button4" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 229.094
-offset_top = 76.1306
-offset_right = 273.094
-offset_bottom = 125.131
-toggle_mode = true
+[node name="Good" type="CheckButton" parent="LandingScene/RatingPanel/React"]
+offset_left = 126.471
+offset_top = 79.854
+offset_right = 170.471
+offset_bottom = 135.854
 button_group = ExtResource("14_7b55j")
 
-[node name="Button5" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 162.245
-offset_top = 160.122
-offset_right = 179.245
-offset_bottom = 179.122
-button_group = ExtResource("14_7b55j")
-
-[node name="Button2" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 126.833
-offset_top = 76.1306
-offset_right = 170.833
-offset_bottom = 125.131
-toggle_mode = true
-button_group = ExtResource("14_7b55j")
-
-[node name="Button" type="Button" parent="LandingScene/RatingPanel"]
-layout_mode = 0
-offset_left = 22.0422
-offset_top = 76.1306
-offset_right = 66.0422
-offset_bottom = 125.131
-toggle_mode = true
+[node name="Improvement" type="CheckButton" parent="LandingScene/RatingPanel/React"]
+offset_left = 225.481
+offset_top = 79.854
+offset_right = 269.481
+offset_bottom = 135.854
 button_group = ExtResource("14_7b55j")
 
 [node name="close_button" type="Button" parent="LandingScene/RatingPanel"]
+layout_mode = 0
 offset_left = 264.961
 offset_top = -16.6442
 offset_right = 336.961
@@ -193,47 +187,81 @@ icon = ExtResource("13_1ajci")
 flat = true
 expand_icon = true
 
-[node name="Button7" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 161.884
-offset_top = 201.084
-offset_right = 178.884
-offset_bottom = 220.084
-button_group = ExtResource("14_7b55j")
+[node name="Effectivity" type="Control" parent="LandingScene/RatingPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Button8" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 231.985
-offset_top = 200.67
-offset_right = 248.985
-offset_bottom = 219.67
-button_group = ExtResource("14_7b55j")
+[node name="No" type="CheckButton" parent="LandingScene/RatingPanel/Effectivity"]
+offset_left = 218.254
+offset_top = 143.158
+offset_right = 262.254
+offset_bottom = 199.158
+button_group = ExtResource("16_8egab")
 
-[node name="Button9" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 162.245
-offset_top = 241.632
-offset_right = 179.245
-offset_bottom = 260.632
-button_group = ExtResource("14_7b55j")
+[node name="Yes" type="CheckButton" parent="LandingScene/RatingPanel/Effectivity"]
+offset_left = 150.32
+offset_top = 142.744
+offset_right = 194.32
+offset_bottom = 198.744
+button_group = ExtResource("16_8egab")
 
-[node name="Button10" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 231.624
-offset_top = 242.046
-offset_right = 248.624
-offset_bottom = 261.046
-button_group = ExtResource("14_7b55j")
+[node name="Ease" type="Control" parent="LandingScene/RatingPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Button11" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 162.245
-offset_top = 280.938
-offset_right = 179.245
-offset_bottom = 299.938
-button_group = ExtResource("14_7b55j")
+[node name="No" type="CheckButton" parent="LandingScene/RatingPanel/Ease"]
+offset_left = 218.254
+offset_top = 185.361
+offset_right = 262.254
+offset_bottom = 241.361
+button_group = ExtResource("17_gw5y6")
 
-[node name="Button12" type="Button" parent="LandingScene/RatingPanel"]
-offset_left = 231.985
-offset_top = 280.938
-offset_right = 248.985
-offset_bottom = 299.938
-button_group = ExtResource("14_7b55j")
+[node name="Yes" type="CheckButton" parent="LandingScene/RatingPanel/Ease"]
+offset_left = 150.32
+offset_top = 184.947
+offset_right = 194.32
+offset_bottom = 240.947
+button_group = ExtResource("17_gw5y6")
+
+[node name="Learn" type="Control" parent="LandingScene/RatingPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="No" type="CheckButton" parent="LandingScene/RatingPanel/Learn"]
+offset_left = 218.254
+offset_top = 223.013
+offset_right = 262.254
+offset_bottom = 279.013
+button_group = ExtResource("18_svtp6")
+
+[node name="Yes" type="CheckButton" parent="LandingScene/RatingPanel/Learn"]
+offset_left = 150.32
+offset_top = 222.599
+offset_right = 194.32
+offset_bottom = 278.599
+button_group = ExtResource("18_svtp6")
+
+[node name="Satisfaction" type="Control" parent="LandingScene/RatingPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="No" type="CheckButton" parent="LandingScene/RatingPanel/Satisfaction"]
+offset_left = 218.254
+offset_top = 262.319
+offset_right = 262.254
+offset_bottom = 318.319
+button_group = ExtResource("19_1dfpl")
+
+[node name="Yes" type="CheckButton" parent="LandingScene/RatingPanel/Satisfaction"]
+offset_left = 150.32
+offset_top = 261.905
+offset_right = 194.32
+offset_bottom = 317.905
+button_group = ExtResource("19_1dfpl")
 
 [node name="kahoot_jungle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_5dd4i")
