@@ -1,5 +1,9 @@
 using Godot;
+using System;
 using System.Collections.Generic;
+using MailKit.Net.Smtp;
+using MimeKit;
+
 
 public partial class MainMenu : Node2D
 {
@@ -7,6 +11,7 @@ public partial class MainMenu : Node2D
 	private TextureRect ratingsPnl;
 	private Button rateBtn;
 	private Button closeRatings;
+	private Button submitBtn;
 	private ButtonGroup react;
 	private ButtonGroup ease;
 	private ButtonGroup effectivity;
@@ -26,10 +31,13 @@ public partial class MainMenu : Node2D
 		ratingsPnl = GetNode<TextureRect>("LandingScene/RatingPanel");
 		rateBtn = GetNode<Button>("LandingScene/rateBtn");
 		closeRatings = GetNode<Button>("LandingScene/RatingPanel/close_button");
+		submitBtn = GetNode<Button>("LandingScene/RatingPanel/submitBtn");
 		ratings = new List<string>{"", "", "", "", ""};
 		
 		rateBtn.Pressed += showRatings;
 		closeRatings.Pressed += closeRating;
+		submitBtn.Pressed += sendRatings;
+		submitBtn.Disabled = true;
 		
 		react =  GD.Load<ButtonGroup>("res://groups/react.tres");
 		ease =  GD.Load<ButtonGroup>("res://groups/ease.tres");
@@ -105,7 +113,56 @@ public partial class MainMenu : Node2D
 	private void identifyGroup(CheckButton cb){
 		List<string> groupDir = new List<string>{"res://groups/react.tres", "res://groups/effectivity.tres", "res://groups/ease.tres", "res://groups/learn.tres", "res://groups/satisfaction.tres"};
 		ratings[groupDir.IndexOf(cb.ButtonGroup.ResourcePath)] = cb.Name;
-		string result = string.Join(", ", ratings);
-		GD.Print(result);
+		
+		if(!ratings.Contains("")){
+			submitBtn.Disabled = false;
+		}
+	}
+	
+	public void SendEmail(string fromEmail, string toEmail, string subject, string body)
+	{
+		var message = new MimeMessage();
+		message.From.Add(new MailboxAddress("Mr. Potato", fromEmail));
+		message.To.Add(new MailboxAddress("Admin", toEmail));
+		message.Subject = subject;
+
+		// Create the body of the email
+		message.Body = new TextPart("plain")
+		{
+			Text = body
+		};
+
+		// Set up the SMTP client
+		using (var client = new SmtpClient())
+		{
+			try
+			{
+				// Connect to the SMTP server (example: Gmail)
+				client.Connect("smtp.gmail.com", 587, false);
+				
+				// Authenticate with your email account
+				client.Authenticate("gerryvienlifeflores@gmail.com", "xjyh eepp whig hfml");
+
+				// Send the email
+				client.Send(message);
+				GD.Print("Email sent successfully!");
+			}
+			catch (Exception e)
+			{
+				GD.PrintErr("Failed to send email: " + e.Message);
+			}
+			finally
+			{
+				// Disconnect from the server
+				client.Disconnect(true);
+				client.Dispose();
+			}
+		}
+	}
+	
+	private void sendRatings()
+	{
+		string message = $"What do they think about the game? {ratings[0]}\nIt helps them be more effective in learning? {ratings[1]}\nIs it easy to use? {ratings[2]}\nDo they learn quickly to use it? {ratings[3]}\nAre they satisfied? {ratings[4]}"; 
+		SendEmail("gerryvienlifeflores@gmail.com", "thisyourman106@gmail.com", "Anonymous Ratings", message);
 	}
 }

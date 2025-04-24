@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d331i2778xnbp"]
+[gd_scene load_steps=25 format=3 uid="uid://d331i2778xnbp"]
 
 [ext_resource type="Script" uid="uid://cyourtxv86tp5" path="res://scripts/MainMenu.cs" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://dajdvtilw0xxt" path="res://scenes/LandingScene.tscn" id="2_fu7sn"]
@@ -20,6 +20,7 @@
 [ext_resource type="ButtonGroup" uid="uid://c75jrkrjna7ye" path="res://groups/ease.tres" id="17_gw5y6"]
 [ext_resource type="ButtonGroup" uid="uid://qcm62qucyfqp" path="res://groups/learn.tres" id="18_svtp6"]
 [ext_resource type="ButtonGroup" uid="uid://cml87l2in2e38" path="res://groups/satisfaction.tres" id="19_1dfpl"]
+[ext_resource type="Theme" uid="uid://lvvw2svddc3h" path="res://Themes/MainMenu/completeRatings.tres" id="20_gw5y6"]
 
 [sub_resource type="Animation" id="Animation_8qtwp"]
 length = 0.001
@@ -142,10 +143,10 @@ theme = ExtResource("10_lgwnu")
 
 [node name="RatingPanel" type="TextureRect" parent="LandingScene"]
 layout_mode = 0
-offset_left = -81.9484
-offset_top = -613.017
-offset_right = 214.052
-offset_bottom = -246.017
+offset_left = -79.419
+offset_top = -621.292
+offset_right = 216.581
+offset_bottom = -254.292
 texture = ExtResource("12_rcqid")
 expand_mode = 1
 
@@ -155,6 +156,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Very Good" type="CheckButton" parent="LandingScene/RatingPanel/React"]
+layout_mode = 0
 offset_left = 22.7648
 offset_top = 79.854
 offset_right = 66.7648
@@ -163,6 +165,7 @@ theme = ExtResource("13_7b55j")
 button_group = ExtResource("14_7b55j")
 
 [node name="Good" type="CheckButton" parent="LandingScene/RatingPanel/React"]
+layout_mode = 0
 offset_left = 126.471
 offset_top = 79.854
 offset_right = 170.471
@@ -170,6 +173,7 @@ offset_bottom = 135.854
 button_group = ExtResource("14_7b55j")
 
 [node name="Improvement" type="CheckButton" parent="LandingScene/RatingPanel/React"]
+layout_mode = 0
 offset_left = 225.481
 offset_top = 79.854
 offset_right = 269.481
@@ -193,6 +197,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="No" type="CheckButton" parent="LandingScene/RatingPanel/Effectivity"]
+layout_mode = 0
 offset_left = 218.254
 offset_top = 143.158
 offset_right = 262.254
@@ -200,6 +205,7 @@ offset_bottom = 199.158
 button_group = ExtResource("16_8egab")
 
 [node name="Yes" type="CheckButton" parent="LandingScene/RatingPanel/Effectivity"]
+layout_mode = 0
 offset_left = 150.32
 offset_top = 142.744
 offset_right = 194.32
@@ -212,6 +218,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="No" type="CheckButton" parent="LandingScene/RatingPanel/Ease"]
+layout_mode = 0
 offset_left = 218.254
 offset_top = 185.361
 offset_right = 262.254
@@ -219,6 +226,7 @@ offset_bottom = 241.361
 button_group = ExtResource("17_gw5y6")
 
 [node name="Yes" type="CheckButton" parent="LandingScene/RatingPanel/Ease"]
+layout_mode = 0
 offset_left = 150.32
 offset_top = 184.947
 offset_right = 194.32
@@ -231,6 +239,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="No" type="CheckButton" parent="LandingScene/RatingPanel/Learn"]
+layout_mode = 0
 offset_left = 218.254
 offset_top = 223.013
 offset_right = 262.254
@@ -238,6 +247,7 @@ offset_bottom = 279.013
 button_group = ExtResource("18_svtp6")
 
 [node name="Yes" type="CheckButton" parent="LandingScene/RatingPanel/Learn"]
+layout_mode = 0
 offset_left = 150.32
 offset_top = 222.599
 offset_right = 194.32
@@ -250,6 +260,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="No" type="CheckButton" parent="LandingScene/RatingPanel/Satisfaction"]
+layout_mode = 0
 offset_left = 218.254
 offset_top = 262.319
 offset_right = 262.254
@@ -257,11 +268,22 @@ offset_bottom = 318.319
 button_group = ExtResource("19_1dfpl")
 
 [node name="Yes" type="CheckButton" parent="LandingScene/RatingPanel/Satisfaction"]
+layout_mode = 0
 offset_left = 150.32
 offset_top = 261.905
 offset_right = 194.32
 offset_bottom = 317.905
 button_group = ExtResource("19_1dfpl")
+
+[node name="submitBtn" type="Button" parent="LandingScene/RatingPanel"]
+layout_mode = 0
+offset_left = 90.6982
+offset_top = 310.729
+offset_right = 197.698
+offset_bottom = 346.729
+theme = ExtResource("20_gw5y6")
+text = "SUBMIT
+"
 
 [node name="kahoot_jungle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_5dd4i")
