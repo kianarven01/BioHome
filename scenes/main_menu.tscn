@@ -319,6 +319,7 @@ offset_bottom = 276.0
 flat = true
 
 [node name="Info2" type="TextureRect" parent="LandingScene"]
+layout_mode = 0
 offset_left = 264.222
 offset_top = -615.5
 offset_right = 529.222

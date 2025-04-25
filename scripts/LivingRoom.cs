@@ -182,7 +182,16 @@ public partial class LivingRoom : Node2D
 	
 	private void OnPlayMifPressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/MakeItFunction.tscn");
+		PackedScene scene = GD.Load<PackedScene>("res://scenes/MakeItFunction.tscn");
+
+		if (scene != null)
+		{
+			GetTree().ChangeSceneToPacked(scene);
+		}
+		else
+		{
+			GD.PrintErr("Failed to load the scene.");
+		}
 	}
 	
 	private void OnPlayMtaPressed()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxdek8wdmp80v"]
+[gd_scene load_steps=31 format=3 uid="uid://bxdek8wdmp80v"]
 
 [ext_resource type="Script" uid="uid://clpm87q17muv" path="res://scripts/LivingRoom.cs" id="1_tcv1k"]
 [ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://sprites/Extras/livingroombg.png" id="2_sc017"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://d0scl083fs4q2" path="res://sprites/Extras/task3.png" id="19_xdb3q"]
 [ext_resource type="Texture2D" uid="uid://do3akyg1uxns2" path="res://sprites/Extras/task4.png" id="20_81vpo"]
 [ext_resource type="AudioStream" uid="uid://bydvk3imbueyj" path="res://sounds/Kahoot Lobby Music.mp3" id="22_5cgma"]
+[ext_resource type="Theme" uid="uid://bn285gvj6u04a" path="res://Themes/LivingRoom/next.tres" id="26_3rehq"]
+[ext_resource type="Theme" uid="uid://c6tjh3tp7n42x" path="res://Themes/LivingRoom/prev.tres" id="27_2baer"]
 
 [sub_resource type="SystemFont" id="SystemFont_jm2cs"]
 font_weight = 600
@@ -380,6 +382,7 @@ offset_left = 39.0
 offset_top = 461.0
 offset_right = 137.0
 offset_bottom = 568.0
+theme = ExtResource("26_3rehq")
 
 [node name="PrevButton" type="Button" parent="Book"]
 layout_mode = 0
@@ -387,6 +390,9 @@ offset_left = 16.0
 offset_top = 281.0
 offset_right = 114.0
 offset_bottom = 388.0
+theme = ExtResource("27_2baer")
+text = "PREV
+"
 
 [node name="close_button" type="Button" parent="Book"]
 layout_mode = 0

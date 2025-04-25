@@ -21,6 +21,11 @@ public partial class MakeItFunction : Node2D
 	private Button doneButton;
 	private HashSet<Timer> finishedTimers = new();
 	private Button retryButton;
+	private AudioStreamPlayer2D correctSound;
+	private AudioStreamPlayer2D wrongSound;
+	private AudioStreamPlayer2D themeMusic;
+	private AudioStreamPlayer2D startMusic;
+	private AudioStreamPlayer2D scoreMusic;
 
 	public override void _Ready()
 	{
@@ -35,6 +40,13 @@ public partial class MakeItFunction : Node2D
 		resultLabel.Visible = false;
 		retryButton = GetNode<Button>("EndGame/Retry");
 		retryButton.Pressed += RestartGame;
+		
+		correctSound = GetNode<AudioStreamPlayer2D>("correct");
+		wrongSound = GetNode<AudioStreamPlayer2D>("wrong");
+		themeMusic = GetNode<AudioStreamPlayer2D>("kahoot");
+		startMusic = GetNode<AudioStreamPlayer2D>("start_music");
+		scoreMusic = GetNode<AudioStreamPlayer2D>("score_music");
+		startMusic.Play();
 
 		for (int i = 1; i <= 10; i++)
 		{
@@ -135,6 +147,8 @@ public partial class MakeItFunction : Node2D
 		{
 			totalStartTime = Time.GetTicksMsec() / 1000.0; // Start in seconds
 		}
+		startMusic.Stop();
+		themeMusic.Play();
 	}
 
 	private string GetItemName(int index)
@@ -158,6 +172,8 @@ public partial class MakeItFunction : Node2D
 	private void hideSelf(int index)
 	{
 		items[index].Visible = false;
+		startMusic.Play();
+		themeMusic.Stop();
 	}
 	
 	private async void OnButtonPressed2(Button pressedButton, ButtonGroup group, List<Button> allButtons)
@@ -177,6 +193,9 @@ public partial class MakeItFunction : Node2D
 		{
 			score += 1;
 			scoreLbl.Text = $"Score: {score}";
+			correctSound.Play();
+		}else{
+			wrongSound.Play();
 		}
 		
 		if (pressedButton.GetParent() is Control parent)
@@ -197,12 +216,17 @@ public partial class MakeItFunction : Node2D
 		if (pressedButton.GetParent() is Control _parent)
 		{
 			_parent.Visible = false;
+			themeMusic.Stop();
+			startMusic.Play();
 		}
 		
 		completedCount += 1;
 
 		if (completedCount == 10)
 		{
+			themeMusic.Stop();
+			startMusic.Stop();
+			scoreMusic.Play();
 			ShowFinalResults();
 		}
 	}
@@ -302,6 +326,9 @@ public partial class MakeItFunction : Node2D
 		scoreLbl.Text = "Score: 0";
 		completedCount = 0;
 		totalStartTime = -1;
+		
+		scoreMusic.Stop();
+		startMusic.Play();
 
 		// Reset finished and started timers
 		startedTimers.Clear();
