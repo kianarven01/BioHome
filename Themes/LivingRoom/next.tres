@@ -1343,7 +1343,7 @@ region_rect = Rect2(520, 1192, 1664, 544)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jtnyj"]
 texture = ExtResource("1_4s80j")
-region_rect = Rect2(3256, 504, 456, 456)
+region_rect = Rect2(520, 1192, 1664, 544)
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)

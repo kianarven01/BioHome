@@ -383,6 +383,7 @@ offset_top = 461.0
 offset_right = 137.0
 offset_bottom = 568.0
 theme = ExtResource("26_3rehq")
+text = "NEXT"
 
 [node name="PrevButton" type="Button" parent="Book"]
 layout_mode = 0

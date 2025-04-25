@@ -200,7 +200,7 @@ public partial class MatchTheAminos : Node2D
 				parent.CallDeferred("add_child", newCard);
 				_cards.Add(newCard);
 				
-				newCard.FlipCard(); // Show the front side on load
+				//newCard.FlipCard(); // Show the front side on load
 				revealedCards.Add(newCard);
 			}
 			else
