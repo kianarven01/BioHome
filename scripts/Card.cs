@@ -9,6 +9,7 @@ public partial class Card : Node2D
 	private Sprite2D _frontSprite;
 	private Sprite2D _backSprite;
 	private Area2D _area;
+	private AudioStreamPlayer2D flipSound;
 	private bool _isFlipped = false;
 	private bool _isMatched = false;
 
@@ -21,6 +22,7 @@ public partial class Card : Node2D
 		_frontSprite = GetNode<Sprite2D>("Front");
 		_backSprite = GetNode<Sprite2D>("Back");
 		_area = GetNode<Area2D>("Area2D");
+		flipSound = GetNode<AudioStreamPlayer2D>("flip");
 
 		if (FrontTexture != null)
 		{
@@ -60,6 +62,7 @@ public partial class Card : Node2D
 
 	public void FlipCard(bool faceUp)
 	{
+		flipSound.Play();
 		if (_frontSprite == null || _backSprite == null)
 		{
 			GD.PrintErr("Sprites are not initialized properly.");

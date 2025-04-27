@@ -27,7 +27,6 @@ public partial class MatchTheAminos : Node2D
 	private Button noBtn;
 	private AudioStreamPlayer2D correctSound;
 	private AudioStreamPlayer2D wrongSound;
-	private AudioStreamPlayer2D flipSound;
 	private AudioStreamPlayer2D themeMusic;
 	private AudioStreamPlayer2D startMusic;
 	private AudioStreamPlayer2D scoreMusic;
@@ -54,7 +53,6 @@ public partial class MatchTheAminos : Node2D
 		
 		correctSound = GetNode<AudioStreamPlayer2D>("../../correct");
 		wrongSound = GetNode<AudioStreamPlayer2D>("../../wrong");
-		flipSound = GetNode<AudioStreamPlayer2D>("../../flip");
 		themeMusic = GetNode<AudioStreamPlayer2D>("../../kahoot");
 		startMusic = GetNode<AudioStreamPlayer2D>("../../start_music");
 		scoreMusic = GetNode<AudioStreamPlayer2D>("../../score_music");
