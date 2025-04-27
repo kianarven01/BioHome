@@ -153,6 +153,9 @@ public partial class LivingRoom : Node2D
 	
 	private void hideBook()
 	{
+		_currentPageIndex = 0;  // Reset to first page
+		UpdatePages(); 
+		
 		book.Visible = false;
 		toggleObjects(false);
 		tv.SetProcessInput(true);
@@ -244,6 +247,8 @@ public partial class LivingRoom : Node2D
 	private void LoadPagesFromFolder(string path)
 	{
 		_pages.Clear();
+
+		// First count how many PNG files exist
 		var dir = DirAccess.Open(path);
 		if (dir == null)
 		{
@@ -251,21 +256,34 @@ public partial class LivingRoom : Node2D
 			return;
 		}
 
-		dir.ListDirBegin();
-		string fileName = dir.GetNext();
-		while (!string.IsNullOrEmpty(fileName))
-		{
-			if (fileName.EndsWith(".png") || fileName.EndsWith(".jpg"))
-			{
-				var tex = GD.Load<Texture2D>(path + fileName);
-				if (tex != null)
-					_pages.Add(tex);
-			}
-			fileName = dir.GetNext();
+		int pngCount = 0;
+		switch(path){
+			case "res://sprites/Flipbook/NucliecAcid/":
+				pngCount = 10;
+				break;
+			case "res://sprites/Flipbook/Carbs/":
+				pngCount = 10;
+				break;
+			case "res://sprites/Flipbook/Lipids/":
+				pngCount = 14;
+				break;
+			case "res://sprites/Flipbook/Protein/":
+				pngCount = 24;
+				break;
+			default:
+				break;
 		}
-
-		// Sort based on filename
-		_pages = _pages.OrderBy(p => p.ResourcePath).ToList();
+		
+		// Then load the pages based on the count
+		for (int i = 1; i <= pngCount; i++)
+		{
+			string filePath = $"{path}page ({i}).jpg";
+			Texture2D tex = ResourceLoader.Load<Texture2D>(filePath);
+			if (tex != null)
+				_pages.Add(tex);
+			else
+				GD.PrintErr($"Failed to load page: {filePath}");
+		}
 	}
 
 	private void UpdatePages()

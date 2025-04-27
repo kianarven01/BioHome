@@ -1,14 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch7w301y6ixt3"]
+[gd_scene load_steps=19 format=3 uid="uid://ch7w301y6ixt3"]
 
-[ext_resource type="Texture2D" uid="uid://carhigab3wus2" path="res://sprites/Aminos/background/background.jpg" id="1_as721"]
 [ext_resource type="Theme" uid="uid://bw7idhgikqj78" path="res://Themes/MatchTheAminos/structureTheme.tres" id="2_wj68e"]
 [ext_resource type="Theme" uid="uid://cj1jd248a3mb1" path="res://Themes/MatchTheAminos/functionTheme.tres" id="3_rraun"]
 [ext_resource type="Texture2D" uid="uid://63h8rffioolk" path="res://sprites/Aminos/background/background2.png" id="4_6hob5"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="4_rraun"]
+[ext_resource type="Texture2D" uid="uid://s660kaavsf12" path="res://sprites/Aminos/background/MTA_Font.png" id="5_oxva8"]
 [ext_resource type="Script" uid="uid://dghhv23r8rb0i" path="res://scripts/MatchTheAminos.cs" id="5_wj68e"]
+[ext_resource type="Texture2D" uid="uid://dnf8b6xsp2vvr" path="res://sprites/Aminos/background/background.png" id="6_r4aa6"]
 [ext_resource type="Texture2D" uid="uid://b1vkal2ir45cr" path="res://sprites/Extras/exitBg.png" id="7_ff8ut"]
 [ext_resource type="Texture2D" uid="uid://dtguxqgbwbbjy" path="res://sprites/Extras/no.png" id="8_8v4pg"]
 [ext_resource type="Texture2D" uid="uid://du4r5hhr53vbh" path="res://sprites/Extras/yes.png" id="9_wyqiq"]
+[ext_resource type="AudioStream" uid="uid://dr7kp63mjl1jt" path="res://sounds/Kahoot In Game Music Countdown 120s.mp3" id="10_gsxod"]
+[ext_resource type="AudioStream" uid="uid://csu0qhcwd0eai" path="res://sounds/Correct SFX.mp3" id="11_oxva8"]
+[ext_resource type="AudioStream" uid="uid://cnv1u5e87yyei" path="res://sounds/Wrong SFX.mp3" id="12_r4aa6"]
+[ext_resource type="AudioStream" uid="uid://di6xauu5vcr0a" path="res://sounds/Kahoot! 80s Vibe Theme.mp3" id="13_p4dsj"]
+[ext_resource type="AudioStream" uid="uid://dkyj1j2gisjxc" path="res://sounds/Kahoot! Podium Theme Music.mp3" id="14_r6x1s"]
+[ext_resource type="AudioStream" uid="uid://ctb2uh73ynual" path="res://sounds/Card Flip SFX.mp3" id="15_8bfo2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qt0be"]
 font_size = 70
@@ -20,9 +27,10 @@ font_size = 56
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 1920.0
+offset_left = 2.0
+offset_right = 1922.0
 offset_bottom = 1080.0
-texture = ExtResource("1_as721")
+texture = ExtResource("4_6hob5")
 expand_mode = 1
 
 [node name="structureButton" type="Button" parent="Background"]
@@ -51,12 +59,21 @@ icon = ExtResource("4_rraun")
 flat = true
 expand_icon = true
 
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 3.0
+offset_right = 1452.0
+offset_bottom = 407.0
+texture = ExtResource("5_oxva8")
+expand_mode = 1
+
 [node name="MainBG" type="TextureRect" parent="."]
-offset_left = 325.0
+offset_left = 326.0
 offset_top = 1167.0
-offset_right = 2245.0
+offset_right = 2246.0
 offset_bottom = 2247.0
-texture = ExtResource("4_6hob5")
+texture = ExtResource("6_r4aa6")
 expand_mode = 1
 
 [node name="MatchTheAminos" type="Node2D" parent="MainBG"]
@@ -77,6 +94,14 @@ offset_bottom = 1070.0
 icon = ExtResource("4_rraun")
 flat = true
 expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="MainBG"]
+offset_left = 485.0
+offset_top = 3.0
+offset_right = 1452.0
+offset_bottom = 407.0
+texture = ExtResource("5_oxva8")
+expand_mode = 1
 
 [node name="ExitLabel" type="TextureRect" parent="."]
 offset_left = 2342.0
@@ -125,3 +150,21 @@ offset_bottom = 607.0
 icon = ExtResource("9_wyqiq")
 flat = true
 expand_icon = true
+
+[node name="kahoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_gsxod")
+
+[node name="correct" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_oxva8")
+
+[node name="wrong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_r4aa6")
+
+[node name="start_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_p4dsj")
+
+[node name="score_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_r6x1s")
+
+[node name="flip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_8bfo2")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxdek8wdmp80v"]
+[gd_scene load_steps=32 format=3 uid="uid://bxdek8wdmp80v"]
 
 [ext_resource type="Script" uid="uid://clpm87q17muv" path="res://scripts/LivingRoom.cs" id="1_tcv1k"]
 [ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://sprites/Extras/livingroombg.png" id="2_sc017"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://dfe37p1vpg38d" path="res://scripts/TaskView.cs" id="16_5cgma"]
 [ext_resource type="Texture2D" uid="uid://hejm6xgsgnvp" path="res://sprites/Extras/task1.png" id="16_uuwu5"]
 [ext_resource type="Texture2D" uid="uid://jnfg0cxgph7v" path="res://sprites/Extras/mini_button.png" id="17_5cgma"]
+[ext_resource type="Texture2D" uid="uid://cr48x1yqv52pg" path="res://sprites/Extras/QR.png" id="18_2baer"]
 [ext_resource type="Texture2D" uid="uid://dxdo5pvv36r5n" path="res://sprites/Extras/task2.png" id="18_6ryxo"]
 [ext_resource type="Texture2D" uid="uid://d0scl083fs4q2" path="res://sprites/Extras/task3.png" id="19_xdb3q"]
 [ext_resource type="Texture2D" uid="uid://do3akyg1uxns2" path="res://sprites/Extras/task4.png" id="20_81vpo"]
@@ -238,6 +239,15 @@ offset_bottom = 266.76
 icon = ExtResource("17_5cgma")
 flat = true
 
+[node name="Function" type="TextureRect" parent="TaskView/Function"]
+offset_left = 201.179
+offset_top = 249.816
+offset_right = 389.179
+offset_bottom = 448.816
+scale = Vector2(1.357, 1.357)
+texture = ExtResource("18_2baer")
+expand_mode = 1
+
 [node name="Codon" type="TextureRect" parent="TaskView"]
 layout_mode = 0
 offset_left = 706.0
@@ -258,9 +268,9 @@ flat = true
 
 [node name="Aminos" type="TextureRect" parent="TaskView"]
 layout_mode = 0
-offset_left = 208.0
+offset_left = 82.0
 offset_top = 895.0
-offset_right = 516.0
+offset_right = 390.0
 offset_bottom = 1180.0
 scale = Vector2(1.357, 1.357)
 texture = ExtResource("19_xdb3q")
@@ -276,9 +286,9 @@ flat = true
 
 [node name="Carbo" type="TextureRect" parent="TaskView"]
 layout_mode = 0
-offset_left = 709.0
+offset_left = 816.0
 offset_top = 895.0
-offset_right = 1017.0
+offset_right = 1124.0
 offset_bottom = 1180.0
 scale = Vector2(1.357, 1.357)
 texture = ExtResource("20_81vpo")

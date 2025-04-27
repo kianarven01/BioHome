@@ -25,15 +25,21 @@ public partial class MatchTheAminos : Node2D
 	private string currentGame;
 	private Button playAgainBtn;
 	private Button noBtn;
+	private AudioStreamPlayer2D correctSound;
+	private AudioStreamPlayer2D wrongSound;
+	private AudioStreamPlayer2D flipSound;
+	private AudioStreamPlayer2D themeMusic;
+	private AudioStreamPlayer2D startMusic;
+	private AudioStreamPlayer2D scoreMusic;
 
 	// Manually defined card pairs
 	private List<(int, int)> _manualPairs = new List<(int, int)>
 	{
-		(0, 4), (2, 3), (6, 8), (5, 7), (1, 9)  // Five pairs of unique IDs
+		(0, 1), (2, 3), (4, 5), (6, 7), (8, 9)  // Five pairs of unique IDs
 	};
 
 	public override void _Ready()
-	{
+	{	
 		structButton = GetNode<Button>("../../Background/structureButton");
 		funcButton = GetNode<Button>("../../Background/functionButton");
 		exitButton = GetNode<Button>("../../Background/exitButton");
@@ -46,13 +52,23 @@ public partial class MatchTheAminos : Node2D
 		noBtn = GetNode<Button>("../../ExitLabel/NoButton");
 		mainGame.Visible = false;
 		
-		structButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/structureImages/");
-		funcButton.Pressed += () => LoadGame("res://sprites/Aminos/Assets/functionImages/");
+		correctSound = GetNode<AudioStreamPlayer2D>("../../correct");
+		wrongSound = GetNode<AudioStreamPlayer2D>("../../wrong");
+		flipSound = GetNode<AudioStreamPlayer2D>("../../flip");
+		themeMusic = GetNode<AudioStreamPlayer2D>("../../kahoot");
+		startMusic = GetNode<AudioStreamPlayer2D>("../../start_music");
+		scoreMusic = GetNode<AudioStreamPlayer2D>("../../score_music");
+		startMusic.Play();
+		
+		structButton.Pressed += () => LoadGame("res://sprites/Aminos/structureImages/");
+		funcButton.Pressed += () => LoadGame("res://sprites/Aminos/functionImages/");
 		exitButton.Pressed += ReturnToLivingRoom;
 		gameExit.Pressed += OnNoPressed;
 		noBtn.Pressed += OnNoPressed;
 		playAgainBtn.Pressed += OnPlayAgainPressed;
 	}
+	
+	
 	
 	private void LoadGame(string cardDir)
 	{
@@ -64,6 +80,8 @@ public partial class MatchTheAminos : Node2D
 		AddToGroup("GameController");
 		CallDeferred(nameof(SpawnLifeIndicator));
 		currentGame = cardDir;
+		startMusic.Stop();
+		themeMusic.Play();
 	}
 	
 	private void SpawnLifeIndicator()
@@ -103,27 +121,17 @@ public partial class MatchTheAminos : Node2D
 
 	private void LoadTexturesFromFolder(string _imageFolder)
 	{
-		DirAccess dir = DirAccess.Open(_imageFolder);
-		if (dir != null)
+		for (int i = 1; i <= 10; i++)
 		{
-			dir.ListDirBegin();
-			string fileName = dir.GetNext();
-			while (fileName != "")
-			{
-				if (fileName.EndsWith(".png") || fileName.EndsWith(".jpg"))
-				{
-					string path = _imageFolder + fileName;
-					Texture2D texture = (Texture2D)ResourceLoader.Load(path);
-					if (texture != null)
-						_textures.Add(texture);
-				}
-				fileName = dir.GetNext();
-			}
+			string path = $"{_imageFolder}card{i}.png";
+			Texture2D texture = ResourceLoader.Load<Texture2D>(path);
+			if (texture != null)
+				_textures.Add(texture);
+			else
+				GD.PrintErr($"Failed to load texture at: {path}");
 		}
-		
-		if (_textures.Count > 10)
-			_textures = _textures.Take(10).ToList();
 	}
+
 
 	private void SpawnCards()
 	{
@@ -239,6 +247,7 @@ public partial class MatchTheAminos : Node2D
 			if (_manualPairs.Any(pair => (pair.Item1 == firstCard.CardId && pair.Item2 == secondCard.CardId) ||
 							 (pair.Item2 == firstCard.CardId && pair.Item1 == secondCard.CardId)))
 			{
+				correctSound.Play();
 				firstCard.SetMatched();
 				secondCard.SetMatched();
 				_matchedCount += 2;
@@ -251,12 +260,13 @@ public partial class MatchTheAminos : Node2D
 			}
 			else
 			{
+				wrongSound.Play();
 				ReduceLife();
 				GetTree().CreateTimer(1.0f).Timeout += () =>
 				{
 					firstCard.FlipCard();
 					secondCard.FlipCard();
-				};
+				};	
 			}
 
 			_selectedCards.Clear();
@@ -288,6 +298,8 @@ public partial class MatchTheAminos : Node2D
 		exitSign.Visible = true;
 		titleLbl.Text = title;
 		subtitleLbl.Text = sub;
+		themeMusic.Stop();
+		scoreMusic.Play();
 	}
 	
 	private void ToggleMainButtons(bool enabled)
@@ -325,6 +337,7 @@ public partial class MatchTheAminos : Node2D
 
 		exitSign.Visible = false;
 		ToggleMainButtons(true);
+		scoreMusic.Stop();
 
 		LoadGame(currentGame); // or store previous path	
 	}
@@ -356,6 +369,8 @@ public partial class MatchTheAminos : Node2D
 
 		exitSign.Visible = false;
 		ToggleMainButtons(true);
+		scoreMusic.Stop();
+		startMusic.Play();
 		
 		mainGame.Visible = false;
 	}
