@@ -221,6 +221,23 @@ offset_right = 3526.0
 offset_bottom = 1051.0
 texture = ExtResource("7_7smae")
 
+[node name="FinalTask" type="TextureRect" parent="TaskView"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 888.0
+offset_right = 742.0
+offset_bottom = 1135.0
+scale = Vector2(1.357, 1.357)
+texture = ExtResource("18_2baer")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="TaskView/FinalTask"]
+offset_left = -529.845
+offset_top = 31.6875
+offset_right = -411.845
+offset_bottom = 158.688
+flat = true
+
 [node name="Function" type="TextureRect" parent="TaskView"]
 layout_mode = 0
 offset_left = 203.0
@@ -238,16 +255,6 @@ offset_right = 176.43
 offset_bottom = 266.76
 icon = ExtResource("17_5cgma")
 flat = true
-
-[node name="Function" type="TextureRect" parent="TaskView/Function"]
-layout_mode = 0
-offset_left = 201.179
-offset_top = 249.816
-offset_right = 389.179
-offset_bottom = 448.816
-scale = Vector2(1.357, 1.357)
-texture = ExtResource("18_2baer")
-expand_mode = 1
 
 [node name="Codon" type="TextureRect" parent="TaskView"]
 layout_mode = 0

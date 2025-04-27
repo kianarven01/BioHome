@@ -33,6 +33,7 @@ public partial class LivingRoom : Node2D
 	private Button carbsBook;
 	private Button naBook;
 	private Button proteinBook;
+	private Button finalTaskButton;
 	[Export] public TextureRect LeftPage;
 	[Export] public TextureRect RightPage;
 	private bool _isFlipping = false;
@@ -82,6 +83,10 @@ public partial class LivingRoom : Node2D
 		codonButton = GetNode<Button>("TaskView/Codon/Button");
 		codonButton.Pressed += OnPlayCodonPressed;
 		
+		// Final Task button
+		finalTaskButton = GetNode<Button>("TaskView/FinalTask/Button");
+		//finalTaskButton.Pressed += OnFinalTestPressed;
+		
 		// Book Navigation
 		nextPage = GetNode<Button>("Book/NextButton");
 		nextPage.Pressed += FlipForward;
@@ -103,6 +108,8 @@ public partial class LivingRoom : Node2D
 		
 		proteinBook = GetNode<Button>("Drawer/Book4");
 		proteinBook.Pressed += () => showBook("res://sprites/Flipbook/Protein/");
+		
+		
 
 		tv = GetNode<TextureRect>("TV");
 		tasks = GetNode<TextureRect>("Tasks");
@@ -195,6 +202,11 @@ public partial class LivingRoom : Node2D
 		{
 			GD.PrintErr("Failed to load the scene.");
 		}
+	}
+	
+	private void OnFinalTestPressed()
+	{
+		OS.ShellOpen("https://quizizz.com/join/quiz/680b84e9bec0c8006e02735a/start?studentShare=true");
 	}
 	
 	private void OnPlayMtaPressed()
