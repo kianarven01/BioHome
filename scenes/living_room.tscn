@@ -232,10 +232,11 @@ texture = ExtResource("18_2baer")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="TaskView/FinalTask"]
-offset_left = -529.845
-offset_top = 31.6875
-offset_right = -411.845
-offset_bottom = 158.688
+visible = false
+offset_left = 42.7414
+offset_top = 89.1674
+offset_right = 160.741
+offset_bottom = 216.167
 flat = true
 
 [node name="Function" type="TextureRect" parent="TaskView"]
