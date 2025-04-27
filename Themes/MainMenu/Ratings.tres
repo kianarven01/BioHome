@@ -1328,7 +1328,9 @@ cache/0/70/5/glyphs/4/size = Vector2(15, 57)
 cache/0/70/5/glyphs/4/uv_rect = Rect2(104, 59, 15, 57)
 cache/0/70/5/glyphs/4/texture_idx = 0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1y2k2"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ifbm"]
+texture = ExtResource("1_gh6uf")
+region_rect = Rect2(749, 3548, 435, 423)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krlkg"]
 content_margin_left = 4.0
@@ -1383,7 +1385,7 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = SubResource("FontFile_16vdi")
-Button/styles/disabled = SubResource("StyleBoxEmpty_1y2k2")
+Button/styles/disabled = SubResource("StyleBoxTexture_0ifbm")
 Button/styles/focus = SubResource("StyleBoxFlat_krlkg")
 Button/styles/hover = SubResource("StyleBoxTexture_gh6uf")
 Button/styles/normal = SubResource("StyleBoxTexture_ul7cc")

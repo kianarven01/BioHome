@@ -216,5 +216,10 @@ public partial class MainMenu : Node2D
 		info2.Position = new Vector2(-132, -166);
 		info1.Visible = visible1;
 		info2.Visible = visible2;
+		if(!visible1 && !visible2){
+			rateBtn.Disabled = false;
+		}else{
+			rateBtn.Disabled = true;
+		}
 	}
 }
