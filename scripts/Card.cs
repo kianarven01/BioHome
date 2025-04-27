@@ -62,11 +62,14 @@ public partial class Card : Node2D
 
 	public void FlipCard(bool faceUp)
 	{
-		flipSound.Play();
 		if (_frontSprite == null || _backSprite == null)
 		{
 			GD.PrintErr("Sprites are not initialized properly.");
 			return;
+		}
+		
+		if(faceUp){
+			flipSound.Play();
 		}
 
 		_isFlipped = faceUp;

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5ddv76fdrvrd"
-path="res://.godot/imported/page (16).jpg-49e6c9a0406bd555f5d08ba686c2e236.ctex"
+uid="uid://bacydyx73017y"
+path="res://.godot/imported/PlayButton.png-d03ad859af500ca61c9f5d1d8cef3fe2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Flipbook/Protein/page (16).jpg"
-dest_files=["res://.godot/imported/page (16).jpg-49e6c9a0406bd555f5d08ba686c2e236.ctex"]
+source_file="res://sprites/Aminos/buttons/PlayButton.png"
+dest_files=["res://.godot/imported/PlayButton.png-d03ad859af500ca61c9f5d1d8cef3fe2.ctex"]
 
 [params]
 

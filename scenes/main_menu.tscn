@@ -293,10 +293,10 @@ button_group = ExtResource("19_1dfpl")
 
 [node name="submitBtn" type="Button" parent="LandingScene/RatingPanel"]
 layout_mode = 0
-offset_left = 90.6982
-offset_top = 310.729
-offset_right = 197.698
-offset_bottom = 346.729
+offset_left = 90.0
+offset_top = 315.0
+offset_right = 197.0
+offset_bottom = 351.0
 theme = ExtResource("20_gw5y6")
 text = "SUBMIT
 "

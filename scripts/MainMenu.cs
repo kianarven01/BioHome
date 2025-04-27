@@ -51,6 +51,7 @@ public partial class MainMenu : Node2D
 		okBtn.Pressed += () => toggleInfo(false, true);
 		proceedBtn.Pressed += () => toggleInfo(false, false);
 		submitBtn.Disabled = true;
+		submitBtn.Visible = false;
 		
 		react =  GD.Load<ButtonGroup>("res://groups/react.tres");
 		ease =  GD.Load<ButtonGroup>("res://groups/ease.tres");
@@ -91,6 +92,9 @@ public partial class MainMenu : Node2D
 		UncheckAllButtons(easeGroup);
 		UncheckAllButtons(learnGroup);
 		UncheckAllButtons(satisfactionGroup);
+		ratings = new List<string>{"", "", "", "", ""};
+		submitBtn.Disabled = true;
+		submitBtn.Visible = false;
 	}
 
 	public override void _Input(InputEvent @event)
@@ -134,6 +138,7 @@ public partial class MainMenu : Node2D
 		
 		if(!ratings.Contains("")){
 			submitBtn.Disabled = false;
+			submitBtn.Visible = true;
 		}
 	}
 	
@@ -161,16 +166,18 @@ public partial class MainMenu : Node2D
 			Text = body
 		};
 
-		// Set up the SMTP client
 		using (var client = new SmtpClient())
 		{
 			try
 			{
-				// Connect to the SMTP server (example: Gmail)
-				client.Connect("smtp.gmail.com", 587, false);
-				
-				// Authenticate with your email account
-				client.Authenticate("gerryvienlifeflores@gmail.com", "xjyh eepp whig hfml");
+				// ⚡ Add this to skip strict certificate validation (important for Android)
+				client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+
+				// Connect to Gmail SMTP
+				client.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+
+				// Authenticate
+				client.Authenticate("playbiohome@gmail.com", "alha tbng igew rism");
 
 				// Send the email
 				client.Send(message);
@@ -178,22 +185,24 @@ public partial class MainMenu : Node2D
 			}
 			catch (Exception e)
 			{
-				GD.PrintErr("Failed to send email: " + e.Message);
+				GD.PrintErr("Failed to send email: " + e.ToString());
 			}
 			finally
 			{
-				// Disconnect from the server
 				client.Disconnect(true);
 				client.Dispose();
+				ratings = new List<string>{"", "", "", "", ""};
 				ratingsPnl.Visible = false;
+				submitBtn.Disabled = true;
+				submitBtn.Visible = false;
 			}
 		}
 	}
-	
+		
 	private void sendRatings()
 	{
 		string message = $"What do they think about the game? {ratings[0]}\nIt helps them be more effective in learning? {ratings[1]}\nIs it easy to use? {ratings[2]}\nDo they learn quickly to use it? {ratings[3]}\nAre they satisfied? {ratings[4]}"; 
-		SendEmail("gerryvienlifeflores@gmail.com", "thisyourman106@gmail.com", "Anonymous Ratings", message);
+		SendEmail("playbiohome@gmail.com", "ezraescalderon@gmail.com", "Anonymous Ratings", message);
 		UncheckAllButtons(reactGroup);
 		UncheckAllButtons(effectivityGroup);
 		UncheckAllButtons(easeGroup);

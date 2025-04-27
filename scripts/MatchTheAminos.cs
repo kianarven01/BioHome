@@ -297,7 +297,9 @@ public partial class MatchTheAminos : Node2D
 		titleLbl.Text = title;
 		subtitleLbl.Text = sub;
 		themeMusic.Stop();
-		scoreMusic.Play();
+		if(title == "You Win!"){
+			scoreMusic.Play();
+		}
 	}
 	
 	private void ToggleMainButtons(bool enabled)
