@@ -61,6 +61,7 @@ flat = true
 expand_icon = true
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
 offset_left = 436.0
 offset_top = 1.0
 offset_right = 1490.0
@@ -96,6 +97,7 @@ flat = true
 expand_icon = true
 
 [node name="TextureRect" type="TextureRect" parent="MainBG"]
+layout_mode = 0
 offset_left = 436.0
 offset_top = 1.0
 offset_right = 1490.0

@@ -37,7 +37,7 @@ public partial class TV_UI : CanvasLayer
 		video1Button.Pressed += () => PlayVideo("res://videos/1Carbo.ogv");
 		video2Button.Pressed += () => PlayVideo("res://videos/2Nucleic.ogv");
 		video3Button.Pressed += () => PlayVideo("res://videos/4Lipids.ogv");
-		video4Button.Pressed += () => PlayVideo("res://videos/3Protein.ogv");
+		video4Button.Pressed += () => PlayVideo("res://videos/3Protein.ogv`");
 	}
 
 	private void PlayVideo(string videoDir)

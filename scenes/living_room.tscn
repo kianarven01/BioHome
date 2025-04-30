@@ -174,43 +174,47 @@ expand_mode = 1
 
 [node name="proteinBtn" type="Button" parent="TV/TV_UI/UIbg"]
 layout_mode = 0
-offset_left = 977.684
-offset_top = 540.398
-offset_right = 1858.68
-offset_bottom = 1004.4
+offset_left = 66.0
+offset_top = 542.0
+offset_right = 947.0
+offset_bottom = 1003.0
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/proteinBtn"]
 layout_mode = 0
-offset_left = -1.24846
-offset_top = -2.29963
-offset_right = 879.752
-offset_bottom = 461.7
+offset_left = 0.177917
+offset_top = -1.6018
+offset_right = 881.178
+offset_bottom = 462.398
 mouse_filter = 2
 texture = ExtResource("12_2baer")
 expand_mode = 1
 
 [node name="lipidsBtn" type="Button" parent="TV/TV_UI/UIbg"]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 537.31
-offset_right = 946.0
-offset_bottom = 1001.31
+offset_left = 977.684
+offset_top = 540.398
+offset_right = 1858.68
+offset_bottom = 1004.4
+flat = true
 
 [node name="TextureRect" type="TextureRect" parent="TV/TV_UI/UIbg/lipidsBtn"]
 layout_mode = 0
-offset_right = 881.0
+offset_left = -4.99448
+offset_top = 0.000102997
+offset_right = 876.005
 offset_bottom = 464.0
 mouse_filter = 2
 texture = ExtResource("11_3rehq")
 expand_mode = 1
 
 [node name="Tasks" type="TextureRect" parent="."]
-offset_left = 1250.0
+offset_left = 1261.0
 offset_top = 283.0
-offset_right = 1547.0
-offset_bottom = 580.0
+offset_right = 1557.0
+offset_bottom = 579.0
 texture = ExtResource("12_3a64r")
+expand_mode = 1
 script = ExtResource("16_5cgma")
 
 [node name="TaskView" type="TextureRect" parent="."]
@@ -233,6 +237,7 @@ expand_mode = 1
 
 [node name="Button" type="Button" parent="TaskView/FinalTask"]
 visible = false
+layout_mode = 0
 offset_left = 42.7414
 offset_top = 89.1674
 offset_right = 160.741
@@ -241,19 +246,20 @@ flat = true
 
 [node name="Function" type="TextureRect" parent="TaskView"]
 layout_mode = 0
-offset_left = 203.0
-offset_top = 539.0
-offset_right = 511.0
-offset_bottom = 824.0
+offset_left = 251.0
+offset_top = 534.0
+offset_right = 523.0
+offset_bottom = 825.0
 scale = Vector2(1.357, 1.357)
 texture = ExtResource("16_uuwu5")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="TaskView/Function"]
 layout_mode = 0
-offset_left = 88.4303
-offset_top = 224.76
-offset_right = 176.43
-offset_bottom = 266.76
+offset_left = 78.1134
+offset_top = 230.656
+offset_right = 166.113
+offset_bottom = 272.656
 icon = ExtResource("17_5cgma")
 flat = true
 
@@ -261,53 +267,56 @@ flat = true
 layout_mode = 0
 offset_left = 706.0
 offset_top = 533.0
-offset_right = 1014.0
-offset_bottom = 818.0
+offset_right = 978.0
+offset_bottom = 824.0
 scale = Vector2(1.357, 1.357)
 texture = ExtResource("18_6ryxo")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="TaskView/Codon"]
 layout_mode = 0
-offset_left = 91.378
-offset_top = 224.761
-offset_right = 179.378
-offset_bottom = 266.761
+offset_left = 75.9026
+offset_top = 230.656
+offset_right = 163.903
+offset_bottom = 272.656
 icon = ExtResource("17_5cgma")
 flat = true
 
 [node name="Aminos" type="TextureRect" parent="TaskView"]
 layout_mode = 0
-offset_left = 82.0
-offset_top = 895.0
-offset_right = 390.0
-offset_bottom = 1180.0
+offset_left = 136.0
+offset_top = 907.0
+offset_right = 408.0
+offset_bottom = 1192.0
 scale = Vector2(1.357, 1.357)
 texture = ExtResource("19_xdb3q")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="TaskView/Aminos"]
 layout_mode = 0
-offset_left = 87.6935
-offset_top = 225.497
-offset_right = 175.693
-offset_bottom = 267.497
+offset_left = 75.9027
+offset_top = 226.234
+offset_right = 163.902
+offset_bottom = 268.234
 icon = ExtResource("17_5cgma")
 flat = true
 
 [node name="Carbo" type="TextureRect" parent="TaskView"]
 layout_mode = 0
-offset_left = 816.0
-offset_top = 895.0
-offset_right = 1124.0
-offset_bottom = 1180.0
+offset_left = 826.0
+offset_top = 910.0
+offset_right = 1098.0
+offset_bottom = 1195.0
 scale = Vector2(1.357, 1.357)
 texture = ExtResource("20_81vpo")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="TaskView/Carbo"]
 layout_mode = 0
-offset_left = 89.1673
-offset_top = 224.761
-offset_right = 177.167
-offset_bottom = 266.761
+offset_left = 78.1133
+offset_top = 225.497
+offset_right = 166.113
+offset_bottom = 267.497
 icon = ExtResource("17_5cgma")
 flat = true
 
