@@ -370,6 +370,4 @@ public partial class LivingRoom : Node2D
 		proteinBook.Disabled = state;
 		exitButton.Disabled = state;
 	}
-	
-	
 }

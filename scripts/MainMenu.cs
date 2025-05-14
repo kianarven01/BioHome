@@ -25,9 +25,19 @@ public partial class MainMenu : Node2D
 	private List<string> ratings;
 	private Button infoBtn;
 	private Button okBtn;
-	private Button proceedBtn;
 	private TextureRect info1;
-	private TextureRect info2;
+	private List<Texture2D> _pages = new();
+	private int _currentPageIndex = 0;
+	private TextureRect RefPage;
+	private TextureRect DbtPage;
+	private Button burgerBtn;
+	private Button forwardBtn;
+	private Button closeBtn;
+	private Button DbtBtn;
+	private Button DbtOkBtn;
+	private Button proponentBtn;
+	private TextureRect ourTeam;
+	private Button proponentOkBtn;
 
 	public override void _Ready()
 	{
@@ -40,16 +50,31 @@ public partial class MainMenu : Node2D
 		ratings = new List<string>{"", "", "", "", ""};
 		infoBtn = GetNode<Button>("LandingScene/infoBtn");
 		okBtn = GetNode<Button>("LandingScene/Info1/okBtn");
-		proceedBtn = GetNode<Button>("LandingScene/Info2/proceedBtn");
 		info1 = GetNode<TextureRect>("LandingScene/Info1");
-		info2 = GetNode<TextureRect>("LandingScene/Info2");
+		RefPage = GetNode<TextureRect>("LandingScene/Ref");
+		DbtPage = GetNode<TextureRect>("LandingScene/DBT");
+		DbtBtn = GetNode<Button>("LandingScene/DbtBtn");
+		DbtOkBtn = GetNode<Button>("LandingScene/DBT/okBtn");
+		burgerBtn = GetNode<Button>("LandingScene/burgerBtn");
+		forwardBtn = GetNode<Button>("LandingScene/Ref/forwardBtn");
+		closeBtn = GetNode<Button>("LandingScene/Ref/closeBtn");
+		proponentBtn = GetNode<Button>("LandingScene/proponentBtn");
+		ourTeam = GetNode<TextureRect>("LandingScene/OurTeam");
+		proponentOkBtn = GetNode<Button>("LandingScene/OurTeam/okBtn");
+		
+		DbtBtn.Pressed += () => openDbt(true, "res://sprites/DBT/");
+		burgerBtn.Pressed += () => openRef(true, "res://sprites/References/");
+		forwardBtn.Pressed += () => continuePage("References");
+		okBtn.Pressed += () => continuePage("Information");
+		DbtOkBtn.Pressed += () => continuePage("DBT");
+		closeBtn.Pressed += () => openRef(false);
+		proponentBtn.Pressed += () => openProponent(true);
+		proponentOkBtn.Pressed += () => openProponent(false);
 		
 		rateBtn.Pressed += showRatings;
 		closeRatings.Pressed += closeRating;
 		submitBtn.Pressed += sendRatings;
-		infoBtn.Pressed += () => toggleInfo(true, false);
-		okBtn.Pressed += () => toggleInfo(false, true);
-		proceedBtn.Pressed += () => toggleInfo(false, false);
+		infoBtn.Pressed += () => toggleInfo(true, "res://sprites/Information/");
 		submitBtn.Disabled = true;
 		submitBtn.Visible = false;
 		
@@ -152,6 +177,63 @@ public partial class MainMenu : Node2D
 			}
 		}
 	}
+	
+	private void LoadPagesFromFolder(string path)
+	{
+		_pages.Clear();
+		_currentPageIndex = 0;
+
+		// First count how many PNG files exist
+		var dir = DirAccess.Open(path);
+		if (dir == null)
+		{
+			GD.PrintErr($"Can't open directory: {path}");
+			return;
+		}
+
+		int pngCount = 0;
+		switch(path){
+			case "res://sprites/References/":
+				pngCount = 10;
+				break;
+			case "res://sprites/Information/":
+				pngCount = 5;
+				break;
+			case "res://sprites/DBT/":
+				pngCount = 3;
+				break;
+			default:
+				break;
+		}
+		
+		// Then load the pages based on the count
+		for (int i = 1; i <= pngCount; i++)
+		{
+			string filePath = $"{path}{i}.png";
+			Texture2D tex = ResourceLoader.Load<Texture2D>(filePath);
+			if (tex != null)
+				_pages.Add(tex);
+			else
+				GD.PrintErr($"Failed to load page: {filePath}");
+		}
+	}
+	
+	private void updatePage(string type)
+	{
+		switch(type){
+			case "References":
+				RefPage.Texture = _pages[_currentPageIndex];
+				break;
+			case "Information":
+				info1.Texture = _pages[_currentPageIndex];
+				break;
+			case "DBT":
+				DbtPage.Texture = _pages[_currentPageIndex];
+				break;
+			default:
+				break;
+		}
+	}
 
 	public void SendEmail(string fromEmail, string toEmail, string subject, string body)
 	{
@@ -210,16 +292,59 @@ public partial class MainMenu : Node2D
 		UncheckAllButtons(satisfactionGroup);
 	}
 	
-	private void toggleInfo(bool visible1, bool visible2)
+	private void toggleInfo(bool visible1, string path = null)
 	{
-		info1.Position = new Vector2(-132, -166);
-		info2.Position = new Vector2(-132, -166);
-		info1.Visible = visible1;
-		info2.Visible = visible2;
-		if(!visible1 && !visible2){
-			rateBtn.Disabled = false;
-		}else{
+		if(visible1){
+			info1.Position = new Vector2(-132, -166);
+			info1.Visible = visible1;
 			rateBtn.Disabled = true;
+			LoadPagesFromFolder(path);
+			updatePage("Information");
+		}else{
+			rateBtn.Disabled = false;
+		}
+	}
+	
+	private void openRef(bool forOpening, string path = null)
+	{
+		if(forOpening){
+			RefPage.Position = new Vector2(-316,-163);
+			RefPage.Visible = true;
+			LoadPagesFromFolder(path);
+			updatePage("References");
+		}else{
+			RefPage.Visible = false;
+		}
+	}
+	
+	private void openDbt(bool forOpening, string path = null)
+	{
+		if(forOpening){
+			DbtPage.Position = new Vector2(-316,-163);
+			DbtPage.Visible = true;
+			LoadPagesFromFolder(path);
+			updatePage("DBT");
+		}else{
+			DbtPage.Visible = false;
+		}
+	}
+	
+	private void openProponent(bool isOpen){
+		ourTeam.Position = new Vector2(-195, -204);
+		ourTeam.Visible = isOpen;
+	}
+	
+	private void continuePage(string kind)
+	{
+		if(_currentPageIndex < _pages.Count - 1)
+		{
+			_currentPageIndex += 1;
+			updatePage(kind);
+		}else{
+			RefPage.Visible = false;
+			info1.Visible = false;
+			rateBtn.Disabled = false;
+			DbtPage.Visible = false;
 		}
 	}
 }

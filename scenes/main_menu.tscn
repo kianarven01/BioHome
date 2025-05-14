@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d331i2778xnbp"]
+[gd_scene load_steps=34 format=3 uid="uid://d331i2778xnbp"]
 
 [ext_resource type="Script" uid="uid://cyourtxv86tp5" path="res://scripts/MainMenu.cs" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://dajdvtilw0xxt" path="res://scenes/LandingScene.tscn" id="2_fu7sn"]
@@ -10,8 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://chvy8miswo1xq" path="res://sprites/Extras/BioHomeLabel.png" id="5_qe12f"]
 [ext_resource type="Script" uid="uid://c41ehdpq2ae7d" path="res://scripts/StartButton.cs" id="7_8qtwp"]
 [ext_resource type="AudioStream" uid="uid://c5kmjbeh36nve" path="res://sounds/Kahoot! Jungle Lobby Theme.mp3" id="10_5dd4i"]
+[ext_resource type="Theme" uid="uid://hqpf3bydd2kl" path="res://Themes/MainMenu/burgerBtn.tres" id="10_engjn"]
 [ext_resource type="Theme" uid="uid://giebgwmnmf6m" path="res://Themes/MainMenu/Info.tres" id="10_flqon"]
 [ext_resource type="Theme" uid="uid://do006c28vigyd" path="res://Themes/MainMenu/Ratings.tres" id="10_lgwnu"]
+[ext_resource type="Theme" uid="uid://dy7ddibp60kro" path="res://Themes/MainMenu/proponents.tres" id="11_6h3lr"]
+[ext_resource type="Theme" uid="uid://bjs21mm85stao" path="res://Themes/MainMenu/dbt.tres" id="12_dj67d"]
 [ext_resource type="Texture2D" uid="uid://0qijwjwj20u6" path="res://sprites/Extras/2.png" id="12_rcqid"]
 [ext_resource type="Texture2D" uid="uid://gq3gyrp5i2hh" path="res://Themes/MakeItFunction/MainTheme/closeButton.png" id="13_1ajci"]
 [ext_resource type="Theme" uid="uid://bhpuem2lpeqew" path="res://Themes/MainMenu/veryGood.tres" id="13_7b55j"]
@@ -25,8 +28,8 @@
 [ext_resource type="ButtonGroup" uid="uid://cml87l2in2e38" path="res://groups/satisfaction.tres" id="19_1dfpl"]
 [ext_resource type="Theme" uid="uid://ckgityn5j7wtw" path="res://Themes/MainMenu/check.tres" id="20_engjn"]
 [ext_resource type="Theme" uid="uid://lvvw2svddc3h" path="res://Themes/MainMenu/completeRatings.tres" id="20_gw5y6"]
-[ext_resource type="Texture2D" uid="uid://v0q2q7jw7ujy" path="res://sprites/Extras/info1.png" id="21_svtp6"]
-[ext_resource type="Texture2D" uid="uid://b4lbpety6jyd8" path="res://sprites/Extras/info2.png" id="22_1dfpl"]
+[ext_resource type="Texture2D" uid="uid://cgxjptini4rh1" path="res://sprites/Extras/our_team.png" id="29_engjn"]
+[ext_resource type="Theme" uid="uid://bvrrod0m7qohc" path="res://Themes/MainMenu/next_btn.tres" id="30_6h3lr"]
 
 [sub_resource type="Animation" id="Animation_8qtwp"]
 length = 0.001
@@ -130,6 +133,30 @@ offset_bottom = 205.003
 scale = Vector2(0.746887, 1.0775)
 mouse_filter = 2
 texture = ExtResource("4_glbon")
+
+[node name="burgerBtn" type="Button" parent="LandingScene"]
+layout_mode = 0
+offset_left = 141.364
+offset_top = -215.401
+offset_right = 176.364
+offset_bottom = -178.401
+theme = ExtResource("10_engjn")
+
+[node name="proponentBtn" type="Button" parent="LandingScene"]
+layout_mode = 0
+offset_left = 184.003
+offset_top = -215.401
+offset_right = 219.003
+offset_bottom = -178.401
+theme = ExtResource("11_6h3lr")
+
+[node name="DbtBtn" type="Button" parent="LandingScene"]
+layout_mode = 0
+offset_left = 227.004
+offset_top = -216.228
+offset_right = 262.004
+offset_bottom = -179.228
+theme = ExtResource("12_dj67d")
 
 [node name="infoBtn" type="Button" parent="LandingScene"]
 layout_mode = 0
@@ -303,11 +330,10 @@ text = "SUBMIT
 
 [node name="Info1" type="TextureRect" parent="LandingScene"]
 layout_mode = 0
-offset_left = 543.905
-offset_top = -613.845
-offset_right = 808.905
-offset_bottom = -272.845
-texture = ExtResource("21_svtp6")
+offset_left = 248.323
+offset_top = -586.951
+offset_right = 513.323
+offset_bottom = -245.951
 expand_mode = 1
 
 [node name="okBtn" type="Button" parent="LandingScene/Info1"]
@@ -318,21 +344,61 @@ offset_right = 157.0
 offset_bottom = 276.0
 flat = true
 
-[node name="Info2" type="TextureRect" parent="LandingScene"]
+[node name="Ref" type="TextureRect" parent="LandingScene"]
 layout_mode = 0
-offset_left = 264.222
-offset_top = -615.5
-offset_right = 529.222
-offset_bottom = -274.5
-texture = ExtResource("22_1dfpl")
+offset_left = -743.576
+offset_top = -628.74
+offset_right = -125.576
+offset_bottom = -267.74
+expand_mode = 3
+
+[node name="forwardBtn" type="Button" parent="LandingScene/Ref"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 319.0
+offset_right = 624.0
+offset_bottom = 352.0
+theme = ExtResource("30_6h3lr")
+expand_icon = true
+
+[node name="closeBtn" type="Button" parent="LandingScene/Ref"]
+layout_mode = 0
+offset_left = 618.627
+offset_top = -21.1015
+offset_right = 657.627
+offset_bottom = 19.8985
+icon = ExtResource("13_1ajci")
+flat = true
+expand_icon = true
+
+[node name="DBT" type="TextureRect" parent="LandingScene"]
+offset_left = 299.273
+offset_top = -637.429
+offset_right = 917.273
+offset_bottom = -276.429
+expand_mode = 3
+
+[node name="okBtn" type="Button" parent="LandingScene/DBT"]
+offset_left = 269.0
+offset_top = 325.0
+offset_right = 373.0
+offset_bottom = 346.0
+flat = true
+
+[node name="OurTeam" type="TextureRect" parent="LandingScene"]
+layout_mode = 0
+offset_left = 414.904
+offset_top = -159.958
+offset_right = 814.904
+offset_bottom = 251.042
+texture = ExtResource("29_engjn")
 expand_mode = 1
 
-[node name="proceedBtn" type="Button" parent="LandingScene/Info2"]
-layout_mode = 0
-offset_left = 108.0
-offset_top = 257.0
-offset_right = 157.0
-offset_bottom = 276.0
+[node name="okBtn" type="Button" parent="LandingScene/OurTeam"]
+offset_left = 316.0
+offset_top = 379.0
+offset_right = 390.0
+offset_bottom = 403.0
 flat = true
 
 [node name="kahoot_jungle" type="AudioStreamPlayer2D" parent="."]
