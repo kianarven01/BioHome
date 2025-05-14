@@ -491,3 +491,10 @@ offset_bottom = 270.0
 flat = true
 
 [node name="tutorial" type="AudioStreamPlayer2D" parent="."]
+
+[node name="TaskViewer" type="TextureRect" parent="."]
+visible = false
+offset_left = 551.0
+offset_top = 69.0
+offset_right = 1324.0
+offset_bottom = 1034.0

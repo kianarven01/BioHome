@@ -42,6 +42,7 @@ public partial class LivingRoom : Node2D
 	private Button t3;
 	private AudioStreamPlayer2D tutorialPlayer;
 	private AudioStreamPlayer2D flipbookPlayer;
+	private TextureRect taskviewer;
 	
 	[Export] public TextureRect LeftPage;
 	[Export] public TextureRect RightPage;
@@ -136,6 +137,7 @@ public partial class LivingRoom : Node2D
 		Tutorial1 = GetNode<TextureRect>("Tutorial1");
 		Tutorial2 = GetNode<TextureRect>("Tutorial2");
 		Tutorial3 = GetNode<TextureRect>("Tutorial3");
+		taskviewer = GetNode<TextureRect>("TaskViewer");
 		
 		if(tutorialPlayer.Playing){
 			tv.SetProcessInput(false);
