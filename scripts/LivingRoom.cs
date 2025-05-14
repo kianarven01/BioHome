@@ -34,18 +34,30 @@ public partial class LivingRoom : Node2D
 	private Button naBook;
 	private Button proteinBook;
 	private Button finalTaskButton;
+	private TextureRect Tutorial1;
+	private TextureRect Tutorial2;
+	private TextureRect Tutorial3;
+	private Button t1;
+	private Button t2;
+	private Button t3;
+	private AudioStreamPlayer2D tutorialPlayer;
+	private AudioStreamPlayer2D flipbookPlayer;
+	
 	[Export] public TextureRect LeftPage;
 	[Export] public TextureRect RightPage;
 	private bool _isFlipping = false;
 
 	private List<Texture2D> _pages = new();
 	private int _currentPageIndex = 0;
-
 	
 	public override void _Ready()
 	{
 		musicPlayer = GetNode<AudioStreamPlayer2D>("kahoot_lobby");
-		if (!musicPlayer.Playing)
+		tutorialPlayer = GetNode<AudioStreamPlayer2D>("tutorial");
+		flipbookPlayer = GetNode<AudioStreamPlayer2D>("flipbook");
+		tutorialPlayer.Stream = GD.Load<AudioStream>("res://sounds/tutorialSound/step_1.mp3");
+		tutorialPlayer.Play();
+		if (!musicPlayer.Playing && !tutorialPlayer.Playing)
 		{
 			GD.Print("Music is not playing, playing now.");
 			musicPlayer.Play();
@@ -98,22 +110,40 @@ public partial class LivingRoom : Node2D
 		closeBook.Pressed += hideBook;
 		
 		lipidsBook = GetNode<Button>("Drawer/Book1");
-		lipidsBook.Pressed += () => showBook("res://sprites/Flipbook/Lipids/");
+		lipidsBook.Pressed += () => showBook("res://sprites/Flipbook/Lipids/", "res://sounds/flipbookSound/lipids.mp3");
 		
 		carbsBook = GetNode<Button>("Drawer/Book2");
-		carbsBook.Pressed += () => showBook("res://sprites/Flipbook/Carbs/");
+		carbsBook.Pressed += () => showBook("res://sprites/Flipbook/Carbs/", "res://sounds/flipbookSound/carbo.mp3");
 		
 		naBook = GetNode<Button>("Drawer/Book3");
-		naBook.Pressed += () => showBook("res://sprites/Flipbook/NucliecAcid/");
+		naBook.Pressed += () => showBook("res://sprites/Flipbook/NucliecAcid/", "res://sounds/flipbookSound/na.mp3");
 		
 		proteinBook = GetNode<Button>("Drawer/Book4");
-		proteinBook.Pressed += () => showBook("res://sprites/Flipbook/Protein/");
+		proteinBook.Pressed += () => showBook("res://sprites/Flipbook/Protein/", "res://sounds/flipbookSound/protein.mp3");
 		
+		t1 = GetNode<Button>("Tutorial1/Button");
+		t1.Pressed += () => tutorial(true, false);
 		
-
+		t2 = GetNode<Button>("Tutorial2/Button");
+		t2.Pressed += () => tutorial(false, true);
+		
+		t3 = GetNode<Button>("Tutorial3/Button");
+		t3.Pressed += () => tutorial(false, false);		
+		
 		tv = GetNode<TextureRect>("TV");
 		tasks = GetNode<TextureRect>("Tasks");
 		book = GetNode<TextureRect>("Book");
+		Tutorial1 = GetNode<TextureRect>("Tutorial1");
+		Tutorial2 = GetNode<TextureRect>("Tutorial2");
+		Tutorial3 = GetNode<TextureRect>("Tutorial3");
+		
+		if(tutorialPlayer.Playing){
+			tv.SetProcessInput(false);
+			tasks.SetProcessInput(false);
+		}else{
+			tv.SetProcessInput(true);
+			tasks.SetProcessInput(true);
+		}
 
 		if (tv is TV tvScript)
 		{
@@ -145,12 +175,16 @@ public partial class LivingRoom : Node2D
 		}
 	}
 	
-	private void showBook(string PagesDirectory)
+	private void showBook(string PagesDirectory, string path)
 	{
 		LoadPagesFromFolder(PagesDirectory);
 		UpdatePages();
 		InitializePagePositions();
 		InitializeNavigationButtons();
+		musicPlayer.Stop();
+		flipbookPlayer.Stop();
+		flipbookPlayer.Stream = GD.Load<AudioStream>(path);
+		flipbookPlayer.Play();
 		book.Visible = true;
 		book.Position = new Vector2(510, 215);	
 		toggleObjects(true);
@@ -167,6 +201,8 @@ public partial class LivingRoom : Node2D
 		toggleObjects(false);
 		tv.SetProcessInput(true);
 		tasks.SetProcessInput(true);
+		flipbookPlayer.Stop();
+		musicPlayer.Play();
 	}
 
 	private void OnExitButtonPressed()
@@ -369,5 +405,28 @@ public partial class LivingRoom : Node2D
 		naBook.Disabled = state;
 		proteinBook.Disabled = state;
 		exitButton.Disabled = state;
+		tv.SetProcessInput(!state);
+		tasks.SetProcessInput(!state);
+	}
+	
+	private void tutorial(bool state2 = false, bool state3 = false){
+		toggleObjects(true);
+		tutorialPlayer.Stop();
+		musicPlayer.Stop();
+		if(state2){
+			Tutorial1.Visible = !state2;
+			Tutorial2.Visible = state2;
+			tutorialPlayer.Stream = GD.Load<AudioStream>("res://sounds/tutorialSound/step_3.mp3");
+			tutorialPlayer.Play();
+		}else if(state3){
+			Tutorial2.Visible = !state3;
+			Tutorial3.Visible = state3;
+			tutorialPlayer.Stream = GD.Load<AudioStream>("res://sounds/tutorialSound/step_2.mp3");
+			tutorialPlayer.Play();
+		}else{
+			Tutorial3.Visible = state3;
+			toggleObjects(false);
+			musicPlayer.Play();
+		}
 	}
 }

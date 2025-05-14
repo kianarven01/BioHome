@@ -35,9 +35,9 @@ public partial class TV_UI : CanvasLayer
 		closeButton.ZIndex = 100;
 		closeButton.Pressed += CloseUI;
 		video1Button.Pressed += () => PlayVideo("res://videos/1Carbo.ogv");
-		video2Button.Pressed += () => PlayVideo("res://videos/2Nucleic.ogv");
+		video2Button.Pressed += () => PlayVideo("res://videos/2Nucliec.ogv");
 		video3Button.Pressed += () => PlayVideo("res://videos/4Lipids.ogv");
-		video4Button.Pressed += () => PlayVideo("res://videos/3Protein.ogv`");
+		video4Button.Pressed += () => PlayVideo("res://videos/3Protein.ogv");
 	}
 
 	private void PlayVideo(string videoDir)
