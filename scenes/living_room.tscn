@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bxdek8wdmp80v"]
+[gd_scene load_steps=38 format=3 uid="uid://bxdek8wdmp80v"]
 
 [ext_resource type="Script" uid="uid://clpm87q17muv" path="res://scripts/LivingRoom.cs" id="1_tcv1k"]
 [ext_resource type="Texture2D" uid="uid://01n71qk3ibff" path="res://sprites/Extras/livingroombg.png" id="2_sc017"]
@@ -31,6 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://oyfoj1ctvt4b" path="res://sprites/Extras/tutorial1.png" id="29_5agdc"]
 [ext_resource type="Texture2D" uid="uid://0tatpov6p2ir" path="res://sprites/Extras/tutorial2.png" id="30_v5f8x"]
 [ext_resource type="Texture2D" uid="uid://drbmeyosm28k0" path="res://sprites/Extras/tutorial3.png" id="31_j7j0o"]
+[ext_resource type="VideoStream" uid="uid://nkcmj2bd5o0x" path="res://videos/lesson.ogv" id="32_v5f8x"]
+[ext_resource type="Texture2D" uid="uid://d31u0xbiui8f3" path="res://sprites/Extras/right_11677338.png" id="33_j7j0o"]
+[ext_resource type="Texture2D" uid="uid://cuukak8sxctvw" path="res://sprites/Extras/right-arrow_12857925.png" id="33_l6qvg"]
 
 [sub_resource type="SystemFont" id="SystemFont_jm2cs"]
 font_weight = 600
@@ -225,106 +228,81 @@ script = ExtResource("16_5cgma")
 
 [node name="TaskView" type="TextureRect" parent="."]
 layout_direction = 1
-offset_left = 2237.0
-offset_top = -305.0
-offset_right = 3526.0
-offset_bottom = 1051.0
+offset_left = 2413.0
+offset_top = -232.0
+offset_right = 3702.0
+offset_bottom = 1124.0
 texture = ExtResource("7_7smae")
 
-[node name="FinalTask" type="TextureRect" parent="TaskView"]
+[node name="Task1" type="TextureButton" parent="TaskView"]
 layout_mode = 0
-offset_left = 512.0
-offset_top = 888.0
-offset_right = 742.0
-offset_bottom = 1135.0
-scale = Vector2(1.357, 1.357)
-texture = ExtResource("18_2baer")
-expand_mode = 1
+offset_left = 270.0
+offset_top = 560.0
+offset_right = 566.0
+offset_bottom = 884.0
+texture_normal = ExtResource("16_uuwu5")
+texture_pressed = ExtResource("16_uuwu5")
+texture_hover = ExtResource("16_uuwu5")
+texture_disabled = ExtResource("16_uuwu5")
+texture_focused = ExtResource("16_uuwu5")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Button" type="Button" parent="TaskView/FinalTask"]
-visible = false
+[node name="Task2" type="TextureButton" parent="TaskView"]
 layout_mode = 0
-offset_left = 42.7414
-offset_top = 89.1674
-offset_right = 160.741
-offset_bottom = 216.167
-flat = true
+offset_left = 680.0
+offset_top = 556.0
+offset_right = 976.0
+offset_bottom = 880.0
+texture_normal = ExtResource("18_6ryxo")
+texture_pressed = ExtResource("18_6ryxo")
+texture_hover = ExtResource("18_6ryxo")
+texture_disabled = ExtResource("18_6ryxo")
+texture_focused = ExtResource("18_6ryxo")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Function" type="TextureRect" parent="TaskView"]
+[node name="Task3" type="TextureButton" parent="TaskView"]
 layout_mode = 0
-offset_left = 251.0
-offset_top = 534.0
-offset_right = 523.0
-offset_bottom = 825.0
-scale = Vector2(1.357, 1.357)
-texture = ExtResource("16_uuwu5")
-expand_mode = 1
+offset_left = 110.0
+offset_top = 905.0
+offset_right = 406.0
+offset_bottom = 1229.0
+texture_normal = ExtResource("19_xdb3q")
+texture_pressed = ExtResource("19_xdb3q")
+texture_hover = ExtResource("19_xdb3q")
+texture_disabled = ExtResource("19_xdb3q")
+texture_focused = ExtResource("19_xdb3q")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Button" type="Button" parent="TaskView/Function"]
+[node name="Task4" type="TextureButton" parent="TaskView"]
 layout_mode = 0
-offset_left = 78.1134
-offset_top = 230.656
-offset_right = 166.113
-offset_bottom = 272.656
-icon = ExtResource("17_5cgma")
-flat = true
-
-[node name="Codon" type="TextureRect" parent="TaskView"]
-layout_mode = 0
-offset_left = 706.0
-offset_top = 533.0
-offset_right = 978.0
-offset_bottom = 824.0
-scale = Vector2(1.357, 1.357)
-texture = ExtResource("18_6ryxo")
-expand_mode = 1
-
-[node name="Button" type="Button" parent="TaskView/Codon"]
-layout_mode = 0
-offset_left = 75.9026
-offset_top = 230.656
-offset_right = 163.903
-offset_bottom = 272.656
-icon = ExtResource("17_5cgma")
-flat = true
-
-[node name="Aminos" type="TextureRect" parent="TaskView"]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 907.0
-offset_right = 408.0
-offset_bottom = 1192.0
-scale = Vector2(1.357, 1.357)
-texture = ExtResource("19_xdb3q")
-expand_mode = 1
-
-[node name="Button" type="Button" parent="TaskView/Aminos"]
-layout_mode = 0
-offset_left = 75.9027
-offset_top = 226.234
-offset_right = 163.902
-offset_bottom = 268.234
-icon = ExtResource("17_5cgma")
-flat = true
-
-[node name="Carbo" type="TextureRect" parent="TaskView"]
-layout_mode = 0
-offset_left = 826.0
+offset_left = 883.0
 offset_top = 910.0
-offset_right = 1098.0
-offset_bottom = 1195.0
-scale = Vector2(1.357, 1.357)
-texture = ExtResource("20_81vpo")
-expand_mode = 1
+offset_right = 1179.0
+offset_bottom = 1234.0
+texture_normal = ExtResource("20_81vpo")
+texture_pressed = ExtResource("20_81vpo")
+texture_hover = ExtResource("20_81vpo")
+texture_disabled = ExtResource("20_81vpo")
+texture_focused = ExtResource("20_81vpo")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Button" type="Button" parent="TaskView/Carbo"]
+[node name="FinalTask" type="TextureButton" parent="TaskView"]
 layout_mode = 0
-offset_left = 78.1133
-offset_top = 225.497
-offset_right = 166.113
-offset_bottom = 267.497
-icon = ExtResource("17_5cgma")
-flat = true
+offset_left = 497.0
+offset_top = 905.0
+offset_right = 793.0
+offset_bottom = 1229.0
+texture_normal = ExtResource("18_2baer")
+texture_pressed = ExtResource("18_2baer")
+texture_hover = ExtResource("18_2baer")
+texture_disabled = ExtResource("18_2baer")
+texture_focused = ExtResource("18_2baer")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="close_button" type="Button" parent="TaskView"]
 layout_mode = 0
@@ -440,6 +418,7 @@ icon = ExtResource("7_sc017")
 flat = true
 
 [node name="Tutorial1" type="TextureRect" parent="."]
+visible = false
 offset_left = 620.0
 offset_top = 508.0
 offset_right = 893.0
@@ -467,6 +446,7 @@ texture = ExtResource("30_v5f8x")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="Tutorial2"]
+layout_mode = 0
 offset_left = 97.0
 offset_top = 216.0
 offset_right = 231.0
@@ -484,6 +464,7 @@ texture = ExtResource("31_j7j0o")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="Tutorial3"]
+layout_mode = 0
 offset_left = 112.0
 offset_top = 234.0
 offset_right = 249.0
@@ -494,7 +475,69 @@ flat = true
 
 [node name="TaskViewer" type="TextureRect" parent="."]
 visible = false
-offset_left = 551.0
-offset_top = 69.0
-offset_right = 1324.0
-offset_bottom = 1034.0
+offset_left = 515.0
+offset_top = 26.0
+offset_right = 1472.0
+offset_bottom = 1029.0
+expand_mode = 1
+
+[node name="qrBtn" type="Button" parent="TaskViewer"]
+visible = false
+layout_mode = 0
+offset_left = 241.0
+offset_top = 500.0
+offset_right = 640.0
+offset_bottom = 923.0
+flat = true
+expand_icon = true
+
+[node name="playBtn" type="Button" parent="TaskViewer"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 813.0
+offset_right = 539.0
+offset_bottom = 916.0
+icon = ExtResource("17_5cgma")
+flat = true
+expand_icon = true
+
+[node name="exitBtn" type="Button" parent="TaskViewer"]
+layout_mode = 0
+offset_left = 721.0
+offset_top = 94.0
+offset_right = 827.0
+offset_bottom = 206.0
+icon = ExtResource("7_sc017")
+flat = true
+expand_icon = true
+
+[node name="LessonPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("32_v5f8x")
+expand = true
+
+[node name="skipBtn" type="Button" parent="LessonPlayer"]
+layout_mode = 0
+offset_left = 1727.0
+offset_top = 884.0
+offset_right = 1908.0
+offset_bottom = 1065.0
+text = "SKIP"
+icon = ExtResource("33_l6qvg")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button" type="Button" parent="LessonPlayer"]
+visible = false
+layout_mode = 0
+offset_left = 1667.0
+offset_top = 871.0
+offset_right = 1879.0
+offset_bottom = 1047.0
+icon = ExtResource("33_j7j0o")
+flat = true
+icon_alignment = 1
+expand_icon = true

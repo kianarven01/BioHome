@@ -37,10 +37,10 @@ public partial class CarboLipids : Node
 	private TextureButton previousA3;
 
 	private AudioStreamPlayer2D correctSound;
-    private AudioStreamPlayer2D wrongSound;
-    private AudioStreamPlayer2D themeMusic;
-    private AudioStreamPlayer2D startMusic;
-    private AudioStreamPlayer2D scoreMusic;
+	private AudioStreamPlayer2D wrongSound;
+	private AudioStreamPlayer2D themeMusic;
+	private AudioStreamPlayer2D startMusic;
+	private AudioStreamPlayer2D scoreMusic;
 
 	public override void _Ready()
 	{
@@ -54,11 +54,11 @@ public partial class CarboLipids : Node
 		lipidsButton.Pressed += OnLipidsButtonPressed;
 
 		correctSound = GetNode<AudioStreamPlayer2D>("correct");
-        wrongSound = GetNode<AudioStreamPlayer2D>("wrong");
-        themeMusic = GetNode<AudioStreamPlayer2D>("kahoot");
-        startMusic = GetNode<AudioStreamPlayer2D>("start_music");
-        scoreMusic = GetNode<AudioStreamPlayer2D>("score_music");
-        startMusic.Play();
+		wrongSound = GetNode<AudioStreamPlayer2D>("wrong");
+		themeMusic = GetNode<AudioStreamPlayer2D>("kahoot");
+		startMusic = GetNode<AudioStreamPlayer2D>("start_music");
+		scoreMusic = GetNode<AudioStreamPlayer2D>("score_music");
+		startMusic.Play();
 
 		globalTimer = GetNode<Timer>("GlobalTimer");
 		globalTimer.Timeout += OnTimerTimeout;
@@ -85,7 +85,7 @@ public partial class CarboLipids : Node
 		correctAnswers = new string[]
 		{
 			"A2",
-			"A1",
+			"A2",
 			"A1",
 			"A1",
 		};

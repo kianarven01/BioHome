@@ -19,10 +19,6 @@ public partial class LivingRoom : Node2D
 	private Button yesButton;
 	private TextureRect tv;
 	private TextureRect tasks;
-	private Button playMif;
-	private Button playMta;
-	private Button carboButton;
-	private Button codonButton;
 	private Button backButton;
 	private Button nextPage;
 	private Button prevPage;
@@ -43,6 +39,18 @@ public partial class LivingRoom : Node2D
 	private AudioStreamPlayer2D tutorialPlayer;
 	private AudioStreamPlayer2D flipbookPlayer;
 	private TextureRect taskviewer;
+	private TextureButton task1;
+	private TextureButton task2;
+	private TextureButton task3;
+	private TextureButton task4;
+	private TextureButton taskfinal;
+	private Button viewerExit;
+	private Button playBtn;
+	private Button qrButton;
+	private string currentTask;
+	private VideoStreamPlayer lp;
+	private Button proceed;
+	private Button skip;
 	
 	[Export] public TextureRect LeftPage;
 	[Export] public TextureRect RightPage;
@@ -53,19 +61,23 @@ public partial class LivingRoom : Node2D
 	
 	public override void _Ready()
 	{
+		var global = GetNode<GlobalState>("/root/GlobalState");
+		
 		musicPlayer = GetNode<AudioStreamPlayer2D>("kahoot_lobby");
 		tutorialPlayer = GetNode<AudioStreamPlayer2D>("tutorial");
 		flipbookPlayer = GetNode<AudioStreamPlayer2D>("flipbook");
-		tutorialPlayer.Stream = GD.Load<AudioStream>("res://sounds/tutorialSound/step_1.mp3");
-		tutorialPlayer.Play();
-		if (!musicPlayer.Playing && !tutorialPlayer.Playing)
+		Tutorial1 = GetNode<TextureRect>("Tutorial1");
+		lp = GetNode<VideoStreamPlayer>("LessonPlayer");
+		proceed = GetNode<Button>("LessonPlayer/Button");
+		proceed.Pressed += hideVideo;
+		if (!global.TutorialShown)
 		{
-			GD.Print("Music is not playing, playing now.");
+			Tutorial1.Visible = true;
+			tutorialPlayer.Stream = GD.Load<AudioStream>("res://sounds/tutorialSound/step_1.mp3");
+			tutorialPlayer.Play();
+			global.TutorialShown = true;
+		}else{
 			musicPlayer.Play();
-		}
-		else
-		{
-			GD.Print("Music is already playing.");
 		}
 	
 		exitSign = GetNode<TextureRect>("Exit"); 
@@ -79,26 +91,6 @@ public partial class LivingRoom : Node2D
 		
 		yesButton = GetNode<Button>("Exit/yesButton");
 		yesButton.Pressed += OnYesButtonPressed;
-		
-		// PlayMif button
-		playMif = GetNode<Button>("TaskView/Function/Button");
-		playMif.Pressed += OnPlayMifPressed;
-		
-		// PlayMta button
-		playMta = GetNode<Button>("TaskView/Aminos/Button");
-		playMta.Pressed += OnPlayMtaPressed;
-
-		// PlayCarboLipids button
-		carboButton = GetNode<Button>("TaskView/Carbo/Button");
-		carboButton.Pressed += OnPlayCarboLipidsPressed;
-
-		// PlayCodon button
-		codonButton = GetNode<Button>("TaskView/Codon/Button");
-		codonButton.Pressed += OnPlayCodonPressed;
-		
-		// Final Task button
-		finalTaskButton = GetNode<Button>("TaskView/FinalTask/Button");
-		//finalTaskButton.Pressed += OnFinalTestPressed;
 		
 		// Book Navigation
 		nextPage = GetNode<Button>("Book/NextButton");
@@ -131,10 +123,35 @@ public partial class LivingRoom : Node2D
 		t3 = GetNode<Button>("Tutorial3/Button");
 		t3.Pressed += () => tutorial(false, false);		
 		
+		task1 = GetNode<TextureButton>("TaskView/Task1");
+		task1.Pressed += () => displayTask("res://sprites/Extras/task1.png","MiF");
+		
+		task2 = GetNode<TextureButton>("TaskView/Task2");
+		task2.Pressed += () => displayTask("res://sprites/Extras/task2.png","Codon");
+		
+		task3 = GetNode<TextureButton>("TaskView/Task3");
+		task3.Pressed += () => displayTask("res://sprites/Extras/task3.png","Aminos");
+		
+		task4 = GetNode<TextureButton>("TaskView/Task4");
+		task4.Pressed += () => displayTask("res://sprites/Extras/task4.png","Carbo");
+		
+		taskfinal = GetNode<TextureButton>("TaskView/FinalTask");
+		taskfinal.Pressed += () => displayTask("res://sprites/Extras/QR.png","Final");
+		
+		viewerExit = GetNode<Button>("TaskViewer/exitBtn");
+		viewerExit.Pressed += exitViewer;
+		
+		playBtn = GetNode<Button>("TaskViewer/playBtn");
+		
+		qrButton = GetNode<Button>("TaskViewer/qrBtn");
+		qrButton.Pressed += OnFinalTestPressed;
+		
+		skip = GetNode<Button>("LessonPlayer/skipBtn");
+		skip.Pressed += skipTutorial;
+		
 		tv = GetNode<TextureRect>("TV");
 		tasks = GetNode<TextureRect>("Tasks");
 		book = GetNode<TextureRect>("Book");
-		Tutorial1 = GetNode<TextureRect>("Tutorial1");
 		Tutorial2 = GetNode<TextureRect>("Tutorial2");
 		Tutorial3 = GetNode<TextureRect>("Tutorial3");
 		taskviewer = GetNode<TextureRect>("TaskViewer");
@@ -142,9 +159,11 @@ public partial class LivingRoom : Node2D
 		if(tutorialPlayer.Playing){
 			tv.SetProcessInput(false);
 			tasks.SetProcessInput(false);
+			exitButton.Disabled = true;
 		}else{
 			tv.SetProcessInput(true);
 			tasks.SetProcessInput(true);
+			exitButton.Disabled = false;
 		}
 
 		if (tv is TV tvScript)
@@ -159,6 +178,64 @@ public partial class LivingRoom : Node2D
 		
 		LeftPage = GetNode<TextureRect>("Book/LeftPage");
 		RightPage = GetNode<TextureRect>("Book/RightPage");
+	}
+	
+	private void exitViewer()
+	{
+		taskviewer.Visible = false;	
+		if (playBtn.IsConnected("pressed", Callable.From(OnPlayBtnPressed)))
+		{
+			playBtn.Disconnect("pressed", Callable.From(OnPlayBtnPressed));
+		}
+	}
+	
+	private void displayTask(string path, string task){
+		currentTask = task;
+		
+		taskviewer.Texture = null;
+		taskviewer.Texture = ResourceLoader.Load<Texture2D>(path);
+		taskviewer.Visible = true; 
+		if(task == "Final"){
+			playBtn.Visible = false;
+			qrButton.Visible = true;
+		}else{
+			playBtn.Visible = true;
+			qrButton.Visible = false;
+		}
+		
+		if (playBtn.IsConnected("pressed", Callable.From(OnPlayBtnPressed)))
+		{
+			playBtn.Disconnect("pressed", Callable.From(OnPlayBtnPressed));
+		}
+		playBtn.Pressed += OnPlayBtnPressed;
+	}
+	
+	private void OnPlayBtnPressed()
+	{
+		defineGame(currentTask);
+	}
+	
+	private void defineGame(string kind){
+		switch(kind){
+			case "MiF":
+				OnPlayMifPressed();
+				taskviewer.Visible = false;
+				break;
+			case "Aminos":
+				OnPlayMtaPressed();
+				taskviewer.Visible = false;
+				break;
+			case "Codon":
+				OnPlayCodonPressed();
+				taskviewer.Visible = false;
+				break;
+			case "Carbo":
+				OnPlayCarboLipidsPressed();
+				taskviewer.Visible = false;
+				break;
+			default:
+				break;
+		}
 	}
 
 	private void OnTVUIVisibilityChanged(bool isVisible)
@@ -187,7 +264,7 @@ public partial class LivingRoom : Node2D
 		flipbookPlayer.Stop();
 		flipbookPlayer.Stream = GD.Load<AudioStream>(path);
 		flipbookPlayer.Play();
-		book.Visible = true;
+		book.Visible = true;	
 		book.Position = new Vector2(510, 215);	
 		toggleObjects(true);
 		tv.SetProcessInput(false);
@@ -427,8 +504,40 @@ public partial class LivingRoom : Node2D
 			tutorialPlayer.Play();
 		}else{
 			Tutorial3.Visible = state3;
-			toggleObjects(false);
-			musicPlayer.Play();
+			lp.Visible = true;
+			lp.Position = new Vector2(0,0);
+			playVideo();
 		}
+	}
+	
+	private void playVideo()
+	{
+		lp.Play();
+
+		// Disconnect first in case already connected (prevents multiple triggers)
+		if (lp.IsConnected("finished", Callable.From(OnVideoFinished)))
+		{
+			lp.Disconnect("finished", Callable.From(OnVideoFinished));
+		}
+
+		lp.Finished += OnVideoFinished;
+	}
+
+	private void OnVideoFinished()
+	{
+		skip.Visible = false;
+		proceed.Visible = true;
+	}
+	
+	private void hideVideo(){
+		lp.Visible = false;
+		toggleObjects(false);
+		musicPlayer.Play();
+	}
+	
+	private void skipTutorial()
+	{
+		lp.Stop();
+		hideVideo();
 	}
 }

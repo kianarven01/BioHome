@@ -26,20 +26,27 @@ public partial class MakeItFunction : Node2D
 	private AudioStreamPlayer2D themeMusic;
 	private AudioStreamPlayer2D startMusic;
 	private AudioStreamPlayer2D scoreMusic;
+	private TextureRect postGame;
+	private List<Texture2D> _pages = new();
+	private int _currentPageIndex = 0;
+	private Button nextButton;
 
 	public override void _Ready()
 	{
+		postGame = GetNode<TextureRect>("PostGame");
 		scoreLbl = GetNode<Label>("Background/scoreLabel");
 		backButton = GetNode<Button>("Background/backButton");
 		backButton.Pressed += ReturnToLivingRoom;
 		doneButton = GetNode<Button>("EndGame/Button");
-		doneButton.Pressed += ReturnToLivingRoom;
+		doneButton.Pressed += ShowGameReview;
 		endGame = GetNode<TextureRect>("EndGame");
 		endGame.Visible = false;
 		resultLabel = GetNode<Label>("EndGame/resultLabel"); // Add a Label node in your scene and hide it initially
 		resultLabel.Visible = false;
 		retryButton = GetNode<Button>("EndGame/Retry");
 		retryButton.Pressed += RestartGame;
+		nextButton = GetNode<Button>("PostGame/nextBtn");
+		nextButton.Pressed += incrementPage;
 		
 		correctSound = GetNode<AudioStreamPlayer2D>("correct");
 		wrongSound = GetNode<AudioStreamPlayer2D>("wrong");
@@ -294,6 +301,57 @@ public partial class MakeItFunction : Node2D
 			}
 			UpdateLabel(timer); // Optional: update label to show 00:00 or final time
 		}
+	}
+	
+	private void LoadPagesFromFolder(string path)
+	{
+		_pages.Clear();
+		_currentPageIndex = 0;
+
+		// First count how many PNG files exist
+		var dir = DirAccess.Open(path);
+		if (dir == null)
+		{
+			GD.PrintErr($"Can't open directory: {path}");
+			return;
+		}
+
+		int pngCount = 4;
+		
+		// Then load the pages based on the count
+		for (int i = 1; i <= pngCount; i++)
+		{
+			string filePath = $"{path}{i}.png";
+			Texture2D tex = ResourceLoader.Load<Texture2D>(filePath);
+			if (tex != null)
+				_pages.Add(tex);
+			else
+				GD.PrintErr($"Failed to load page: {filePath}");
+		}
+	}
+	
+	private void updatePage()
+	{
+		postGame.Texture = _pages[_currentPageIndex];
+	}
+	
+	private void incrementPage()
+	{
+		if(_currentPageIndex < _pages.Count - 1)
+		{
+			_currentPageIndex += 1;
+			updatePage();
+		}else{
+			ReturnToLivingRoom();
+		}
+	}
+	
+	private void ShowGameReview()
+	{
+		LoadPagesFromFolder("res://sprites/MiF_explain/");
+		updatePage();
+		postGame.Position = new Vector2(0,0);
+		postGame.Visible = true;
 	}
 	
 	private void ShowFinalResults()

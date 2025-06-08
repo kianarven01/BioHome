@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bhygpmh37lqcp"]
+[gd_scene load_steps=88 format=3 uid="uid://bhygpmh37lqcp"]
 
 [ext_resource type="Script" uid="uid://dh43f0ycnx8p7" path="res://scripts/MakeItFunction.cs" id="1_1k2yw"]
 [ext_resource type="Texture2D" uid="uid://btkgiuq7p6ojj" path="res://sprites/Functions/background/intro.png" id="1_x8g7j"]
@@ -74,6 +74,7 @@
 [ext_resource type="AudioStream" uid="uid://cnv1u5e87yyei" path="res://sounds/Wrong SFX.mp3" id="72_p16v8"]
 [ext_resource type="AudioStream" uid="uid://di6xauu5vcr0a" path="res://sounds/Kahoot! 80s Vibe Theme.mp3" id="73_lesu4"]
 [ext_resource type="AudioStream" uid="uid://dkyj1j2gisjxc" path="res://sounds/Kahoot! Podium Theme Music.mp3" id="74_pyrw6"]
+[ext_resource type="Texture2D" uid="uid://cuukak8sxctvw" path="res://sprites/Extras/right-arrow_12857925.png" id="75_qm1wf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1h2tm"]
 font_size = 31
@@ -1016,3 +1017,20 @@ stream = ExtResource("73_lesu4")
 
 [node name="score_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("74_pyrw6")
+
+[node name="PostGame" type="TextureRect" parent="."]
+offset_left = -6.0
+offset_top = -2411.0
+offset_right = 1914.0
+offset_bottom = -1331.0
+expand_mode = 5
+
+[node name="nextBtn" type="Button" parent="PostGame"]
+layout_mode = 0
+offset_left = 1680.0
+offset_top = 857.0
+offset_right = 1894.0
+offset_bottom = 1060.0
+icon = ExtResource("75_qm1wf")
+flat = true
+expand_icon = true

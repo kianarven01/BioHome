@@ -372,6 +372,7 @@ flat = true
 expand_icon = true
 
 [node name="DBT" type="TextureRect" parent="LandingScene"]
+layout_mode = 0
 offset_left = 299.273
 offset_top = -637.429
 offset_right = 917.273
@@ -379,6 +380,7 @@ offset_bottom = -276.429
 expand_mode = 3
 
 [node name="okBtn" type="Button" parent="LandingScene/DBT"]
+layout_mode = 0
 offset_left = 269.0
 offset_top = 325.0
 offset_right = 373.0
@@ -395,6 +397,7 @@ texture = ExtResource("29_engjn")
 expand_mode = 1
 
 [node name="okBtn" type="Button" parent="LandingScene/OurTeam"]
+layout_mode = 0
 offset_left = 316.0
 offset_top = 379.0
 offset_right = 390.0

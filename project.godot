@@ -15,6 +15,10 @@ run/main_scene="uid://d331i2778xnbp"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalState="*res://scripts/GlobalState.cs"
+
 [display]
 
 window/size/viewport_width=1920
