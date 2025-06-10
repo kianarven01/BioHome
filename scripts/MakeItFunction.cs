@@ -348,6 +348,7 @@ public partial class MakeItFunction : Node2D
 	
 	private void ShowGameReview()
 	{
+		scoreMusic.Stop();
 		LoadPagesFromFolder("res://sprites/MiF_explain/");
 		updatePage();
 		postGame.Position = new Vector2(0,0);

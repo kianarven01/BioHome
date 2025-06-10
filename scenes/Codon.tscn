@@ -421,6 +421,7 @@ offset_bottom = 2783.0
 texture = ExtResource("5_36d21")
 
 [node name="reviewBtn" type="Button" parent="score"]
+layout_mode = 0
 offset_left = 859.0
 offset_top = 685.0
 offset_right = 1047.0
