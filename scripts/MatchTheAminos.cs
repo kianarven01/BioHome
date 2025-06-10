@@ -30,6 +30,10 @@ public partial class MatchTheAminos : Node2D
 	private AudioStreamPlayer2D themeMusic;
 	private AudioStreamPlayer2D startMusic;
 	private AudioStreamPlayer2D scoreMusic;
+	private TextureRect postGame;
+	private List<Texture2D> _pages = new();
+	private int _currentPageIndex = 0;
+	private Button nextButton;
 
 	// Manually defined card pairs
 	private List<(int, int)> _manualPairs = new List<(int, int)>
@@ -38,7 +42,7 @@ public partial class MatchTheAminos : Node2D
 	};
 
 	public override void _Ready()
-	{	
+	{
 		structButton = GetNode<Button>("../../Background/structureButton");
 		funcButton = GetNode<Button>("../../Background/functionButton");
 		exitButton = GetNode<Button>("../../Background/exitButton");
@@ -49,6 +53,8 @@ public partial class MatchTheAminos : Node2D
 		subtitleLbl = GetNode<Label>("../../ExitLabel/Subtitle");
 		playAgainBtn = GetNode<Button>("../../ExitLabel/YesButton");
 		noBtn = GetNode<Button>("../../ExitLabel/NoButton");
+		postGame = GetNode<TextureRect>("../../PostGame");
+		nextButton = GetNode<Button>("../../PostGame/nextBtn");
 		mainGame.Visible = false;
 		
 		correctSound = GetNode<AudioStreamPlayer2D>("../../correct");
@@ -62,8 +68,9 @@ public partial class MatchTheAminos : Node2D
 		funcButton.Pressed += () => LoadGame("res://sprites/Aminos/functionImages/");
 		exitButton.Pressed += ReturnToLivingRoom;
 		gameExit.Pressed += OnNoPressed;
-		noBtn.Pressed += OnNoPressed;
+		noBtn.Pressed += ShowGameReview;
 		playAgainBtn.Pressed += OnPlayAgainPressed;
+		nextButton.Pressed += incrementPage;
 	}
 	
 	
@@ -373,5 +380,56 @@ public partial class MatchTheAminos : Node2D
 		startMusic.Play();
 		
 		mainGame.Visible = false;
+	}
+	
+	private void LoadPagesFromFolder(string path)
+	{
+		_pages.Clear();
+		_currentPageIndex = 0;
+
+		// First count how many PNG files exist
+		var dir = DirAccess.Open(path);
+		if (dir == null)
+		{
+			GD.PrintErr($"Can't open directory: {path}");
+			return;
+		}
+
+		int pngCount = 3;
+		
+		// Then load the pages based on the count
+		for (int i = 1; i <= pngCount; i++)
+		{
+			string filePath = $"{path}{i}.png";
+			Texture2D tex = ResourceLoader.Load<Texture2D>(filePath);
+			if (tex != null)
+				_pages.Add(tex);
+			else
+				GD.PrintErr($"Failed to load page: {filePath}");
+		}
+	}
+	
+	private void updatePage()
+	{
+		postGame.Texture = _pages[_currentPageIndex];
+	}
+	
+	private void incrementPage()
+	{
+		if(_currentPageIndex < _pages.Count - 1)
+		{
+			_currentPageIndex += 1;
+			updatePage();
+		}else{
+			ReturnToLivingRoom();
+		}
+	}
+	
+	private void ShowGameReview()
+	{
+		LoadPagesFromFolder("res://sprites/Mta_explain/");
+		updatePage();
+		postGame.Position = new Vector2(0,0);
+		postGame.Visible = true;
 	}
 }

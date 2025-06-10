@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cer3ao81rrsa6"]
+[gd_scene load_steps=16 format=3 uid="uid://cer3ao81rrsa6"]
 
 [ext_resource type="Texture2D" uid="uid://bl1e6wyssmgjo" path="res://sprites/Codon/Background.png" id="1_e13xn"]
 [ext_resource type="Script" uid="uid://b7coetmaqp1p0" path="res://scripts/Codon.cs" id="1_ipvu1"]
@@ -7,11 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dtr04f7bfb1ax" path="res://sprites/Codon/item_bg.png" id="5_36d21"]
 [ext_resource type="FontFile" uid="uid://b52dwtx7yibdv" path="res://fonts/Ldfcomicsansbold-zgma.ttf" id="6_bkh3i"]
 [ext_resource type="FontFile" uid="uid://dcpooywdciewd" path="res://fonts/Ldfcomicsanslight-6dZo.ttf" id="6_stsq8"]
+[ext_resource type="Theme" uid="uid://b7xq3khhlre80" path="res://sprites/Codon/reviewBtn.tres" id="7_2pfba"]
 [ext_resource type="AudioStream" uid="uid://05la0gnuoemi" path="res://sounds/Kahoot In Game Music Countdown 10s.mp3" id="7_ed67h"]
 [ext_resource type="AudioStream" uid="uid://csu0qhcwd0eai" path="res://sounds/Correct SFX.mp3" id="7_w41f1"]
 [ext_resource type="AudioStream" uid="uid://cnv1u5e87yyei" path="res://sounds/Wrong SFX.mp3" id="8_w41f1"]
 [ext_resource type="AudioStream" uid="uid://di6xauu5vcr0a" path="res://sounds/Kahoot! 80s Vibe Theme.mp3" id="10_vugfx"]
 [ext_resource type="AudioStream" uid="uid://dkyj1j2gisjxc" path="res://sounds/Kahoot! Podium Theme Music.mp3" id="11_stsq8"]
+[ext_resource type="Texture2D" uid="uid://cuukak8sxctvw" path="res://sprites/Extras/right-arrow_12857925.png" id="13_cd22r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w41f1"]
 bg_color = Color(0.701134, 0.25753, 0.699937, 1)
@@ -418,6 +420,14 @@ offset_right = 1930.0
 offset_bottom = 2783.0
 texture = ExtResource("5_36d21")
 
+[node name="reviewBtn" type="Button" parent="score"]
+offset_left = 859.0
+offset_top = 685.0
+offset_right = 1047.0
+offset_bottom = 740.0
+theme = ExtResource("7_2pfba")
+text = "REVIEW"
+
 [node name="score_title" type="Label" parent="score"]
 layout_mode = 0
 offset_left = 890.0
@@ -460,3 +470,21 @@ stream = ExtResource("10_vugfx")
 
 [node name="score_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_stsq8")
+
+[node name="PostGame" type="TextureRect" parent="."]
+offset_left = 54.0
+offset_top = -1196.0
+offset_right = 1954.0
+offset_bottom = -117.0
+
+[node name="nextBtn" type="Button" parent="PostGame"]
+layout_mode = 0
+offset_left = 1641.0
+offset_top = 834.0
+offset_right = 1855.0
+offset_bottom = 1038.0
+icon = ExtResource("13_cd22r")
+flat = true
+expand_icon = true
+
+[node name="Timer" type="Timer" parent="."]

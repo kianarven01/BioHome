@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class CarboLipids : Node
 {
@@ -41,6 +42,12 @@ public partial class CarboLipids : Node
 	private AudioStreamPlayer2D themeMusic;
 	private AudioStreamPlayer2D startMusic;
 	private AudioStreamPlayer2D scoreMusic;
+	
+	private TextureRect postGame;
+	private List<Texture2D> _pages = new();
+	private int _currentPageIndex = 0;
+	private Button nextButton;
+	private Button reviewButton;
 
 	public override void _Ready()
 	{
@@ -66,6 +73,13 @@ public partial class CarboLipids : Node
 		scoreScreen = GetNode<TextureRect>("score");
 		scoreLabel = scoreScreen.GetNode<Label>("score_total");
 		scoreScreen.Visible = false;
+		
+		postGame = GetNode<TextureRect>("PostGame");
+		nextButton = GetNode<Button>("PostGame/nextBtn");
+		nextButton.Pressed += incrementPage;
+		
+		reviewButton = GetNode<Button>("score/reviewBtn");
+		reviewButton.Pressed += ShowGameReview;
 
 		// Initialize Carbo quiz by default
 		InitializeCarboQuiz();
@@ -286,4 +300,65 @@ public partial class CarboLipids : Node
 		GD.Print("Score screen should now be visible");
 	}
 
+	private void LoadPagesFromFolder(string path)
+	{
+		_pages.Clear();
+		_currentPageIndex = 0;
+
+		// First count how many PNG files exist
+		var dir = DirAccess.Open(path);
+		if (dir == null)
+		{
+			GD.PrintErr($"Can't open directory: {path}");
+			return;
+		}
+
+		int pngCount = 0;
+		if(isCarboQuiz){
+			pngCount = 3;
+		}else{
+			pngCount = 2;
+		}
+		
+		// Then load the pages based on the count
+		for (int i = 1; i <= pngCount; i++)
+		{
+			string filePath = $"{path}{i}.png";
+			Texture2D tex = ResourceLoader.Load<Texture2D>(filePath);
+			if (tex != null)
+				_pages.Add(tex);
+			else
+				GD.PrintErr($"Failed to load page: {filePath}");
+		}
+	}
+	
+	private void updatePage()
+	{
+		postGame.Texture = _pages[_currentPageIndex];
+	}
+	
+	private void incrementPage()
+	{
+		if(_currentPageIndex < _pages.Count - 1)
+		{
+			_currentPageIndex += 1;
+			updatePage();
+		}else{
+			scoreScreen.Visible = false;
+			postGame.Visible = false;
+		}
+	}
+	
+	private void ShowGameReview()
+	{
+		scoreMusic.Stop();
+		if(isCarboQuiz){
+			LoadPagesFromFolder("res://sprites/Linking_explain/Carbo/");
+		}else{
+			LoadPagesFromFolder("res://sprites/Linking_explain/Lipids/");
+		}
+		updatePage();
+		postGame.Position = new Vector2(0,0);
+		postGame.Visible = true;
+	}
 }

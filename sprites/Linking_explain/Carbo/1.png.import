@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di2cvcda6pgml"
-path="res://.godot/imported/3.png-3fc10d1b5e9e7a0e935fc5ae8b99a32d.ctex"
+uid="uid://mwlxoc2bu67m"
+path="res://.godot/imported/1.png-9750410bfcbf66c709657ce2c64bd35b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Linking_explain/3.png"
-dest_files=["res://.godot/imported/3.png-3fc10d1b5e9e7a0e935fc5ae8b99a32d.ctex"]
+source_file="res://sprites/Linking_explain/Carbo/1.png"
+dest_files=["res://.godot/imported/1.png-9750410bfcbf66c709657ce2c64bd35b.ctex"]
 
 [params]
 

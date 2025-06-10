@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mwlxoc2bu67m"
-path="res://.godot/imported/1.png-08f63bc59449fdf3f91d82e96afb4f6f.ctex"
+uid="uid://nsick1p6ylj6"
+path="res://.godot/imported/2.png-4e2d3fe08cf3759b2106cc779727360c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Linking_explain/1.png"
-dest_files=["res://.godot/imported/1.png-08f63bc59449fdf3f91d82e96afb4f6f.ctex"]
+source_file="res://sprites/Linking_explain/Lipids/2.png"
+dest_files=["res://.godot/imported/2.png-4e2d3fe08cf3759b2106cc779727360c.ctex"]
 
 [params]
 

@@ -438,5 +438,4 @@ public partial class MakeItFunction : Node2D
 			}
 		}
 	}
-
 }

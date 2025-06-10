@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c1fqaemo77fnn"]
+[gd_scene load_steps=48 format=3 uid="uid://c1fqaemo77fnn"]
 
 [ext_resource type="Texture2D" uid="uid://dll6sl1ljf8b3" path="res://sprites/CarboLipids/carbolipidbg.png" id="1_6t1ky"]
 [ext_resource type="Texture2D" uid="uid://diykbxk5y2nhl" path="res://sprites/Extras/exit.png" id="2_k2xlk"]
@@ -37,11 +37,13 @@
 [ext_resource type="Texture2D" uid="uid://cxosk7m31j4e1" path="res://sprites/CarboLipids/choices/8B.png" id="34_wlatu"]
 [ext_resource type="Texture2D" uid="uid://i48cb3ixp2fl" path="res://sprites/CarboLipids/choices/8C.png" id="35_bonle"]
 [ext_resource type="Texture2D" uid="uid://brko6sj3vmnbi" path="res://sprites/CarboLipids/questions/Q8.png" id="36_ercou"]
+[ext_resource type="Theme" uid="uid://b7xq3khhlre80" path="res://sprites/Codon/reviewBtn.tres" id="37_02io7"]
 [ext_resource type="AudioStream" uid="uid://05la0gnuoemi" path="res://sounds/Kahoot In Game Music Countdown 10s.mp3" id="38_slr2h"]
 [ext_resource type="AudioStream" uid="uid://csu0qhcwd0eai" path="res://sounds/Correct SFX.mp3" id="39_wpe0a"]
 [ext_resource type="AudioStream" uid="uid://cnv1u5e87yyei" path="res://sounds/Wrong SFX.mp3" id="40_02io7"]
 [ext_resource type="AudioStream" uid="uid://di6xauu5vcr0a" path="res://sounds/Kahoot! 80s Vibe Theme.mp3" id="41_hc3fj"]
 [ext_resource type="AudioStream" uid="uid://dkyj1j2gisjxc" path="res://sounds/Kahoot! Podium Theme Music.mp3" id="42_s05ha"]
+[ext_resource type="Texture2D" uid="uid://cuukak8sxctvw" path="res://sprites/Extras/right-arrow_12857925.png" id="43_wpe0a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_servf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -687,6 +689,7 @@ theme_override_font_sizes/normal_font_size = 125
 text = "Create a Oleic acid"
 
 [node name="subtitle" type="RichTextLabel" parent="seventh_item"]
+layout_mode = 0
 offset_left = 764.0
 offset_top = 244.0
 offset_right = 1298.0
@@ -798,6 +801,7 @@ text = "Create a Butyric acid
 "
 
 [node name="subtitle" type="RichTextLabel" parent="eighth_item"]
+layout_mode = 0
 offset_left = 776.0
 offset_top = 249.0
 offset_right = 1204.0
@@ -915,6 +919,16 @@ offset_bottom = 732.0
 theme_override_font_sizes/font_size = 50
 text = "0"
 
+[node name="reviewBtn" type="Button" parent="score"]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 785.0
+offset_right = 1053.0
+offset_bottom = 840.0
+theme = ExtResource("37_02io7")
+text = "REVIEW
+"
+
 [node name="backButton" type="Button" parent="."]
 offset_left = 1818.0
 offset_top = 925.0
@@ -939,3 +953,19 @@ stream = ExtResource("41_hc3fj")
 
 [node name="score_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("42_s05ha")
+
+[node name="PostGame" type="TextureRect" parent="."]
+offset_left = 117.0
+offset_top = -1155.0
+offset_right = 2037.0
+offset_bottom = -115.0
+
+[node name="nextBtn" type="Button" parent="PostGame"]
+layout_mode = 0
+offset_left = 1686.0
+offset_top = 815.0
+offset_right = 1899.0
+offset_bottom = 1019.0
+icon = ExtResource("43_wpe0a")
+flat = true
+expand_icon = true
